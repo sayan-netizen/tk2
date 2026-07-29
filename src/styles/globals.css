@@ -1,0 +1,76 @@
+/* ============================
+   Global Styles — Shadow Protocol
+   ============================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  background: #0A0A0A;
+  color: #F5F5F5;
+}
+
+#mobile-menu-trigger {
+  position: fixed !important;
+  top: 0.75rem !important;
+  right: 1rem !important;
+  z-index: 9999 !important;
+  display: flex !important;
+}
+
+@media (min-width: 1024px) {
+  #mobile-menu-trigger {
+    display: none !important;
+  }
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(196, 30, 58, 0.4);
+  color: #fff;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C41E3A;
+}
+
+/* Font family utilities */
+.font-display {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.font-heading {
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+.font-body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.font-accent {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
