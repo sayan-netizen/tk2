@@ -1,11 +1,7 @@
 import { ArrowRight, Calendar, MapPin } from "lucide-react";
 
-const heroVideoWebm = new URL(
-  "../../../images/herosection/herobgvideo.webm",
-  import.meta.url
-).href;
-const heroVideoMp4 = new URL(
-  "../../../images/herosection/herobgvideo.mp4",
+const heroVideo = new URL(
+  "../../../images/herosection/hero-drive-background.mp4",
   import.meta.url
 ).href;
 const heroLogo = new URL("../../../images/herosection/logo.svg", import.meta.url).href;
@@ -86,14 +82,14 @@ export default function HeroSection() {
     >
       <video
         className="absolute inset-0 -z-30 h-full w-full object-cover"
+        aria-hidden="true"
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
       >
-        <source src={heroVideoWebm} type="video/webm" />
-        <source src={heroVideoMp4} type="video/mp4" />
+        <source src={heroVideo} type="video/mp4" />
       </video>
 
       <div className="absolute inset-0 -z-20 bg-black/10" />
