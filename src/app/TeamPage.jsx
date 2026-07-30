@@ -74,15 +74,15 @@ export default function TeamPage() {
       <button
         type="button"
         onClick={() => { window.location.hash = ""; }}
-        className="group fixed left-4 top-4 z-[10000] flex items-center gap-3 overflow-hidden border border-[#b8322c]/65 bg-[#1d1b18]/90 p-1.5 pr-4 text-left shadow-[0_10px_30px_rgba(29,27,24,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#d54536] hover:bg-[#2a1d1a] hover:shadow-[0_14px_34px_rgba(184,50,44,0.3)] sm:left-6 sm:top-6"
+        className="group fixed right-0 top-4 z-[10000] flex items-center gap-3 overflow-hidden rounded-l-md border border-r-0 border-[#b8322c]/65 bg-[#1d1b18]/90 p-1.5 pr-4 text-left shadow-[-10px_10px_30px_rgba(29,27,24,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-x-1 hover:border-[#d54536] hover:bg-[#2a1d1a] hover:shadow-[-14px_14px_34px_rgba(184,50,44,0.3)] sm:top-6"
         aria-label="Return to the main site"
       >
         <span className="flex size-9 items-center justify-center bg-[#b8322c] text-[#f7f1e5] transition-colors duration-300 group-hover:bg-[#d54536]">
           <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
         </span>
-        <span className="flex flex-col leading-none">
-          <span className="mb-1 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d89aa4]">
-            <Home className="size-2.5" /> Return
+          <span className="flex flex-col leading-none">
+            <span className="mb-1 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d89aa4]">
+            <Home className="size-2.5" /> Leave dojo
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#f7f1e5]">Main site</span>
         </span>
