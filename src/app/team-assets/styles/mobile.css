@@ -24,7 +24,28 @@
   }
   
   #mobile-view .hero-inner {
-    padding: 0 5vw;
+    padding: 5.5rem 5vw 2rem;
+  }
+
+  #mobile-view .eyebrow {
+    margin-bottom: 1.25rem;
+    padding: 0.5em 0.8em;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+  }
+
+  #mobile-view .tagline {
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  #mobile-view .scroll-cue {
+    margin-top: 2.5rem;
+  }
+
+  .shadow-dojo-page {
+    min-height: 100dvh;
+    overflow-x: clip;
   }
   
   #mobile-view .kanji-hero {
@@ -260,5 +281,19 @@
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+}
+
+@media (max-width: 380px) {
+  #mobile-view .hero-inner {
+    padding-top: 5rem;
+  }
+
+  #mobile-view .title {
+    font-size: 2.3rem;
+  }
+
+  .mobile-dept-section {
+    padding-inline: 5vw;
   }
 }

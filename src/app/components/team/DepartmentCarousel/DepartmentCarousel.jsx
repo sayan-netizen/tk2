@@ -1,7 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import MemberCard from '../Members/MemberCard';
 import { DEPTS } from '../../../team-assets/data/departments';
-import { lerp } from '../../../team-assets/utils/math';
 
 export default function DepartmentCarousel({ isActive, currentTeam, onGoToTeam, onBurst, setHoveredTorii }) {
   const activeDept = DEPTS[currentTeam];

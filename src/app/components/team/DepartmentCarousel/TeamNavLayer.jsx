@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { DEPTS } from '../../../team-assets/data/departments';
 
 export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
@@ -6,6 +6,7 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
   const trackTargetX = useRef(0);
   const trackCurrentX = useRef(0);
   const trackVelocity = useRef(0);
+  const hasInitialPosition = useRef(false);
 
   const getNavCardWidth = () => {
     if (!trackRef.current) return 220;
@@ -19,10 +20,30 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
     return parseFloat(getComputedStyle(trackRef.current).gap) || 0;
   };
 
-  useEffect(() => {
+  const alignTrack = (snap = false) => {
     const cw = getNavCardWidth();
     const gap = getGapPx();
-    trackTargetX.current = -(cw / 2) - (currentTeam * (cw + gap));
+    const targetX = -(cw / 2) - (currentTeam * (cw + gap));
+
+    trackTargetX.current = targetX;
+    if (snap) {
+      trackCurrentX.current = targetX;
+      trackVelocity.current = 0;
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translateX(${targetX}px)`;
+      }
+    }
+  };
+
+  // The first card must be positioned only after the browser has measured it.
+  // Previously the animation began from 0px, which could leave Social Media
+  // outside the visible strip until a resize or another card selection.
+  useLayoutEffect(() => {
+    const shouldSnap = !hasInitialPosition.current;
+    alignTrack(shouldSnap);
+    const frame = requestAnimationFrame(() => alignTrack(shouldSnap));
+    hasInitialPosition.current = true;
+    return () => cancelAnimationFrame(frame);
   }, [currentTeam]);
 
   useEffect(() => {
@@ -46,20 +67,13 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  const handleResize = () => {
-    const cw = getNavCardWidth();
-    const gap = getGapPx();
-    trackTargetX.current = -(cw / 2) - (currentTeam * (cw + gap));
-    trackCurrentX.current = trackTargetX.current;
-    trackVelocity.current = 0;
-    if (trackRef.current) {
-      trackRef.current.style.transform = `translateX(${trackCurrentX.current}px)`;
-    }
-  };
-
   useEffect(() => {
+    const handleResize = () => alignTrack(true);
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, [currentTeam]);
 
   return (

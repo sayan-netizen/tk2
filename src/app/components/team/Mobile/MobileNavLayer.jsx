@@ -1,4 +1,3 @@
-import React from 'react';
 import { DEPTS } from '../../../team-assets/data/departments';
 
 export default function MobileNavLayer() {

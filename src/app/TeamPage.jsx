@@ -28,7 +28,9 @@ export default function TeamPage() {
   useEffect(() => {
     const style = document.createElement("style");
     style.id = teamStyleId;
-    style.textContent = `${mobileStyles}\n${teamStyles.replace("@import './mobile.css';", "")}`;
+    // Keep responsive overrides last: the original standalone page imported them
+    // before its desktop rules, causing the fixed desktop layout to win on phones.
+    style.textContent = `${teamStyles.replace("@import './mobile.css';", "")}\n${mobileStyles}`;
     document.head.appendChild(style);
     document.documentElement.classList.add("team-page-active");
     document.body.classList.add("team-page-active");

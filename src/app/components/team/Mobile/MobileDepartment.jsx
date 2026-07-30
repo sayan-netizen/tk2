@@ -1,4 +1,3 @@
-import React from 'react';
 import MemberCard from '../Members/MemberCard';
 
 export default function MobileDepartment({ dept, index, onBurst, setHoveredTorii }) {
