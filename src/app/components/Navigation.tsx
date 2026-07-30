@@ -58,6 +58,10 @@ export default function Navigation() {
 
   const handleNavClick = (href: string) => {
     setOpen(false);
+    if (href === "#team") {
+      window.location.hash = "team";
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
