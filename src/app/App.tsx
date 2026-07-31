@@ -12,20 +12,29 @@ import VenueSection from "./components/VenueSection";
 import Footer from "./components/Footer";
 
 const TeamPage = lazy(() => import("./TeamPage"));
+const EventPage = lazy(() => import("./EventPage"));
 
 export default function App() {
-  const [isTeamPage, setIsTeamPage] = useState(() => window.location.hash === "#team");
+  const [route, setRoute] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const syncRoute = () => setIsTeamPage(window.location.hash === "#team");
+    const syncRoute = () => setRoute(window.location.hash);
     window.addEventListener("hashchange", syncRoute);
     return () => window.removeEventListener("hashchange", syncRoute);
   }, []);
 
-  if (isTeamPage) {
+  if (route === "#team") {
     return (
       <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
         <TeamPage />
+      </Suspense>
+    );
+  }
+
+  if (route === "#events-page") {
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
+        <EventPage />
       </Suspense>
     );
   }
