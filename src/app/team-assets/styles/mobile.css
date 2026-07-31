@@ -1,0 +1,299 @@
+@media (max-width: 768px) {
+  /* ENABLE NATIVE SCROLLING ON MOBILE */
+  html, body {
+    height: auto !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  /* MOBILE ROOT CONTAINER */
+  #mobile-view {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 90px; /* space for new scrollable nav */
+  }
+
+  /* HERO ADJUSTMENTS */
+  #mobile-view #page-hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+  }
+  
+  #mobile-view .hero-inner {
+    padding: 5.5rem 5vw 2rem;
+  }
+
+  #mobile-view .eyebrow {
+    margin-bottom: 1.25rem;
+    padding: 0.5em 0.8em;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+  }
+
+  #mobile-view .tagline {
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+
+  #mobile-view .scroll-cue {
+    margin-top: 2.5rem;
+  }
+
+  .shadow-dojo-page {
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+  
+  #mobile-view .kanji-hero {
+    font-size: clamp(5rem, 15vw, 8rem);
+  }
+  
+  #mobile-view .title {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  /* MOBILE DEPARTMENTS WRAPPER */
+  .mobile-departments-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+
+  .mobile-stage-label {
+    padding: 0 6vw;
+    margin-bottom: 4rem;
+  }
+
+  /* MOBILE DEPARTMENT SECTION */
+  .mobile-dept-section {
+    position: relative;
+    width: 100%;
+    padding: 4rem 6vw;
+    border-bottom: 1px solid rgba(248,243,230,0.05);
+  }
+
+  .mobile-dept-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1.5rem 6vw 1.5rem 6vw;
+    margin-left: -6vw;
+    margin-right: -6vw;
+    background: rgba(10, 10, 10, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 60, 0, 0.2);
+  }
+
+  .mobile-dept-text {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    z-index: 2;
+    max-width: 75%;
+  }
+
+  .mobile-dept-image {
+    position: absolute;
+    right: -2vw;
+    top: 1.2rem;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(248, 243, 230, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  .mobile-dept-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 85% center; /* Target the artwork on the right side of the horizontal banner */
+    opacity: 0.8;
+  }
+
+  .mobile-ts-kana {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--blood-bright);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+    opacity: 0.9;
+  }
+
+  .mobile-ts-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    line-height: 1.1;
+    color: var(--void);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.1rem;
+    text-shadow: 0 2px 20px rgba(44,42,38,0.4);
+  }
+  
+  .mobile-ts-title span {
+    color: var(--blood-bright);
+  }
+
+  .mobile-ts-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(248, 243, 230, 0.72);
+    letter-spacing: 0.03em;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .mobile-explore-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: transparent;
+    border: 1px solid var(--blood-bright);
+    color: var(--void);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+  }
+
+  /* MOBILE CARDS GRID */
+  .mobile-cards-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  /* OVERRIDE MEMBER CARD FOR MOBILE */
+  #mobile-view .member-card,
+  #mobile-view .member-card:nth-child(n) {
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+    animation: none !important;
+    transform: none !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    z-index: 1 !important;
+    filter: none !important;
+  }
+  
+  #mobile-view .member-card:not(:first-child) {
+    margin-left: auto !important;
+  }
+  
+  #mobile-view .torii-frame {
+    width: 100% !important;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  #mobile-view .clean-member-info h4 {
+    font-size: 1.4rem;
+  }
+  
+  #mobile-view .clean-member-info p {
+    font-size: 0.8rem;
+  }
+
+  /* CTA ADJUSTMENTS */
+  #mobile-view #page-cta {
+    min-height: 80vh;
+    padding-bottom: 120px; /* space for bottom nav */
+  }
+
+  /* FLOATING BOTTOM NAV */
+  #mobile-nav-layer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 60, 0, 0.4);
+    z-index: 100;
+    padding: 0.8rem 0;
+  }
+
+  .mobile-nav-scroll-area {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.8rem;
+    padding: 0 1rem;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .mobile-nav-scroll-area::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .mobile-nav-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  
+  .mobile-nav-chip:active {
+    background: rgba(255, 60, 0, 0.2);
+    border-color: var(--blood-bright);
+  }
+
+  .chip-kana {
+    color: var(--blood-bright);
+    font-size: 0.75rem;
+    font-weight: bold;
+    font-family: 'Shippori Mincho', serif;
+  }
+  
+  .chip-name {
+    color: var(--paper);
+    font-size: 0.9rem;
+    font-family: 'Oswald', sans-serif;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
+@media (max-width: 380px) {
+  #mobile-view .hero-inner {
+    padding-top: 5rem;
+  }
+
+  #mobile-view .title {
+    font-size: 2.3rem;
+  }
+
+  .mobile-dept-section {
+    padding-inline: 5vw;
+  }
+}
