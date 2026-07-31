@@ -10,7 +10,7 @@ import {
 } from "./ui/sheet";
 
 const navLogo = new URL(
-  "../../../images/herosection/logo.svg",
+  "../../../images/herosection/tech kurukshetra web design.svg",
   import.meta.url
 ).href;
 const registerNow = new URL(
@@ -65,11 +65,10 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        scrolled
-          ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${scrolled
+          ? "bg-black/90 backdrop-blur-xl shadow-lg shadow-black/40"
           : "bg-transparent"
-      }`}
+        }`}
     >
       {/* SEPARATED LOGO - Edit size and location here */}
       {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
@@ -96,17 +95,16 @@ export default function Navigation() {
             <button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
-              className={`relative cursor-pointer px-0 py-2 font-accent text-[15px] tracking-[0.06em] transition-colors ${
-                activeSection === link.href.slice(1)
-                  ? "text-[#d51e1e]"
-                  : "text-[#f1eeee] hover:text-[#d51e1e]"
-              }`}
+              className={`relative cursor-pointer px-0 py-2 font-accent text-[15px] tracking-[0.06em] transition-colors ${activeSection === link.href.slice(1)
+                  ? "text-[#b91919]"
+                  : "text-[#f1eeee] hover:text-[#b91919]"
+                }`}
             >
               {link.label}
               {activeSection === link.href.slice(1) && (
                 <motion.div
                   layoutId="nav-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-px bg-[#d51e1e]"
+                  className="absolute bottom-0 left-0 right-0 h-px bg-[#b91919]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -134,7 +132,7 @@ export default function Navigation() {
         <SheetTrigger asChild>
           <button
             id="mobile-menu-trigger"
-            className="fixed right-4 top-3 z-[120] flex h-10 w-10 items-center justify-center rounded-lg border border-[#2A2A2A] bg-[#111111]/90 text-[#F5F5F5] shadow-lg shadow-black/30 transition-colors hover:bg-[#1A1A1A] hover:text-[#C41E3A] lg:hidden"
+            className="fixed right-4 top-3 z-[120] flex h-10 w-10 items-center justify-center rounded-lg border border-[#222222] bg-[#0e0e0e]/90 text-[#F5F5F5] shadow-lg shadow-black/30 transition-colors hover:bg-[#141414] hover:text-[#b91919] lg:hidden"
             aria-label="Open menu"
           >
             <Menu className="size-5" />
@@ -142,7 +140,7 @@ export default function Navigation() {
         </SheetTrigger>
         <SheetContent
           side="right"
-          className="bg-[#0A0A0A] border-[#2A2A2A] w-72"
+          className="bg-black border-[#222222] w-72"
         >
           <SheetHeader>
             <SheetTitle className="font-heading text-[#F5F5F5] text-lg tracking-wider">
@@ -154,11 +152,10 @@ export default function Navigation() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-                  activeSection === link.href.slice(1)
-                    ? "bg-[#C41E3A]/10 text-[#C41E3A] border border-[#C41E3A]/20"
-                    : "text-[#999] hover:text-[#F5F5F5] hover:bg-[#1A1A1A]"
-                }`}
+                className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer ${activeSection === link.href.slice(1)
+                    ? "bg-[#b91919]/10 text-[#b91919] border border-[#b91919]/20"
+                    : "text-[#888] hover:text-[#F5F5F5] hover:bg-[#141414]"
+                  }`}
               >
                 {link.label}
               </button>

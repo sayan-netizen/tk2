@@ -1,5 +1,5 @@
 /* ============================
-   Global Styles — Shadow Protocol
+   Global Styles — Shadow Protocol (Light Beige)
    ============================ */
 
 html {
@@ -10,8 +10,8 @@ html {
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
-  background: #0A0A0A;
-  color: #F5F5F5;
+  background: #F5ECD8;
+  color: #1A1208;
 }
 
 #mobile-menu-trigger {
@@ -30,8 +30,8 @@ body {
 
 /* Selection styling */
 ::selection {
-  background: rgba(196, 30, 58, 0.4);
-  color: #fff;
+  background: rgba(185, 25, 25, 0.3);
+  color: #1A1208;
 }
 
 /* Scrollbar styling */
@@ -39,14 +39,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #F5ECD8;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
+  background: #CDBF9E;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C41E3A;
+  background: #b91919;
 }
 
 /* Font family utilities */

@@ -4,7 +4,10 @@ const heroVideo = new URL(
   "../../../images/herosection/hero-drive-background.mp4",
   import.meta.url
 ).href;
-const heroLogo = new URL("../../../images/herosection/logo.svg", import.meta.url).href;
+const heroLogo = new URL(
+  "../../../images/herosection/tech kurukshetra web design.svg",
+  import.meta.url
+).href;
 const heroTitle = new URL(
   "../../../images/herosection/techKurukshetra.svg",
   import.meta.url
@@ -80,8 +83,15 @@ export default function HeroSection() {
       id="hero"
       className="relative isolate h-screen min-h-[626px] w-full overflow-hidden bg-black text-[#f5f5f5]"
     >
+      {/* Video background — translateZ(0) forces GPU compositing for crisp rendering */}
       <video
         className="absolute inset-0 -z-30 h-full w-full object-cover"
+        style={{
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden" as React.CSSProperties["WebkitBackfaceVisibility"],
+          willChange: "transform",
+        }}
         aria-hidden="true"
         autoPlay
         muted
