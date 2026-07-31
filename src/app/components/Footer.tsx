@@ -32,9 +32,9 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer" className="relative bg-[#0A0A0A] border-t border-[#1A1A1A] pt-16 pb-8">
+    <footer id="footer" className="relative bg-[#050505] border-t border-[#b91919]/30 pt-16 pb-8">
       {/* Top red accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C41E3A] to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d51e1e] to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main footer grid */}
@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded bg-[#C41E3A] flex items-center justify-center font-display text-white text-lg tracking-wider">
+              <div className="w-9 h-9 rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center font-display text-[#d51e1e] text-lg tracking-wider">
                 TK
               </div>
               <div>
@@ -59,7 +59,7 @@ export default function Footer() {
               tech fest of NIT Kurukshetra.
             </p>
             <Button
-              className="bg-[#C41E3A] hover:bg-[#A0162F] text-white font-heading font-semibold text-sm px-6 rounded-lg hover:shadow-[0_0_25px_rgba(196,30,58,0.3)] transition-all"
+              className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 rounded-none px-6 py-2 transition-all"
               onClick={() => window.open("#", "_blank")}
             >
               Register Now →
@@ -76,7 +76,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-[#666] hover:text-[#C41E3A] text-sm transition-colors cursor-pointer"
+                    className="text-[#666] hover:text-[#d51e1e] text-sm transition-colors cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -95,7 +95,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <button
                     onClick={() => scrollTo(link.href)}
-                    className="text-[#666] hover:text-[#C41E3A] text-sm transition-colors cursor-pointer"
+                    className="text-[#666] hover:text-[#d51e1e] text-sm transition-colors cursor-pointer"
                   >
                     {link.label}
                   </button>
@@ -113,7 +113,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:info@techkurukshetra.org"
-                  className="hover:text-[#C41E3A] transition-colors"
+                  className="hover:text-[#d51e1e] transition-colors"
                 >
                   📧 info@techkurukshetra.org
                 </a>
@@ -121,7 +121,7 @@ export default function Footer() {
               <li>
                 <a
                   href="tel:+911744233208"
-                  className="hover:text-[#C41E3A] transition-colors"
+                  className="hover:text-[#d51e1e] transition-colors"
                 >
                   📞 +91 1744-233208
                 </a>
@@ -132,7 +132,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#1A1A1A] pt-8">
+        <div className="border-t border-[#b91919]/20 pt-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             {/* Social icons */}
             <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-lg bg-[#1A1A1A] flex items-center justify-center text-[#666] hover:text-[#C41E3A] hover:bg-[#C41E3A]/10 transition-all"
+                    className="w-9 h-9 rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center text-[#666] hover:text-[#d51e1e] hover:border-[#b91919] transition-all"
                     aria-label={social.label}
                   >
                     <Icon className="w-4 h-4" />
@@ -156,7 +156,7 @@ export default function Footer() {
             {/* Copyright */}
             <p className="text-[#666] text-xs font-accent flex items-center gap-1">
               © 2026 Tech Kurukshetra, NIT Kurukshetra. Made with{" "}
-              <Heart className="w-3 h-3 text-[#C41E3A] fill-[#C41E3A]" /> by students.
+              <Heart className="w-3 h-3 text-[#d51e1e] fill-[#d51e1e]" /> by students.
             </p>
           </div>
         </div>

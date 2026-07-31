@@ -1,6 +1,5 @@
 import Hero from "../Hero/Hero";
 import DepartmentCarousel from "../DepartmentCarousel/DepartmentCarousel";
-import CTA from "../Common/CTA";
 import SlideIndicators from "../Common/SlideIndicators";
 import TeamNavLayer from "../DepartmentCarousel/TeamNavLayer";
 import { DEPTS } from "../../../team-assets/data/departments";
@@ -14,6 +13,9 @@ export default function DesktopView({
   handleBurst,
   setHoveredTorii,
 }) {
+  const totalSlides = DEPTS.length + 1;
+  const currentSlide = currentPage === 0 ? 1 : currentTeam + 2;
+
   return (
     <>
       <div id="slide-flash" className={flashIn ? "flash-in" : ""} />
@@ -26,9 +28,9 @@ export default function DesktopView({
       />
       <div id="slide-counter">
         <span id="counter-current">
-          {String(currentPage === 0 ? 1 : currentPage === 1 ? currentTeam + 2 : 7).padStart(2, "0")}
+          {String(currentSlide).padStart(2, "0")}
         </span>{" "}
-        / 07
+        / {String(totalSlides).padStart(2, "0")}
       </div>
       <TeamNavLayer currentPage={currentPage} currentTeam={currentTeam} onGoToTeam={handleGoToTeam} />
       <div
@@ -46,7 +48,6 @@ export default function DesktopView({
           onBurst={handleBurst}
           setHoveredTorii={setHoveredTorii}
         />
-        <CTA />
       </div>
     </>
   );

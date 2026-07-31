@@ -88,19 +88,19 @@ export default function SponsorsSection() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
         style={{ rotate: bgRotate }}
       >
-        <div className="w-full h-full bg-[#C41E3A]/3 rounded-full blur-[200px]" />
+        <div className="w-full h-full bg-[#d51e1e]/3 rounded-full blur-[200px]" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <SlideTitle className="mb-16 text-center">
-          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#C41E3A] block mb-3">
+          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
             Backed By The Best
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#F5F5F5] tracking-wide">
             OUR SPONSORS
           </h2>
-          <div className="w-20 h-0.5 bg-[#C41E3A] mt-4 mx-auto" />
+          <div className="w-20 h-0.5 bg-[#d51e1e] mt-4 mx-auto" />
         </SlideTitle>
 
         {/* Sponsor tiers with stagger animations */}
@@ -111,11 +111,11 @@ export default function SponsorsSection() {
                 <div className="text-center">
                   {/* Tier label */}
                   <div className="flex items-center gap-4 justify-center mb-6">
-                    <div className="h-px w-12 bg-[#2A2A2A]" />
+                    <div className="h-px w-12 bg-[#b91919]/30" />
                     <span className="font-accent text-xs tracking-[0.25em] uppercase text-[#999]">
                       {tierGroup.tier}
                     </span>
-                    <div className="h-px w-12 bg-[#2A2A2A]" />
+                    <div className="h-px w-12 bg-[#b91919]/30" />
                   </div>
 
                   {/* Logos with 3D tilt */}
@@ -124,13 +124,15 @@ export default function SponsorsSection() {
                       <StaggerItem key={sponsor.name}>
                         <TiltCard intensity={15}>
                           <motion.div
-                            className={`${sizeClasses[tierGroup.size]} rounded-xl bg-[#111111] border border-[#2A2A2A] flex items-center justify-center font-heading font-bold text-[#666] grayscale hover:grayscale-0 hover:text-[#C41E3A] hover:border-[#C41E3A]/30 hover:bg-[#C41E3A]/5 transition-all duration-300 cursor-pointer group`}
+                            className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center font-heading font-bold text-[#666] grayscale hover:grayscale-0 hover:text-[#d51e1e] hover:border-[#b91919] hover:bg-black/60 transition-all duration-300 cursor-pointer group`}
                             title={sponsor.name}
                             whileHover={{
                               boxShadow: "0 10px 30px rgba(196,30,58,0.15)",
                             }}
+                            style={{ transformStyle: "preserve-3d" }}
                           >
-                            <span className="group-hover:scale-110 transition-transform">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <span className="relative z-10 group-hover:scale-110 transition-transform" style={{ transform: "translateZ(20px)" }}>
                               {sponsor.initials}
                             </span>
                           </motion.div>
@@ -151,7 +153,7 @@ export default function SponsorsSection() {
           </p>
           <motion.a
             href="mailto:sponsors@techkurukshetra.org"
-            className="inline-flex items-center gap-2 text-[#C41E3A] hover:text-[#FF4D6A] font-heading text-sm font-semibold transition-colors"
+            className="inline-flex items-center gap-2 border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-4 py-2 transition-all"
             whileHover={{ x: 5 }}
           >
             Become a Sponsor →

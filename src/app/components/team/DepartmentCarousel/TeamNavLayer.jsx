@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
 import { DEPTS } from '../../../team-assets/data/departments';
 
 export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
@@ -8,19 +8,19 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
   const trackVelocity = useRef(0);
   const hasInitialPosition = useRef(false);
 
-  const getNavCardWidth = () => {
+  const getNavCardWidth = useCallback(() => {
     if (!trackRef.current) return 220;
     const cards = trackRef.current.querySelectorAll('.nav-team-card');
     if (cards.length === 0) return 220;
-    return cards[0].getBoundingClientRect().width;
-  };
+    return cards[0].offsetWidth;
+  }, []);
 
-  const getGapPx = () => {
+  const getGapPx = useCallback(() => {
     if (!trackRef.current) return 0;
     return parseFloat(getComputedStyle(trackRef.current).gap) || 0;
-  };
+  }, []);
 
-  const alignTrack = (snap = false) => {
+  const alignTrack = useCallback((snap = false) => {
     const cw = getNavCardWidth();
     const gap = getGapPx();
     const targetX = -(cw / 2) - (currentTeam * (cw + gap));
@@ -33,7 +33,7 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
         trackRef.current.style.transform = `translateX(${targetX}px)`;
       }
     }
-  };
+  }, [currentTeam, getNavCardWidth, getGapPx]);
 
   // The first card must be positioned only after the browser has measured it.
   // Previously the animation began from 0px, which could leave Social Media
@@ -44,7 +44,7 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
     const frame = requestAnimationFrame(() => alignTrack(shouldSnap));
     hasInitialPosition.current = true;
     return () => cancelAnimationFrame(frame);
-  }, [currentTeam]);
+  }, [currentTeam, currentPage, alignTrack]);
 
   useEffect(() => {
     let animationFrameId;
@@ -70,11 +70,8 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
   useEffect(() => {
     const handleResize = () => alignTrack(true);
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [currentTeam]);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [alignTrack]);
 
   return (
     <div id="ts-nav-layer" className={currentPage === 1 ? 'nav-visible' : ''}>
