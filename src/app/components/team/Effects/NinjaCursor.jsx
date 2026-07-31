@@ -32,7 +32,7 @@ export default function NinjaCursor() {
     <>
       <div 
         id="cursor" 
-        className="fixed top-0 left-0 w-[32px] h-[32px] pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-[32px] h-[32px] pointer-events-none z-[1000000] hidden md:block"
         style={{
           transform: `translate(calc(-50% + ${style.x}px), calc(-50% + ${style.y}px)) rotate(${style.rot}deg) scale(${isClicking ? 0.75 : 1.0})`,
           transition: isClicking ? 'transform 0.05s ease' : 'transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
@@ -45,7 +45,7 @@ export default function NinjaCursor() {
       </div>
       <div 
         id="cursor-trail"
-        className="fixed top-0 left-0 w-[8px] h-[8px] rounded-full bg-fire-orange pointer-events-none z-[9998] blur-[2px] opacity-0 hidden md:block transition-transform duration-100 ease-out"
+        className="fixed top-0 left-0 w-[8px] h-[8px] rounded-full bg-fire-orange pointer-events-none z-[999999] blur-[2px] opacity-0 hidden md:block transition-transform duration-100 ease-out"
         style={{
           transform: `translate(calc(-50% + ${style.x}px), calc(-50% + ${style.y}px))`,
           opacity: 0.65

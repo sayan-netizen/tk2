@@ -14,7 +14,6 @@ export default function MobileView({ onBurst, setHoveredTorii }) {
       <div className="mobile-departments-wrapper">
         <div id="team-stage-label" className="mobile-stage-label">
           <span className="ts-eyebrow">影の道場 — Shadow Dojo</span>
-          <h2 className="ts-title">THE CHAMBERS</h2>
         </div>
         {DEPTS.map((dept, index) => (
           <MobileDepartment

@@ -10,7 +10,6 @@ export default function DepartmentCarousel({ isActive, currentTeam, onGoToTeam, 
 
       <div id="team-stage-label">
         <span className="ts-eyebrow">影の道場 — Shadow Dojo</span>
-        <h2 className="ts-title">THE CHAMBERS</h2>
       </div>
 
       <div id="ts-content-layer">
@@ -18,7 +17,6 @@ export default function DepartmentCarousel({ isActive, currentTeam, onGoToTeam, 
           <span className="slide-kana" id="ts-kana">{activeDept.kana}</span>
           <h2 className="slide-dept-title" id="ts-title" dangerouslySetInnerHTML={{ __html: activeDept.title }}></h2>
           <p className="slide-dept-desc" id="ts-desc">{activeDept.desc}</p>
-          <button className="explore-btn">Enter Chamber ›</button>
         </div>
 
         <div className="slide-cards-panel" id="ts-active-members">

@@ -62,22 +62,31 @@ export default function Navigation() {
       window.location.hash = "team";
       return;
     }
+    if (window.location.hash === "#team") {
+      window.location.hash = href;
+      setTimeout(() => {
+        const targetId = href.startsWith('#') ? href : `#${href}`;
+        const el = document.querySelector(targetId);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 50);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const isTeam = typeof window !== "undefined" && window.location.hash === "#team";
+  const currentActiveSection = isTeam ? "team" : activeSection;
+
   return (
     <nav
       id="main-nav"
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        scrolled
-          ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"
-          : "bg-transparent"
-      }`}
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] z-[10000] rounded-full border border-white/15 bg-black/45 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
+      style={{ WebkitBackdropFilter: "blur(20px) saturate(180%)" }}
     >
       {/* SEPARATED LOGO - Edit size and location here */}
       {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
-      <div className="absolute left-[max(20px,calc(50%-480px))] top-[17px] z-50">
+      <div className="absolute left-5 sm:left-7 top-[6px] z-50">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -87,45 +96,48 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[90px] w-[135px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            className="h-[44px] w-[110px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
       </div>
 
       {/* CENTERED NAV LINKS */}
-      <div className="mx-auto flex h-[76px] w-full max-w-[960px] items-center justify-center px-5 sm:px-6 lg:px-0">
+      <div className="mx-auto flex h-[56px] w-full max-w-[960px] items-center justify-center px-5 sm:px-6 lg:px-0">
         {/* Desktop links */}
         <div className="hidden items-center gap-[28px] lg:flex">
-          {navLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className={`relative cursor-pointer px-0 py-2 font-accent text-[15px] tracking-[0.06em] transition-colors ${
-                activeSection === link.href.slice(1)
-                  ? "text-[#d51e1e]"
-                  : "text-[#f1eeee] hover:text-[#d51e1e]"
-              }`}
-            >
-              {link.label}
-              {activeSection === link.href.slice(1) && (
-                <motion.div
-                  layoutId="nav-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-px bg-[#d51e1e]"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = currentActiveSection === link.href.slice(1);
+            return (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className={`relative cursor-pointer px-0 py-1.5 font-accent text-[14px] tracking-[0.06em] transition-colors ${
+                  isActive
+                    ? "text-[#d51e1e]"
+                    : "text-[#f1eeee]/90 hover:text-[#d51e1e]"
+                }`}
+              >
+                {link.label}
+                {isActive && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute bottom-0 left-0 right-0 h-px bg-[#d51e1e]"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
       {/* SEPARATED REGISTER BUTTON - Edit size and location here */}
       {/* -> Change 'right-[...]' and 'top-[...]' in the div below to move the button */}
-      <div className="absolute right-[max(20px,calc(50%-480px))] top-[22px] z-50 flex items-center gap-3">
+      <div className="absolute right-5 sm:right-7 top-[12px] z-50 flex items-center gap-3">
         {/* -> Change 'h-[...]' and 'w-[...]' in the button below to resize the button */}
         <button
           id="register-nav-cta"
-          className="hidden h-[32px] w-[124px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex"
+          className="hidden h-[30px] w-[116px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex"
           onClick={() => window.open("#", "_blank")}
           aria-label="Register now"
         >

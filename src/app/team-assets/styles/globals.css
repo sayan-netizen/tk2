@@ -260,7 +260,7 @@ body {
 ══════════════════════════════════════ */
 .slide-text {
   position: absolute;
-  bottom: 10vh;
+  top: max(96px, 14vh);
   left: 5vw;
   z-index: 2;
   max-width: 350px;
@@ -468,6 +468,7 @@ body {
   max-width: 900px;
   opacity: 0;
   animation: rise 1.2s ease forwards 0.2s;
+  padding-top: 80px;
 }
 @keyframes rise {
   from { opacity: 0; transform: translateY(30px); }
@@ -1325,7 +1326,7 @@ footer {
 /* Stage ambient label */
 #team-stage-label {
   position: absolute;
-  top: 1.5vh;
+  top: max(84px, 10vh);
   left: 50%;
   transform: translateX(-50%);
   text-align: center;

@@ -14,16 +14,24 @@ import mobileStyles from "./team-assets/styles/mobile.css?raw";
 
 const teamStyleId = "shadow-dojo-team-styles";
 
-export default function TeamPage() {
+export default function TeamPage({
+  setBurstOrigin: setGlobalBurst,
+  setHoveredTorii: setGlobalHovered,
+}) {
   const [currentPage, setCurrentPage] = useState(0);
   const [currentTeam, setCurrentTeam] = useState(0);
   const [pageAnimating, setPageAnimating] = useState(false);
   const [teamAnimating, setTeamAnimating] = useState(false);
-  const [burstOrigin, setBurstOrigin] = useState(null);
-  const [hoveredTorii, setHoveredTorii] = useState(null);
   const [flashIn, setFlashIn] = useState(false);
-  const { pointerRef } = usePointer();
   const isMobile = useMediaQuery("(max-width: 768px)");
+
+  const handleBurst = (x, y) => {
+    if (setGlobalBurst) setGlobalBurst({ x, y, timestamp: Date.now() });
+  };
+
+  const handleSetHovered = (torii) => {
+    if (setGlobalHovered) setGlobalHovered(torii);
+  };
 
   useEffect(() => {
     const style = document.createElement("style");
@@ -72,34 +80,9 @@ export default function TeamPage() {
   });
 
   return (
-    <div className="shadow-dojo-page">
-      <button
-        type="button"
-        onClick={() => { window.location.hash = ""; }}
-        className="group fixed right-0 top-4 z-[10000] flex items-center gap-3 overflow-hidden rounded-l-md border border-r-0 border-[#d51e1e]/65 bg-[#050505]/90 p-1.5 pr-4 text-left shadow-[-10px_10px_30px_rgba(29,27,24,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-x-1 hover:border-[#b91919] hover:bg-[#111111] hover:shadow-[-14px_14px_34px_rgba(184,50,44,0.3)] sm:top-6"
-        aria-label="Return to the main site"
-      >
-        <span className="flex size-9 items-center justify-center bg-[#d51e1e] text-[#f1eeee] transition-colors duration-300 group-hover:bg-[#b91919]">
-          <ArrowLeft className="size-4 transition-transform duration-300 group-hover:-translate-x-0.5" />
-        </span>
-          <span className="flex flex-col leading-none">
-            <span className="mb-1 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-[#d89aa4]">
-            <Home className="size-2.5" /> Leave dojo
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[#f1eeee]">Main site</span>
-        </span>
-      </button>
-      <FXCanvas
-        pointerRef={pointerRef}
-        burstOrigin={burstOrigin}
-        hoveredTorii={hoveredTorii}
-        currentTeam={currentTeam}
-        isMobile={isMobile}
-      />
-      <NinjaCursor />
-      <Background />
+    <div className="shadow-dojo-page pt-[76px]">
       {isMobile ? (
-        <MobileView onBurst={(x, y) => setBurstOrigin({ x, y, timestamp: Date.now() })} setHoveredTorii={setHoveredTorii} />
+        <MobileView onBurst={handleBurst} setHoveredTorii={handleSetHovered} />
       ) : (
         <DesktopView
           currentPage={currentPage}
@@ -107,8 +90,8 @@ export default function TeamPage() {
           flashIn={flashIn}
           handleGoToPage={handleGoToPage}
           handleGoToTeam={handleGoToTeam}
-          handleBurst={(x, y) => setBurstOrigin({ x, y, timestamp: Date.now() })}
-          setHoveredTorii={setHoveredTorii}
+          handleBurst={handleBurst}
+          setHoveredTorii={handleSetHovered}
         />
       )}
     </div>
