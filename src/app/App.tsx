@@ -30,7 +30,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-[#F5F5F5]">
+    <div className="main-site min-h-screen text-[#f1eeee]">
       <IntroOverlay />
       <Navigation />
       <main>

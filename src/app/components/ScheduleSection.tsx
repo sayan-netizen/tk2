@@ -35,11 +35,11 @@ const schedule: Record<string, ScheduleEntry[]> = {
 };
 
 const typeColors: Record<string, string> = {
-  ceremony: "bg-[#C41E3A]/10 text-[#C41E3A] border-[#C41E3A]/20",
-  technical: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-  workshop: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-  cultural: "bg-amber-500/10 text-amber-400 border-amber-500/20",
-  break: "bg-[#2A2A2A] text-[#666] border-[#2A2A2A]",
+  ceremony: "bg-[#b91919]/10 text-[#d51e1e] border-[#b91919]/30",
+  technical: "bg-[#050505] text-[#999] border-[#b91919]/20",
+  workshop: "bg-[#b91919]/20 text-[#F5F5F5] border-[#b91919]/50",
+  cultural: "bg-[#0A0A0A] text-[#999] border-[#b91919]/10",
+  break: "bg-[#050505] text-[#666] border-[#0A0A0A]",
 };
 
 export default function ScheduleSection() {
@@ -58,19 +58,19 @@ export default function ScheduleSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <SlideTitle className="mb-12">
-          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#C41E3A] block mb-3">
+          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
             Plan Your Mission
           </span>
           <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#F5F5F5] tracking-wide">
             EVENT SCHEDULE
           </h2>
-          <div className="w-20 h-0.5 bg-[#C41E3A] mt-4" />
+          <div className="w-20 h-0.5 bg-[#d51e1e] mt-4" />
         </SlideTitle>
 
         <ScrollReveal direction="up" delay={0.1}>
           <ScrollDepth rotate={6} y={70}>
             <Tabs defaultValue="day1" className="w-full">
-              <TabsList className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-1 mb-8 w-full sm:w-auto h-auto">
+              <TabsList className="bg-black/40 border border-[#b91919]/30 rounded-none p-1 mb-8 w-full sm:w-auto h-auto">
               {[
                 { value: "day1", label: "DAY 1", date: "Sep 5" },
                 { value: "day2", label: "DAY 2", date: "Sep 6" },
@@ -78,7 +78,7 @@ export default function ScheduleSection() {
                 <TabsTrigger
                   key={day.value}
                   value={day.value}
-                  className="data-[state=active]:bg-[#C41E3A] data-[state=active]:text-white rounded-lg px-6 py-2.5 font-heading text-sm transition-all data-[state=inactive]:text-[#999] data-[state=inactive]:hover:text-[#F5F5F5]"
+                  className="data-[state=active]:bg-[#b91919]/20 data-[state=active]:border data-[state=active]:border-[#b91919] data-[state=active]:text-[#f5f5f5] data-[state=active]:shadow-[0_0_10px_rgba(185,25,25,0.3)] rounded-none px-6 py-2.5 font-accent tracking-[0.1em] text-sm transition-all data-[state=inactive]:text-[#999] data-[state=inactive]:hover:text-[#F5F5F5] border border-transparent"
                 >
                   <div className="flex flex-col items-center">
                     <span className="font-semibold">{day.label}</span>
@@ -93,7 +93,7 @@ export default function ScheduleSection() {
                 <div className="relative pl-6 sm:pl-8">
                   {/* Timeline line with scroll-linked opacity */}
                   <motion.div
-                    className="absolute left-[7px] sm:left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-[#C41E3A] via-[#C41E3A]/50 to-[#2A2A2A]"
+                    className="absolute left-[7px] sm:left-[11px] top-2 bottom-2 w-px bg-gradient-to-b from-[#b91919] via-[#b91919]/50 to-transparent"
                     style={{ opacity: lineOpacity }}
                   />
 
@@ -103,13 +103,13 @@ export default function ScheduleSection() {
                         <div className="relative flex gap-4 sm:gap-6 group">
                           {/* Timeline dot with pulse on hover */}
                           <motion.div
-                            className="absolute left-[-21px] sm:left-[-25px] top-6 w-3 h-3 rounded-full border-2 border-[#C41E3A] bg-[#0A0A0A] group-hover:bg-[#C41E3A] transition-colors z-10"
+                            className="absolute left-[-21px] sm:left-[-25px] top-6 w-3 h-3 rounded-none border border-[#b91919] bg-[#0A0A0A] group-hover:bg-[#b91919]/50 transition-colors z-10"
                             whileHover={{ scale: 1.5, boxShadow: "0 0 15px rgba(196,30,58,0.5)" }}
                           />
 
                           {/* Entry card with 3D hover */}
                           <motion.div
-                            className="flex-1 bg-[#111111] rounded-xl p-4 sm:p-5 border border-[#2A2A2A] hover:border-[#C41E3A]/20 transition-all group-hover:bg-[#141414] mb-2"
+                            className="flex-1 relative bg-black/40 rounded-none border border-[#b91919]/30 hover:border-[#b91919] transition-all group-hover:bg-black/60 group-hover:shadow-[0_0_15px_rgba(185,25,25,0.15)] mb-2 overflow-hidden group"
                             whileHover={{
                               y: -2,
                               boxShadow: "0 8px 25px rgba(0,0,0,0.3)",
@@ -117,9 +117,10 @@ export default function ScheduleSection() {
                             transition={{ type: "spring", stiffness: 400, damping: 25 }}
                             style={{ transformStyle: "preserve-3d" }}
                           >
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="relative z-10 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4" style={{ transform: "translateZ(15px)" }}>
                               <div className="flex items-center gap-2 min-w-[80px]">
-                                <Clock className="w-3.5 h-3.5 text-[#C41E3A]" />
+                                <Clock className="w-3.5 h-3.5 text-[#d51e1e]" />
                                 <span className="font-accent text-sm font-semibold text-[#F5F5F5] tracking-wide">
                                   {entry.time}
                                 </span>
@@ -129,7 +130,7 @@ export default function ScheduleSection() {
                               </h4>
                               <div className="flex items-center gap-3 sm:ml-auto">
                                 <span
-                                  className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-accent uppercase tracking-wider border ${
+                                  className={`inline-flex items-center px-2 py-0.5 rounded-none text-[10px] font-accent uppercase tracking-wider border ${
                                     typeColors[entry.type || "technical"]
                                   }`}
                                 >

@@ -1,6 +1,5 @@
 import Hero from "../Hero/Hero";
 import MobileDepartment from "./MobileDepartment";
-import CTA from "../Common/CTA";
 import MobileNavLayer from "./MobileNavLayer";
 import { DEPTS } from "../../../team-assets/data/departments";
 
@@ -27,7 +26,6 @@ export default function MobileView({ onBurst, setHoveredTorii }) {
           />
         ))}
       </div>
-      <CTA />
       <MobileNavLayer />
     </div>
   );

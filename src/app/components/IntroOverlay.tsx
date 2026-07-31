@@ -91,7 +91,7 @@ export default function IntroOverlay() {
                 className="drop-shadow-[0_0_30px_rgba(196,30,58,0.5)]"
               >
                 {/* Head */}
-                <circle cx="60" cy="25" r="18" fill="#C41E3A" opacity="0.9" />
+                <circle cx="60" cy="25" r="18" fill="#d51e1e" opacity="0.9" />
                 {/* Eye band */}
                 <rect x="42" y="20" width="36" height="6" rx="3" fill="#0A0A0A" />
                 {/* Eyes */}
@@ -100,24 +100,24 @@ export default function IntroOverlay() {
                 {/* Body */}
                 <path
                   d="M40 45 L60 40 L80 45 L85 90 L70 95 L60 130 L50 95 L35 90 Z"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.8"
                 />
                 {/* Scarf tails */}
                 <path
                   d="M78 28 Q95 35 100 55 Q98 50 90 45"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.6"
                 />
                 {/* Arms */}
                 <path
                   d="M40 50 L15 70 L20 72 L42 55"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.7"
                 />
                 <path
                   d="M80 50 L105 45 L108 48 L82 55"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.7"
                 />
                 {/* Katana in right hand */}
@@ -142,12 +142,12 @@ export default function IntroOverlay() {
                 {/* Legs */}
                 <path
                   d="M50 95 L40 145 L45 148 L55 105"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.7"
                 />
                 <path
                   d="M70 95 L80 145 L75 148 L65 105"
-                  fill="#C41E3A"
+                  fill="#d51e1e"
                   opacity="0.7"
                 />
               </svg>
@@ -155,7 +155,7 @@ export default function IntroOverlay() {
 
             {/* Text */}
             <motion.p
-              className="font-display text-2xl tracking-[0.3em] text-[#C41E3A] mt-6 uppercase"
+              className="font-display text-2xl tracking-[0.3em] text-[#d51e1e] mt-6 uppercase"
               initial={{ opacity: 0, y: 10 }}
               animate={
                 phase !== "split"
@@ -180,7 +180,7 @@ export default function IntroOverlay() {
                 y1="0"
                 x2="0"
                 y2="100"
-                stroke="#C41E3A"
+                stroke="#d51e1e"
                 strokeWidth="0.3"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
@@ -201,7 +201,7 @@ export default function IntroOverlay() {
 
           {/* Skip button */}
           <motion.button
-            className="absolute bottom-8 right-8 font-accent text-sm tracking-widest uppercase text-[#999] hover:text-[#C41E3A] transition-colors pointer-events-auto cursor-pointer"
+            className="absolute bottom-8 right-8 font-accent text-sm tracking-widest uppercase text-[#999] hover:text-[#d51e1e] transition-colors pointer-events-auto cursor-pointer"
             onClick={handleSkip}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

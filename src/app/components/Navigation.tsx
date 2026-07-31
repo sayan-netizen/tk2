@@ -138,7 +138,7 @@ export default function Navigation() {
         <SheetTrigger asChild>
           <button
             id="mobile-menu-trigger"
-            className="fixed right-4 top-3 z-[120] flex h-10 w-10 items-center justify-center rounded-lg border border-[#2A2A2A] bg-[#111111]/90 text-[#F5F5F5] shadow-lg shadow-black/30 transition-colors hover:bg-[#1A1A1A] hover:text-[#C41E3A] lg:hidden"
+            className="fixed right-4 top-3 z-[120] flex h-10 w-10 items-center justify-center rounded-none border border-[#b91919]/50 bg-black/90 text-[#F5F5F5] shadow-[0_0_15px_rgba(185,25,25,0.15)] transition-all hover:bg-black hover:border-[#b91919] hover:shadow-[0_0_20px_rgba(185,25,25,0.25)] lg:hidden"
             aria-label="Open menu"
           >
             <Menu className="size-5" />
@@ -146,7 +146,7 @@ export default function Navigation() {
         </SheetTrigger>
         <SheetContent
           side="right"
-          className="bg-[#0A0A0A] border-[#2A2A2A] w-72"
+          className="bg-black/95 border-l border-[#b91919]/30 w-72"
         >
           <SheetHeader>
             <SheetTitle className="font-heading text-[#F5F5F5] text-lg tracking-wider">
@@ -158,10 +158,10 @@ export default function Navigation() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`text-left px-4 py-3 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+                className={`text-left px-4 py-3 rounded-none text-[15px] tracking-[0.06em] font-accent transition-all cursor-pointer border-l-2 ${
                   activeSection === link.href.slice(1)
-                    ? "bg-[#C41E3A]/10 text-[#C41E3A] border border-[#C41E3A]/20"
-                    : "text-[#999] hover:text-[#F5F5F5] hover:bg-[#1A1A1A]"
+                    ? "bg-black/5 text-[#f5f5f5] border-[#b91919] shadow-[inset_10px_0_15px_-10px_rgba(185,25,25,0.15)]"
+                    : "border-transparent text-[#999] hover:text-[#F5F5F5] hover:border-[#b91919]/50 hover:bg-black/20"
                 }`}
               >
                 {link.label}

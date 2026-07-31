@@ -261,9 +261,9 @@ body {
 .slide-text {
   position: absolute;
   bottom: 10vh;
-  left: 6vw;
+  left: 5vw;
   z-index: 2;
-  max-width: 420px;
+  max-width: 350px;
 }
 
 .slide-kana {
@@ -544,10 +544,355 @@ body {
   align-items: center;
   position: relative;
   flex-shrink: 0;
-  width: clamp(150px, 13vw, 200px);
-  transform: none;
-  transition: filter 0.3s ease, transform 0.3s ease;
+  width: clamp(280px, 28vw, 380px);
+  perspective: 1200px;
+  cursor: pointer;
   margin: 0 !important; /* Reset margin-top staggering */
+}
+
+.member-card-3d-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.34, 1.25, 0.64, 1);
+  transform-style: preserve-3d;
+}
+
+.member-card.flipped .member-card-3d-inner {
+  transform: rotateY(180deg);
+}
+
+.member-card-front,
+.member-card-back {
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.member-card-front {
+  position: relative;
+  z-index: 2;
+}
+
+.member-card-back {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  width: clamp(340px, 32vw, 450px);
+  aspect-ratio: 1.5 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+/* Card Back Ninja Box (box.webp) */
+.scroll-box-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 30px rgba(184, 50, 44, 0.3);
+}
+
+.scroll-box-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scroll-box-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.scroll-kanji-stamp {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1.5rem;
+  color: #b8322c;
+  background: rgba(184, 50, 44, 0.12);
+  border: 1px solid rgba(184, 50, 44, 0.4);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.scroll-box-content .scroll-member-name {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #1d1b18;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.scroll-box-content .scroll-member-role {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(29, 27, 24, 0.85);
+  margin-bottom: 1rem;
+}
+
+.scroll-social-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-bottom: 0.8rem;
+}
+
+.flip-back-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: rgba(29, 27, 24, 0.6);
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+}
+/* ══════════════════════════════════════
+   FULL PAGE BLUR BACKDROP & RECTANGULAR SCROLL MODAL (box.webp)
+══════════════════════════════════════ */
+.scroll-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(8, 7, 6, 0.78);
+  backdrop-filter: blur(16px) brightness(0.55);
+  -webkit-backdrop-filter: blur(16px) brightness(0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: backdrop-fade-in 0.3s ease forwards;
+}
+
+@keyframes backdrop-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.scroll-modal-box {
+  position: relative;
+  width: min(780px, 92vw);
+  aspect-ratio: 1.6 / 1;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(184, 50, 44, 0.35);
+  animation: modal-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85) rotateX(15deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+  }
+}
+
+.scroll-modal-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.scroll-modal-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  z-index: 10;
+  background: rgba(29, 27, 24, 0.15);
+  border: 1px solid rgba(29, 27, 24, 0.3);
+  color: #1d1b18;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.scroll-modal-close:hover {
+  background: #b8322c;
+  color: #ffffff;
+  border-color: #b8322c;
+  transform: rotate(90deg);
+}
+
+.scroll-modal-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  padding: 3rem 4rem 3rem 6rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.scroll-kanji-badge {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 2.4rem;
+  color: #b8322c;
+  background: rgba(184, 50, 44, 0.1);
+  border: 2px solid #b8322c;
+  border-radius: 6px;
+  width: 68px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(184, 50, 44, 0.25);
+}
+
+.scroll-info-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.scroll-dept-kana {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #b8322c;
+  margin-bottom: 0.4rem;
+}
+
+.scroll-member-name {
+  font-family: 'Shippori Mincho', serif;
+  font-weight: 800;
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  color: #1d1b18;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.scroll-member-role {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(0.8rem, 1.2vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(29, 27, 24, 0.78);
+  margin-bottom: 1.8rem;
+}
+
+.scroll-social-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.instagram-btn {
+  background: rgba(225, 48, 108, 0.14);
+  border: 1px solid rgba(225, 48, 108, 0.55);
+  color: #9d1c4c;
+}
+.instagram-btn:hover {
+  background: #e1306c;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(225, 48, 108, 0.45);
+  transform: translateY(-2px);
+}
+
+.linkedin-btn {
+  background: rgba(10, 102, 194, 0.14);
+  border: 1px solid rgba(10, 102, 194, 0.55);
+  color: #0a66c2;
+}
+.linkedin-btn:hover {
+  background: #0a66c2;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.45);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .scroll-modal-inner {
+    padding: 2rem 1.8rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    justify-content: center;
+  }
+  .scroll-info-block {
+    align-items: center;
+    text-align: center;
+  }
+  .scroll-social-row {
+    flex-direction: column;
+    width: 100%;
+  }
+  .social-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .member-card:hover {
@@ -557,12 +902,13 @@ body {
 
 /* Branch & Rope Connection */
 .branch-rope-connection {
-  width: 220px; /* match torii width roughly */
-  height: 60px;
+  width: 100%;
+  max-width: 380px;
+  height: 95px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: -15px; /* Overlap torii */
+  margin-bottom: -24px; /* Overlap torii */
   z-index: 1;
 }
 .rope-svg {
@@ -573,7 +919,8 @@ body {
 /* Torii Gate Frame */
 .torii-frame {
   position: relative;
-  width: 220px;
+  width: 100%;
+  max-width: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -581,11 +928,10 @@ body {
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 .torii-image {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  height: auto;
+  display: block;
   z-index: 2;
   filter: drop-shadow(0 14px 18px rgba(0,0,0,0.48));
 }
@@ -779,86 +1125,23 @@ footer {
 ══════════════════════════════════════ */
 .slide-cards-panel {
   position: absolute;
-  left: 50%;
-  top: 55%; 
+  left: 61%;
+  top: 50%; 
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: 4rem;
+  gap: 1.5rem;
   z-index: 2;
   overflow: visible;
-  width: 100vw;
+  width: auto;
+  max-width: 65vw;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   NEW: VERTICAL PAGE CAROUSEL SYSTEM
-  width: 43%;
-  height: 56%;
-  background-size: cover;
-  background-position: center top;
-  border-radius: 2px;
-  box-shadow:
-    0 8px 18px rgba(0,0,0,0.28),
-    inset 0 0 15px rgba(0,0,0,0.38);
-}
-.portrait-symbol {
-  display: none;
-}
-
-/* Paper Name Tag */
-.paper-tag {
-  margin-top: -4px;
-  width: min(150px, 88%);
-  background-color: var(--paper-bg);
-  padding: 1.05rem 0.65rem 0.85rem;
-  text-align: center;
-  border: 1px solid rgba(29, 27, 24, 0.5);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  position: relative;
-  z-index: 3;
-  border-radius: 2px 2px 5px 3px;
-  clip-path: polygon(0% 0%, 100% 0%, 98% 98%, 2% 100%);
-  transition: transform 0.3s ease;
-}
-.member-card:hover .paper-tag {
-  transform: translateY(5px);
-}
-.paper-tag h4 {
-  font-family: 'Shippori Mincho', serif;
-  font-weight: 800;
-  font-size: clamp(0.78rem, 1.05vw, 1.02rem);
-  color: var(--paper);
-  letter-spacing: 0.12em;
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-}
-.paper-tag p {
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: clamp(0.55rem, 0.68vw, 0.66rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(29, 27, 24, 0.7);
-}
-.red-stamp {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  width: 25px;
-  height: 25px;
-  border: 2px solid var(--blood);
-  border-radius: 3px;
-  opacity: 0.6;
-  transform: rotate(-10deg);
-}
-.red-stamp::after {
-  content: '印';
-  font-family: 'Yuji Syuku', serif;
-  font-size: 14px;
-  color: var(--blood);
-  line-height: 21px;
-}
+   END OF SLIDE CARDS PANEL
+═══════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════
    CTA SLIDE

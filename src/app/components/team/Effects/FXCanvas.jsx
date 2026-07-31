@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { rand, lerp } from '../../../team-assets/utils/math';
 
 export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, currentTeam, isMobile }) {
@@ -410,7 +410,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', handleResize);
     };
-  }, [pointerRef, hoveredTorii]);
+  }, [pointerRef, hoveredTorii, isMobile]);
 
   return (
     <canvas 
