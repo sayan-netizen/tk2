@@ -2,43 +2,43 @@
 
 :root {
   --font-size: 16px;
-  --background: #F5ECD8;
-  --foreground: #1A1208;
-  --card: #EDE0C4;
-  --card-foreground: #1A1208;
-  --popover: #EDE0C4;
-  --popover-foreground: #1A1208;
-  --primary: #b91919;
+  --background: #1D1B18;
+  --foreground: #F7F1E5;
+  --card: #26221D;
+  --card-foreground: #F7F1E5;
+  --popover: #26221D;
+  --popover-foreground: #F7F1E5;
+  --primary: #B8322C;
   --primary-foreground: #FFFFFF;
-  --secondary: #E2D2B4;
-  --secondary-foreground: #1A1208;
-  --muted: #E2D2B4;
-  --muted-foreground: #7A6545;
-  --accent: #E2D2B4;
-  --accent-foreground: #1A1208;
-  --destructive: #b91919;
+  --secondary: #312B23;
+  --secondary-foreground: #F7F1E5;
+  --muted: #312B23;
+  --muted-foreground: #C6B8A5;
+  --accent: #312B23;
+  --accent-foreground: #F7F1E5;
+  --destructive: #B8322C;
   --destructive-foreground: #FFFFFF;
-  --border: #CDBF9E;
-  --input: #CDBF9E;
-  --input-background: #EDE0C4;
-  --switch-background: #CDBF9E;
+  --border: #5A4A3B;
+  --input: #5A4A3B;
+  --input-background: #26221D;
+  --switch-background: #5A4A3B;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: #b91919;
-  --chart-1: #b91919;
-  --chart-2: #d51e1e;
-  --chart-3: #e84545;
-  --chart-4: #8a1212;
-  --chart-5: #5c0c0c;
+  --ring: #B8322C;
+  --chart-1: #B8322C;
+  --chart-2: #D54536;
+  --chart-3: #D89AA4;
+  --chart-4: #B88A3D;
+  --chart-5: #4B3225;
   --radius: 0.625rem;
-  --sidebar: #F5ECD8;
-  --sidebar-foreground: #1A1208;
-  --sidebar-primary: #b91919;
+  --sidebar: #1D1B18;
+  --sidebar-foreground: #F7F1E5;
+  --sidebar-primary: #B8322C;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #E2D2B4;
-  --sidebar-accent-foreground: #1A1208;
-  --sidebar-border: #CDBF9E;
-  --sidebar-ring: #b91919;
+  --sidebar-accent: #312B23;
+  --sidebar-accent-foreground: #F7F1E5;
+  --sidebar-border: #5A4A3B;
+  --sidebar-ring: #B8322C;
 }
 
 @theme inline {
@@ -95,6 +95,11 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /**
+  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
+  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
+  */
 
   html {
     font-size: var(--font-size);

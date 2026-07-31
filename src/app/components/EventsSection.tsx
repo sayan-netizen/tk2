@@ -15,6 +15,7 @@ import {
   Music,
   Lightbulb,
   Bot,
+  type LucideIcon,
 } from "lucide-react";
 import { SlideTitle, TiltCard, ScrollDepth } from "./ScrollAnimations";
 
@@ -28,7 +29,7 @@ interface Event {
   date: string;
   prize: string;
   rules: string[];
-  icon: React.ElementType;
+  icon: LucideIcon;
 }
 
 const events: Event[] = [
@@ -187,10 +188,10 @@ const categories = [
 ];
 
 const categoryColors: Record<string, string> = {
-  technical: "bg-blue-500/10 text-blue-600 border-blue-500/20",
-  gaming: "bg-green-500/10 text-green-600 border-green-500/20",
-  cultural: "bg-amber-500/10 text-amber-600 border-amber-500/20",
-  workshop: "bg-purple-500/10 text-purple-600 border-purple-500/20",
+  technical: "bg-[#b91919]/10 text-[#d51e1e] border-[#b91919]/30",
+  gaming: "bg-[#b91919]/20 text-[#F5F5F5] border-[#b91919]/50 shadow-[0_0_10px_rgba(185,25,25,0.2)]",
+  cultural: "bg-[#050505] text-[#999] border-[#b91919]/20",
+  workshop: "bg-[#b91919]/5 text-[#d51e1e] border-[#b91919]/40",
 };
 
 export default function EventsSection() {
@@ -202,20 +203,20 @@ export default function EventsSection() {
   const filtered = filter === "all" ? events : events.filter((e) => e.category === filter);
 
   return (
-    <section id="events" className="relative py-24 sm:py-32 overflow-hidden bg-[#F5ECD8]" ref={sectionRef}>
-      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#b91919]/4 rounded-full blur-[200px] -translate-y-1/2" />
+    <section id="events" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
+      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#d51e1e]/3 rounded-full blur-[200px] -translate-y-1/2" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
           <SlideTitle>
-            <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#b91919] block mb-3">
+            <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
               Choose Your Arena
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#1A1208] tracking-wide">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#F5F5F5] tracking-wide">
               EVENTS
             </h2>
-            <div className="w-20 h-0.5 bg-[#b91919] mt-4" />
+            <div className="w-20 h-0.5 bg-[#d51e1e] mt-4" />
           </SlideTitle>
 
           {/* Filter pills */}
@@ -231,10 +232,10 @@ export default function EventsSection() {
                 onClick={() => setFilter(cat.value)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-4 py-1.5 rounded-full text-sm font-accent tracking-wide transition-all cursor-pointer ${
+                className={`px-4 py-1.5 rounded-none text-sm font-accent tracking-wide transition-all cursor-pointer border ${
                   filter === cat.value
-                    ? "bg-[#b91919] text-white"
-                    : "bg-[#EDE0C4] text-[#7A6545] hover:text-[#1A1208] border border-[#CDBF9E] hover:border-[#b91919]/40"
+                    ? "bg-[#b91919]/20 border-[#b91919] text-[#f5f5f5] shadow-[0_0_10px_rgba(185,25,25,0.3)]"
+                    : "bg-transparent border-[#b91919]/30 text-[#999] hover:text-[#F5F5F5] hover:border-[#b91919]"
                 }`}
               >
                 {cat.label}
@@ -243,7 +244,7 @@ export default function EventsSection() {
           </motion.div>
         </div>
 
-        {/* Event grid */}
+        {/* Event grid with 3D tilt cards */}
         <ScrollDepth rotate={6} y={75}>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ perspective: "1200px" }}>
             <AnimatePresence mode="popLayout">
@@ -263,8 +264,10 @@ export default function EventsSection() {
                   style={{ transformStyle: "preserve-3d" }}
                 >
                   <TiltCard intensity={isExpanded ? 3 : 8}>
-                    <div className="bg-[#EDE0C4] rounded-2xl border border-[#CDBF9E] overflow-hidden hover:border-[#b91919]/30 transition-all group h-full shadow-sm">
-                      <div className="p-6">
+                    <div className="relative bg-black/40 rounded-none border border-[#b91919]/30 overflow-hidden hover:border-[#b91919] hover:shadow-[0_0_15px_rgba(185,25,25,0.15)] transition-all group h-full" style={{ transformStyle: "preserve-3d" }}>
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className="relative z-10 p-6" style={{ transform: "translateZ(20px)" }}>
                         {/* Category badge + icon */}
                         <div className="flex items-center justify-between mb-4">
                           <Badge
@@ -275,23 +278,23 @@ export default function EventsSection() {
                             {event.category}
                           </Badge>
                           <motion.div
-                            className="w-10 h-10 rounded-lg bg-[#F5ECD8] flex items-center justify-center group-hover:bg-[#b91919]/10 transition-colors"
+                            className="w-10 h-10 rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center group-hover:bg-[#b91919]/20 group-hover:border-[#b91919] transition-all"
                             whileHover={{ rotate: 15, scale: 1.1 }}
                           >
-                            <Icon className="w-5 h-5 text-[#9A8060] group-hover:text-[#b91919] transition-colors" />
+                            <Icon className="w-5 h-5 text-[#666] group-hover:text-[#d51e1e] transition-colors" />
                           </motion.div>
                         </div>
 
                         {/* Title + description */}
-                        <h3 className="font-heading text-xl font-semibold text-[#1A1208] mb-2">
+                        <h3 className="font-heading text-xl font-semibold text-[#F5F5F5] mb-2">
                           {event.name}
                         </h3>
-                        <p className="text-[#7A6545] text-sm leading-relaxed mb-4">
+                        <p className="text-[#999] text-sm leading-relaxed mb-4">
                           {isExpanded ? event.fullDescription : event.description}
                         </p>
 
                         {/* Meta */}
-                        <div className="flex flex-wrap gap-3 mb-5 text-[#9A8060]">
+                        <div className="flex flex-wrap gap-3 mb-5 text-[#666]">
                           <div className="flex items-center gap-1.5">
                             <Users className="w-3.5 h-3.5" />
                             <span className="font-accent text-xs">{event.teamSize}</span>
@@ -301,8 +304,8 @@ export default function EventsSection() {
                             <span className="font-accent text-xs">{event.date}</span>
                           </div>
                           <div className="flex items-center gap-1.5">
-                            <Trophy className="w-3.5 h-3.5 text-[#b91919]" />
-                            <span className="font-accent text-xs text-[#b91919]">
+                            <Trophy className="w-3.5 h-3.5 text-[#d51e1e]" />
+                            <span className="font-accent text-xs text-[#d51e1e]">
                               {event.prize}
                             </span>
                           </div>
@@ -318,20 +321,20 @@ export default function EventsSection() {
                               transition={{ duration: 0.3 }}
                               className="overflow-hidden"
                             >
-                              <div className="border-t border-[#CDBF9E] pt-4 mb-4">
-                                <h4 className="font-heading text-sm font-semibold text-[#1A1208] mb-3">
+                              <div className="border-t border-[#b91919]/30 pt-4 mb-4 group-hover:border-[#b91919]/60 transition-colors">
+                                <h4 className="font-heading text-sm font-semibold text-[#F5F5F5] mb-3">
                                   Rules & Guidelines
                                 </h4>
                                 <ul className="space-y-1.5">
                                   {event.rules.map((rule, j) => (
                                     <motion.li
                                       key={j}
-                                      className="flex items-start gap-2 text-sm text-[#7A6545]"
+                                      className="flex items-start gap-2 text-sm text-[#999]"
                                       initial={{ opacity: 0, x: -10 }}
                                       animate={{ opacity: 1, x: 0 }}
                                       transition={{ delay: j * 0.05 }}
                                     >
-                                      <span className="text-[#b91919] mt-1">•</span>
+                                      <span className="text-[#d51e1e] mt-1">•</span>
                                       {rule}
                                     </motion.li>
                                   ))}
@@ -342,12 +345,12 @@ export default function EventsSection() {
                         </AnimatePresence>
 
                         {/* Actions */}
-                        <div className="flex items-center gap-3 pt-2 border-t border-[#CDBF9E]">
+                        <div className="flex items-center gap-3 pt-2 border-t border-[#b91919]/30 group-hover:border-[#b91919]/60 transition-colors">
                           <button
                             onClick={() =>
                               setExpanded(isExpanded ? null : event.id)
                             }
-                            className="text-sm font-accent text-[#9A8060] hover:text-[#1A1208] transition-colors cursor-pointer flex items-center gap-1"
+                            className="text-sm font-accent text-[#999] hover:text-[#F5F5F5] transition-colors cursor-pointer flex items-center gap-1"
                           >
                             {isExpanded ? (
                               <>
@@ -360,7 +363,7 @@ export default function EventsSection() {
                           <motion.div className="ml-auto" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Button
                               size="sm"
-                              className="bg-[#b91919] hover:bg-[#8a1212] text-white font-heading text-xs px-4 rounded-lg"
+                              className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 rounded-none px-4"
                             >
                               Register →
                             </Button>

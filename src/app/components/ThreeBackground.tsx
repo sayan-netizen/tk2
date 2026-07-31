@@ -7,7 +7,7 @@ type ScrollValue = {
   get: () => number;
 };
 
-const RED = "#C41E3A";
+const RED = "#d51e1e";
 const RED_HOT = "#FF4D6A";
 const STEEL = "#17191F";
 const INK = "#070707";

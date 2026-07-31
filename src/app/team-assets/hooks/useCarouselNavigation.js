@@ -39,11 +39,7 @@ export function useCarouselNavigation({
           onGoToTeam(nextTeam);
         } else if (nextTeam < 0) {
           onGoToPage(0);
-        } else {
-          onGoToPage(2);
         }
-      } else if (currentPage === 2) {
-        if (dir < 0) onGoToPage(1);
       }
     };
 
@@ -58,7 +54,6 @@ export function useCarouselNavigation({
         if (['ArrowRight', 'ArrowDown'].includes(e.key)) {
           e.preventDefault();
           if (currentTeam < totalDepts - 1) onGoToTeam(currentTeam + 1);
-          else onGoToPage(2);
         } else if (['ArrowLeft', 'ArrowUp'].includes(e.key)) {
           e.preventDefault();
           if (currentTeam > 0) onGoToTeam(currentTeam - 1);
@@ -67,10 +62,6 @@ export function useCarouselNavigation({
           e.preventDefault(); onGoToTeam(0);
         } else if (e.key === 'End') {
           e.preventDefault(); onGoToTeam(totalDepts - 1);
-        }
-      } else if (currentPage === 2) {
-        if (['ArrowUp', 'PageUp', 'ArrowLeft'].includes(e.key)) {
-          e.preventDefault(); onGoToPage(1);
         }
       }
     };
@@ -94,7 +85,6 @@ export function useCarouselNavigation({
         if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
           if (dx > 0) {
             if (currentTeam < totalDepts - 1) onGoToTeam(currentTeam + 1);
-            else onGoToPage(2);
           } else {
             if (currentTeam > 0) onGoToTeam(currentTeam - 1);
             else onGoToPage(0);
@@ -102,8 +92,6 @@ export function useCarouselNavigation({
         } else if (dx > 50 && currentTeam === 0) {
           onGoToPage(0);
         }
-      } else if (currentPage === 2) {
-        if (dx > 50) onGoToPage(1);
       }
     };
 
