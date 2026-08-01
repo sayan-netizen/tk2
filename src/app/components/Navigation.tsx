@@ -10,7 +10,7 @@ import {
 } from "./ui/sheet";
 
 const navLogo = new URL(
-  "../../../images/herosection/logo.svg",
+  "../../../images/herosection/tech kurukshetra web design.svg",
   import.meta.url
 ).href;
 const registerNow = new URL(

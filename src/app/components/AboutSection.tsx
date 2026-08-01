@@ -115,7 +115,7 @@ export default function AboutSection() {
                       Shadow Protocol
                     </h3>
                     <p className="text-[#999] leading-relaxed mb-4 italic" style={{ transform: "translateZ(10px)" }}>
-                      "In a world of noise, the shadow  `prevails. Where others broadcast their moves, the
+                      "In a world of noise, the shadow prevails. Where others broadcast their moves, the
                       shinobi strikes in silence — with precision, purpose, and mastery of the unknown."
                     </p>
                     <p className="text-[#999] leading-relaxed" style={{ transform: "translateZ(10px)" }}>
