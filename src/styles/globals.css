@@ -1,0 +1,90 @@
+/* ============================
+   Global Styles — Shadow Protocol
+   ============================ */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  background: #000000;
+  color: #f5f5f5;
+}
+
+/* Home-page palette: matched with the hero's cyberpunk aesthetic. */
+.main-site {
+  background: #000000;
+}
+
+.main-site main > section:not(#hero) {
+  border-top: 1px solid rgba(213, 30, 30, 0.15); /* #d51e1e with 15% opacity */
+  background: #000000;
+}
+
+.main-site main > section:not(#hero):nth-of-type(odd) {
+  background: #050505;
+}
+
+#mobile-menu-trigger {
+  position: fixed !important;
+  top: 0.75rem !important;
+  right: 1rem !important;
+  z-index: 9999 !important;
+  display: flex !important;
+}
+
+@media (min-width: 1024px) {
+  #mobile-menu-trigger {
+    display: none !important;
+  }
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(213, 30, 30, 0.4);
+  color: #fff;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d51e1e;
+}
+
+/* Font family utilities */
+.font-display {
+  font-family: 'Bebas Neue', 'Impact', sans-serif;
+}
+.font-heading {
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
+.font-body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.font-accent {
+  font-family: 'Rajdhani', 'Inter', sans-serif;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

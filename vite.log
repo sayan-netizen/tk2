@@ -1,0 +1,620 @@
+
+> @figma/my-make-file@0.0.1 dev
+> vite --host 127.0.0.1 --port 4173
+
+
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m2462[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://127.0.0.1:[1m4173[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+
+new URL(
+  "../../../images/herosection/logo.svg",
+  import.meta.url
+) doesn't exist at build time, it will remain unchanged to be resolved at runtime. If this is intended, you can use the /* @vite-ignore */ comment to suppress this warning.
+
+new URL("../../../images/herosection/logo.svg", import.meta.url) doesn't exist at build time, it will remain unchanged to be resolved at runtime. If this is intended, you can use the /* @vite-ignore */ comment to suppress this warning.
+[2m2:06:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/styles/index.css[22m
+[2m2:06:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m2:06:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Footer.tsx, /src/styles/index.css[22m
+[2m2:06:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m2:19:39 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/AboutSection.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/App.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/AboutSection.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/app/components/CountdownTimer.tsx[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/EventsSection.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Footer.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/IntroOverlay.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Navigation.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/ScheduleSection.tsx, /src/styles/index.css[22m
+[2m2:19:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/SponsorsSection.tsx, /src/styles/index.css[22m
+[2m2:19:41 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/TeamBanner.tsx, /src/styles/index.css[22m
+[2m2:19:41 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/app/components/ThreeBackground.tsx[22m
+[2m2:19:41 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/VenueSection.tsx, /src/styles/index.css[22m
+[2m2:19:41 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/TeamPage.jsx, /src/styles/index.css[22m
+[2m2:19:41 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/TeamPage.jsx, /src/styles/index.css[22m
+[2m2:20:32 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m2:20:32 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m2:20:48 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: Missing closing } at .main-site main > section:not(#hero):nth-of-type(odd)
+  Plugin: [35m@tailwindcss/vite:generate:serve[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/styles/index.css[39m
+[2m2:20:54 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/styles/index.css[22m
+[2m2:30:09 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\DepartmentCarousel\TeamNavLayer.jsx, /src/styles/index.css[22m
+[2m2:34:21 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/AboutSection.tsx, /src/styles/index.css[22m
+[2m2:34:43 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/EventsSection.tsx, /src/styles/index.css[22m
+[2m2:35:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/ScheduleSection.tsx, /src/styles/index.css[22m
+[2m2:35:31 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/SponsorsSection.tsx, /src/styles/index.css[22m
+[2m2:35:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/VenueSection.tsx, /src/styles/index.css[22m
+[2m2:36:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/TeamBanner.tsx, /src/styles/index.css[22m
+[2m2:36:32 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Navigation.tsx, /src/styles/index.css[22m
+[2m2:36:32 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Expected corresponding JSX closing tag for <SheetHeader>. (155:8)
+
+[0m [90m 153 |[31m               [33mNavigation[31m
+ [90m 154 |[31m             [33m<[31m[33m/[31m[33mSheetTitle[31m[33m>[31m
+[31m[1m>[22m[31m[90m 155 |[31m         [33m<[31m[33m/[31m[33mSheetContent[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 156 |[31m       [33m<[31m[33m/[31m[33mSheet[31m[33m>[31m
+ [90m 157 |[31m
+ [90m 158 |[31m     [33m<[31m[33m/[31m[33mnav[31m[33m>[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:155:8
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4739:16)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+      at TypeScriptParserMixin.parseFunctionBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12117:24)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12103:10)
+      at TypeScriptParserMixin.parseFunctionBodyAndFinish (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9189:18)
+[2m2:37:00 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Navigation.tsx, /src/styles/index.css[22m
+[2m2:37:00 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[31m           [33m>[31m
+ [90m 144 |[31m             [33m<[31m[33mMenu[31m className[33m=[31m[32m"size-5"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 145 |[31m     [36mif[31m (el) el[33m.[31mscrollIntoView({ behavior[33m:[31m [32m"smooth"[31m })[33m;[31m
+ [90m     |[31m                                         [31m[1m^[22m[31m
+ [90m 146 |[31m   }[33m;[31m
+ [90m 147 |[31m
+ [90m 148 |[31m   [36mreturn[31m ([0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6916:12)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4649:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4723:36)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+[2m2:37:50 PM[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m Pre-transform error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[39m           [33m>[39m
+ [90m 144 |[39m             [33m<[39m[33mMenu[39m className[33m=[39m[32m"size-5"[39m [33m/[39m[33m>[39m
+[31m[1m>[22m[39m[90m 145 |[39m     [36mif[39m (el) el[33m.[39mscrollIntoView({ behavior[33m:[39m [32m"smooth"[39m })[33m;[39m
+ [90m     |[39m                                         [31m[1m^[22m[39m
+ [90m 146 |[39m   }[33m;[39m
+ [90m 147 |[39m
+ [90m 148 |[39m   [36mreturn[39m ([0m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+[2m2:37:50 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[31m           [33m>[31m
+ [90m 144 |[31m             [33m<[31m[33mMenu[31m className[33m=[31m[32m"size-5"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 145 |[31m     [36mif[31m (el) el[33m.[31mscrollIntoView({ behavior[33m:[31m [32m"smooth"[31m })[33m;[31m
+ [90m     |[31m                                         [31m[1m^[22m[31m
+ [90m 146 |[31m   }[33m;[31m
+ [90m 147 |[31m
+ [90m 148 |[31m   [36mreturn[31m ([0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6916:12)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4649:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4723:36)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+[2m2:37:51 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[31m           [33m>[31m
+ [90m 144 |[31m             [33m<[31m[33mMenu[31m className[33m=[31m[32m"size-5"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 145 |[31m     [36mif[31m (el) el[33m.[31mscrollIntoView({ behavior[33m:[31m [32m"smooth"[31m })[33m;[31m
+ [90m     |[31m                                         [31m[1m^[22m[31m
+ [90m 146 |[31m   }[33m;[31m
+ [90m 147 |[31m
+ [90m 148 |[31m   [36mreturn[31m ([0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6916:12)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4649:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4723:36)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+[2m2:38:09 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[31m           [33m>[31m
+ [90m 144 |[31m             [33m<[31m[33mMenu[31m className[33m=[31m[32m"size-5"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 145 |[31m     [36mif[31m (el) el[33m.[31mscrollIntoView({ behavior[33m:[31m [32m"smooth"[31m })[33m;[31m
+ [90m     |[31m                                         [31m[1m^[22m[31m
+ [90m 146 |[31m   }[33m;[31m
+ [90m 147 |[31m
+ [90m 148 |[31m   [36mreturn[31m ([0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6916:12)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4649:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4723:36)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+[2m2:38:10 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Navigation.tsx: Unexpected token, expected "}" (145:40)
+
+[0m [90m 143 |[31m           [33m>[31m
+ [90m 144 |[31m             [33m<[31m[33mMenu[31m className[33m=[31m[32m"size-5"[31m [33m/[31m[33m>[31m
+[31m[1m>[22m[31m[90m 145 |[31m     [36mif[31m (el) el[33m.[31mscrollIntoView({ behavior[33m:[31m [32m"smooth"[31m })[33m;[31m
+ [90m     |[31m                                         [31m[1m^[22m[31m
+ [90m 146 |[31m   }[33m;[31m
+ [90m 147 |[31m
+ [90m 148 |[31m   [36mreturn[31m ([0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Navigation.tsx[39m:145:40
+[33m  149|      <nav
+  150|        id="main-nav"
+  151|        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+     |                                                                              ^
+  152|          scrolled
+  153|            ? "bg-[#050505]/88 backdrop-blur-xl shadow-lg shadow-black/20"[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.unexpected (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6636:16)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6916:12)
+      at TypeScriptParserMixin.jsxParseExpressionContainer (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4649:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4723:36)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseStatementListItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12764:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:61)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseBlock (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13314:10)
+[2m2:38:58 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Navigation.tsx, /src/styles/index.css[22m
+[2m2:42:53 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/app/components/CountdownTimer.tsx[22m
+[2m2:43:17 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Footer.tsx, /src/styles/index.css[22m
+[2m2:43:17 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\Footer.tsx: Unterminated JSX contents. (149:13)
+
+[0m [90m 147 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 148 |[31m       [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 149 |[31m     [33m<[31m[33m/[31m[33mfooter[31m[33m>[31m
+ [90m     |[31m              [31m[1m^[22m[31m
+ [90m 150 |[31m   )[33m;[31m
+ [90m 151 |[31m }
+ [90m 152 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/Footer.tsx[39m:149:13
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.jsxReadToken (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4460:20)
+      at TypeScriptParserMixin.getTokenFromCode (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4786:12)
+      at TypeScriptParserMixin.getTokenFromCode (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10004:11)
+      at TypeScriptParserMixin.nextToken (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:5799:10)
+      at TypeScriptParserMixin.next (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:5709:10)
+      at TypeScriptParserMixin.eat (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:5713:12)
+      at TypeScriptParserMixin.expect (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6915:15)
+      at TypeScriptParserMixin.jsxParseClosingElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4692:10)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4707:37)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElementAt (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4710:32)
+      at TypeScriptParserMixin.jsxParseElement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4761:17)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4771:19)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:39
+      at TypeScriptParserMixin.tryParse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6924:20)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9792:18)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12443:12)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12510:17)
+      at TypeScriptParserMixin.parseParenAndDistinguishExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11692:28)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11348:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at TypeScriptParserMixin.parseExpressionBase (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10801:23)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseExpression (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10797:17)
+      at TypeScriptParserMixin.parseReturnStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13159:28)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12815:21)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+[2m2:43:50 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/Footer.tsx, /src/styles/index.css[22m
+[2m2:43:59 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m2:45:55 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\Effects\NinjaCursor.jsx, /src/styles/index.css[22m
+[2m2:46:04 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\Effects\FXCanvas.jsx, /src/styles/index.css[22m
+[2m2:46:13 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\Members\MemberCard.jsx, /src/styles/index.css[22m
+[2m2:46:20 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\Members\MemberCard.jsx, /src/styles/index.css[22m
+[2m2:46:44 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/@fs/C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\team\DepartmentCarousel\TeamNavLayer.jsx, /src/styles/index.css[22m
+[2m2:47:42 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m2:48:08 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m2:49:11 PM[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2m2:49:18 PM[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/tsconfig.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2m2:49:19 PM[22m [31m[1m[vite][22m[39m Pre-transform error: parsing C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/tsconfig.node.json failed: Error: ENOENT: no such file or directory, open 'C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\tsconfig.node.json'
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/main.tsx[39m
+[2m2:49:20 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: parsing C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/tsconfig.node.json failed: Error: ENOENT: no such file or directory, open 'C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\tsconfig.node.json'[39m
+  Plugin: [35mvite:esbuild[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/main.tsx[39m
+      at file:///C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/node_modules/vite/dist/node/chunks/dep-DBxKXgDP.js:8591:10
+[2m2:49:28 PM[22m [36m[1m[vite][22m[39m changed tsconfig file detected: C:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/tsconfig.node.json - Clearing cache and forcing full-reload to ensure TypeScript is compiled with updated config values.
+[2m2:50:19 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/EventsSection.tsx, /src/styles/index.css[22m
+[2m2:52:54 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/EventsSection.tsx, /src/styles/index.css[22m
+[2m2:52:54 PM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\src\app\components\EventsSection.tsx: Unexpected keyword 'const'. (191:0)
+
+[0m [90m 189 |[31m
+ [90m 190 |[31m [36mconst[31m categoryColors[33m:[31m [33mRecord[31m[33m<[31m[33mstring[31m[33m,[31m string[33m>[31m [33m=[31m {
+[31m[1m>[22m[31m[90m 191 |[31m [36mconst[31m categoryColors[33m:[31m [33mRecord[31m[33m<[31m[33mstring[31m[33m,[31m string[33m>[31m [33m=[31m {
+ [90m     |[31m [31m[1m^[22m[31m
+ [90m 192 |[31m   technical[33m:[31m [32m"bg-[#b91919]/10 text-[#d51e1e] border-[#b91919]/30"[31m[33m,[31m
+ [90m 193 |[31m   gaming[33m:[31m [32m"bg-[#b91919]/20 text-[#F5F5F5] border-[#b91919]/50 shadow-[0_0_10px_rgba(185,25,25,0.2)]"[31m[33m,[31m
+ [90m 194 |[31m   cultural[33m:[31m [32m"bg-[#050505] text-[#999] border-[#b91919]/20"[31m[33m,[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/sayan/OneDrive/Desktop/TK/tech-kurukshetra/src/app/components/EventsSection.tsx[39m:191:0
+[33m  191|  const categoryColors: Record<string, string> = {
+  192|    technical: "bg-[#b91919]/10 text-[#d51e1e] border-[#b91919]/30",
+  193|    gaming: "bg-[#b91919]/20 text-[#F5F5F5] border-[#b91919]/50 shadow-[0_0_10px_rgba(185,25,25,0.2)]",
+     |                                                                            ^
+  194|    cultural: "bg-[#050505] text-[#999] border-[#b91919]/20",
+  195|    workshop: "bg-[#b91919]/5 text-[#d51e1e] border-[#b91919]/40",[39m
+      at constructor (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:365:19)
+      at TypeScriptParserMixin.raise (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:6616:19)
+      at TypeScriptParserMixin.checkReservedWord (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12241:12)
+      at TypeScriptParserMixin.checkReservedWord (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9327:13)
+      at TypeScriptParserMixin.parseObjectProperty (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11971:12)
+      at TypeScriptParserMixin.parseObjPropValue (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11995:100)
+      at TypeScriptParserMixin.parseObjPropValue (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9761:18)
+      at TypeScriptParserMixin.parsePropertyDefinition (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11932:17)
+      at TypeScriptParserMixin.parseObjectLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11849:21)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11356:23)
+      at TypeScriptParserMixin.parseExprAtom (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:4776:20)
+      at TypeScriptParserMixin.parseExprSubscripts (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11098:23)
+      at TypeScriptParserMixin.parseUpdate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11083:21)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:11063:23)
+      at TypeScriptParserMixin.parseMaybeUnary (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9854:18)
+      at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10916:61)
+      at TypeScriptParserMixin.parseExprOps (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10921:23)
+      at TypeScriptParserMixin.parseMaybeConditional (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10898:23)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10848:21)
+      at TypeScriptParserMixin.parseMaybeAssign (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9803:20)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:39
+      at TypeScriptParserMixin.allowInAnd (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12438:16)
+      at TypeScriptParserMixin.parseMaybeAssignAllowIn (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10817:17)
+      at TypeScriptParserMixin.parseVar (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13401:91)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13247:10)
+      at TypeScriptParserMixin.parseVarStatement (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9425:31)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12868:23)
+      at TypeScriptParserMixin.parseStatementContent (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:9525:18)
+      at TypeScriptParserMixin.parseStatementLike (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12784:17)
+      at TypeScriptParserMixin.parseModuleItem (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12761:17)
+      at TypeScriptParserMixin.parseBlockOrModuleBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13333:36)
+      at TypeScriptParserMixin.parseBlockBody (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:13326:10)
+      at TypeScriptParserMixin.parseProgram (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12639:10)
+      at TypeScriptParserMixin.parseTopLevel (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:12629:25)
+      at TypeScriptParserMixin.parse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:14505:25)
+      at TypeScriptParserMixin.parse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:10143:18)
+      at parse (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\parser\lib\index.js:14539:38)
+      at parser (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\core\lib\transformation\normalize-file.js:51:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\gensync\index.js:261:32)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\gensync\index.js:223:11)
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\gensync\index.js:189:28
+      at C:\Users\sayan\OneDrive\Desktop\TK\tech-kurukshetra\node_modules\@babel\core\lib\gensync-utils\async.js:67:7
+[2m2:53:05 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/EventsSection.tsx, /src/styles/index.css[22m
+[2m2:53:40 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/ScheduleSection.tsx, /src/styles/index.css[22m
+[2m2:53:54 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/SponsorsSection.tsx, /src/styles/index.css[22m
+[2m2:54:11 PM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/app/components/VenueSection.tsx, /src/styles/index.css[22m
