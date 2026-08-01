@@ -18,11 +18,6 @@ export default function TeamPage({
   setBurstOrigin: setGlobalBurst,
   setHoveredTorii: setGlobalHovered,
 }) {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [currentTeam, setCurrentTeam] = useState(0);
-  const [pageAnimating, setPageAnimating] = useState(false);
-  const [teamAnimating, setTeamAnimating] = useState(false);
-  const [flashIn, setFlashIn] = useState(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const handleBurst = (x, y) => {
@@ -34,10 +29,9 @@ export default function TeamPage({
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const style = document.createElement("style");
     style.id = teamStyleId;
-    // Keep responsive overrides last: the original standalone page imported them
-    // before its desktop rules, causing the fixed desktop layout to win on phones.
     style.textContent = `${teamStyles.replace("@import './mobile.css';", "")}\n${mobileStyles}`;
     document.head.appendChild(style);
     document.documentElement.classList.add("team-page-active");
@@ -50,46 +44,12 @@ export default function TeamPage({
     };
   }, []);
 
-  const handleGoToPage = (index, skipFlash = false) => {
-    if (index < 0 || index > 1 || pageAnimating) return;
-    setPageAnimating(true);
-    setCurrentPage(index);
-    if (!skipFlash) {
-      setFlashIn(true);
-      window.setTimeout(() => setFlashIn(false), 150);
-    }
-    window.setTimeout(() => setPageAnimating(false), 850);
-  };
-
-  const handleGoToTeam = (index) => {
-    if (index < 0 || index >= DEPTS.length || teamAnimating) return;
-    if (currentPage !== 1) handleGoToPage(1);
-    setTeamAnimating(true);
-    setCurrentTeam(index);
-    window.setTimeout(() => setTeamAnimating(false), 700);
-  };
-
-  useCarouselNavigation({
-    currentPage,
-    currentTeam,
-    totalDepts: DEPTS.length,
-    onGoToPage: handleGoToPage,
-    onGoToTeam: handleGoToTeam,
-    pageAnimating,
-    teamAnimating,
-  });
-
   return (
     <div className="shadow-dojo-page pt-[76px]">
       {isMobile ? (
         <MobileView onBurst={handleBurst} setHoveredTorii={handleSetHovered} />
       ) : (
         <DesktopView
-          currentPage={currentPage}
-          currentTeam={currentTeam}
-          flashIn={flashIn}
-          handleGoToPage={handleGoToPage}
-          handleGoToTeam={handleGoToTeam}
           handleBurst={handleBurst}
           setHoveredTorii={handleSetHovered}
         />

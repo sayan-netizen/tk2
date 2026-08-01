@@ -416,7 +416,8 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
     <canvas 
       id="fx-canvas" 
       ref={canvasRef} 
-      className="fixed top-0 left-0 w-[100vw] h-[100vh] pointer-events-none z-[999999]"
+      className="fixed top-0 left-0 w-[100vw] h-[100vh] pointer-events-none"
+      style={{ zIndex: 9999998 }}
     />
   );
 }

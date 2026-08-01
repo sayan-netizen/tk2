@@ -8,11 +8,6 @@ export default function MemberCard({ member, delay, isCenter, onBurst, setHovere
   const handleClick = (e) => {
     e.stopPropagation();
     if (frameRef.current) {
-      const rect = frameRef.current.getBoundingClientRect();
-      const ox = rect.left + rect.width / 2;
-      const oy = rect.top + rect.height / 2;
-      onBurst(ox, oy);
-
       const img = frameRef.current.querySelector('.torii-image');
       if (img) {
         img.classList.remove('torii-awaken');
@@ -48,8 +43,6 @@ export default function MemberCard({ member, delay, isCenter, onBurst, setHovere
           <div 
             ref={frameRef}
             className="torii-frame"
-            onMouseEnter={() => setHoveredTorii(frameRef.current)}
-            onMouseLeave={() => setHoveredTorii((prev) => (prev === frameRef.current ? null : prev))}
           >
             <div className="portrait-symbol-container" />
             <img className="torii-image" src="/images/team/Placeholder 2.webp" alt="Torii Gate Frame" />

@@ -25,7 +25,11 @@ export default function App() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
-    const syncRoute = () => setIsTeamPage(window.location.hash === "#team");
+    const syncRoute = () => {
+      const onTeam = window.location.hash === "#team";
+      setIsTeamPage(onTeam);
+      window.scrollTo(0, 0);
+    };
     window.addEventListener("hashchange", syncRoute);
     return () => window.removeEventListener("hashchange", syncRoute);
   }, []);

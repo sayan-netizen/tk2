@@ -1,3 +1,30 @@
+export const CONVENERS = [
+  { symbol: '統', name: 'Dr. A. K. Sharma', role: 'Convener', seed: 100, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+];
+
+export const FACULTY_COORDINATORS = [
+  { symbol: '教', name: 'Dr. Rajesh Kumar', role: 'Faculty Coordinator', seed: 150, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '導', name: 'Dr. Meenakshi Sundaram', role: 'Faculty Coordinator', seed: 151, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '学', name: 'Dr. Vikramaditya Singh', role: 'Faculty Coordinator', seed: 152, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+];
+
+export const LEADS_SUMMARY = [
+  { symbol: '伝', name: 'Kaze Whisperer', role: 'Social Media Lead', seed: 0, dept: 'Social Media' },
+  { symbol: '声', name: 'Hana Commander', role: 'PR Director', seed: 3, dept: 'Public Relations' },
+  { symbol: '築', name: 'Kai Genki', role: 'Lead Web Architect', seed: 5, dept: 'Web Dev' },
+  { symbol: '斬', name: 'Void Kira', role: 'Video Lead', seed: 8, dept: 'Video Editing' },
+  { symbol: '墨', name: 'Ink Kuro', role: 'Graphics Lead', seed: 10, dept: 'Graphics Chamber' }
+];
+
+export const COORDINATORS_VOLUNTEERS = [
+  { symbol: '協', name: 'Rohan Verma', role: 'Head Coordinator', seed: 200, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '統', name: 'Ananya Roy', role: 'Event Coordinator', seed: 201, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '運', name: 'Vikram Sethi', role: 'Logistics Lead', seed: 202, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '奉', name: 'Priya Das', role: 'Senior Volunteer', seed: 203, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '力', name: 'Amit Kumar', role: 'Technical Volunteer', seed: 204, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '和', name: 'Sneha Kapoor', role: 'Operations Volunteer', seed: 205, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+];
+
 export const DEPTS = [
   {
     name: 'Social Media',
