@@ -49,8 +49,8 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
   useEffect(() => {
     let animationFrameId;
     const tickTeamTrack = () => {
-      const stiffness = 0.11;
-      const damping = 0.72;
+      const stiffness = 0.16;
+      const damping = 0.74;
       const force = (trackTargetX.current - trackCurrentX.current) * stiffness;
       trackVelocity.current = trackVelocity.current * damping + force;
       trackCurrentX.current += trackVelocity.current;

@@ -85,7 +85,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative isolate h-screen min-h-[626px] w-full overflow-hidden bg-black text-[#f5f5f5]"
+      className="sticky top-0 z-0 isolate h-screen min-h-[626px] w-full overflow-hidden bg-black text-[#f5f5f5]"
     >
       {/* Video background — translateZ(0) forces GPU compositing for crisp rendering */}
       <video

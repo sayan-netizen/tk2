@@ -2,6 +2,7 @@ import { useMemo, useState, useRef } from "react";
 import { ArrowLeft, Calendar, Filter, Home, Search, Trophy, Users } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { events, type EventCategory, type Event } from "./data/events";
+import { useComingSoon } from "./context/ComingSoonContext";
 
 type CategoryFilter = "all" | EventCategory;
 type SortMode = "featured" | "name" | "category" | "prize";
@@ -141,6 +142,7 @@ export default function EventPage() {
 }
 
 function EventCard({ event, index, categoryClasses }: { event: Event; index: number; categoryClasses: Record<EventCategory, string> }) {
+  const { openComingSoon } = useComingSoon();
   const cardRef = useRef<HTMLElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -273,10 +275,14 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
           </ul>
         </div>
 
-        <button className="mt-auto w-full border border-[#b8322c] bg-black/60 px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#f8f3e6] shadow-[0_0_15px_rgba(184,50,44,0.3)] backdrop-blur-md transition-all hover:bg-[#b8322c] hover:text-white">
+        <button
+          onClick={() => openComingSoon(event.name)}
+          className="mt-auto w-full border border-[#b8322c] bg-black/60 px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-[#f8f3e6] shadow-[0_0_15px_rgba(184,50,44,0.3)] backdrop-blur-md transition-all hover:bg-[#b8322c] hover:text-white cursor-pointer"
+        >
           Register
         </button>
       </div>
     </motion.article>
   );
 }
+

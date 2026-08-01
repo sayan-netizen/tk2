@@ -1367,7 +1367,7 @@ footer {
   align-items: center;
   justify-content: flex-start;
   z-index: 2;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.45s ease, transform 0.5s cubic-bezier(0.34, 1.46, 0.64, 1);
 }
 #ts-content-layer.ts-exit {
   opacity: 0;
@@ -1395,7 +1395,7 @@ footer {
 
 #ts-active-members {
   position: absolute !important;
-  top: 45% !important;
+  top: 36% !important;
   bottom: auto !important;
   right: 5vw !important;
   left: auto !important;
@@ -1425,7 +1425,7 @@ footer {
   box-shadow: none !important;
   
   margin: 0 !important;
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, z-index 0.4s ease, filter 0.4s ease !important;
+  transition: transform 0.55s cubic-bezier(0.34, 1.46, 0.64, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, z-index 0.4s ease, filter 0.4s ease !important;
 }
 
 /* Overlapping card deck layout - one card behind another */
@@ -1436,7 +1436,7 @@ footer {
 /* Stacking order and depth effect for stacked cards */
 .member-card:nth-child(1) {
   z-index: 3 !important;
-  transform: scale(1) translateY(0) !important;
+  transform: scale(1) translateY(-25px) !important;
 }
 .member-card:nth-child(2) {
   z-index: 2 !important;
@@ -1591,7 +1591,7 @@ footer {
   #ts-active-members {
     right: 4vw !important;
     left: auto !important;
-    top: 48% !important;
+    top: 38% !important;
     bottom: auto !important;
     transform: translateY(-50%) scale(0.85) !important;
     transform-origin: right center !important;
@@ -1617,7 +1617,7 @@ footer {
   #ts-active-members {
     left: 4vw !important;
     right: auto !important;
-    top: 440px !important;
+    top: 380px !important;
     bottom: auto !important;
     transform: scale(0.7) !important;
     transform-origin: left top !important;

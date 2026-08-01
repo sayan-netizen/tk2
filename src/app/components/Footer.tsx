@@ -1,5 +1,6 @@
 import { Instagram, Twitter, Linkedin, Youtube, Heart } from "lucide-react";
 import { Button } from "./ui/button";
+import { useComingSoon } from "../context/ComingSoonContext";
 
 const quickLinks = [
   { label: "Home", href: "#hero" },
@@ -26,6 +27,8 @@ const socials = [
 ];
 
 export default function Footer() {
+  const { openComingSoon } = useComingSoon();
+
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -59,8 +62,8 @@ export default function Footer() {
               tech fest of NIT Kurukshetra.
             </p>
             <Button
-              className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 rounded-none px-6 py-2 transition-all"
-              onClick={() => window.open("#", "_blank")}
+              className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 rounded-none px-6 py-2 transition-all cursor-pointer"
+              onClick={() => openComingSoon("Tech Kurukshetra 2026")}
             >
               Register Now →
             </Button>

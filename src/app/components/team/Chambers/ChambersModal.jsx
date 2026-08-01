@@ -34,17 +34,17 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
       clearTimeout(wheelTimer);
       wheelTimer = setTimeout(() => {
         wheelAccum = 0;
-      }, 350);
+      }, 250);
 
-      // Decreased horizontal scroll sensitivity: require delta threshold of 200 (up from 55)
-      if (Math.abs(wheelAccum) < 200) return;
+      // Increased horizontal scroll sensitivity
+      if (Math.abs(wheelAccum) < 30) return;
       const dir = wheelAccum > 0 ? 1 : -1;
       wheelAccum = 0;
 
       isCoolingDown = true;
       setTimeout(() => {
         isCoolingDown = false;
-      }, 450);
+      }, 150);
 
       setCurrentTeam((prev) => {
         const nextTeam = prev + dir;
@@ -67,11 +67,11 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
       const dx = touchStartRef.current.x - e.changedTouches[0].clientX;
       const dy = touchStartRef.current.y - e.changedTouches[0].clientY;
 
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 80) {
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
         isCoolingDown = true;
         setTimeout(() => {
           isCoolingDown = false;
-        }, 450);
+        }, 280);
 
         if (dx > 0) {
           setCurrentTeam((prev) => (prev < DEPTS.length - 1 ? prev + 1 : prev));
@@ -183,7 +183,6 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
         <div className="block lg:hidden h-full w-full overflow-y-auto overflow-x-hidden pt-24 pb-24 px-4 bg-[#F7F1E5]/95 backdrop-blur-2xl">
           <div className="mobile-departments-wrapper max-w-lg mx-auto">
             <div id="team-stage-label" className="mobile-stage-label text-center mb-8">
-              <span className="ts-eyebrow text-[#B8322C] font-accent text-xs font-bold tracking-[0.2em] uppercase">影の道場 — Shadow Dojo</span>
               <h2 className="ts-title font-display text-4xl text-[#1D1B18] mt-2 drop-shadow-sm">THE CHAMBERS</h2>
             </div>
             {DEPTS.map((dept, index) => (

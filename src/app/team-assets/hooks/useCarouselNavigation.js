@@ -25,10 +25,10 @@ export function useCarouselNavigation({
       clearTimeout(wheelTimerRef.current);
       wheelTimerRef.current = setTimeout(() => {
         wheelAccumRef.current = 0;
-      }, 350);
+      }, 250);
 
-      // Decreased horizontal scroll sensitivity: require delta of 200 (up from 55)
-      if (Math.abs(wheelAccumRef.current) < 200) return;
+      // Increased horizontal scroll sensitivity (threshold 70, cooldown 280ms)
+      if (Math.abs(wheelAccumRef.current) < 70) return;
 
       const dir = wheelAccumRef.current > 0 ? 1 : -1;
       wheelAccumRef.current = 0;
@@ -37,7 +37,7 @@ export function useCarouselNavigation({
       cooldownRef.current = true;
       setTimeout(() => {
         cooldownRef.current = false;
-      }, 450);
+      }, 280);
 
       if (currentPage === 0) {
         if (dir > 0) onGoToPage(1);

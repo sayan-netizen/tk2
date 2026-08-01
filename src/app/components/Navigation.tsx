@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
+import { useComingSoon } from "../context/ComingSoonContext";
 
 const navLogo = new URL(
   "../../../images/herosection/tech kurukshetra web design.svg",
@@ -29,6 +30,7 @@ const navLinks = [
 ];
 
 export default function Navigation() {
+  const { openComingSoon } = useComingSoon();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [open, setOpen] = useState(false);
@@ -81,12 +83,11 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] z-[10000] rounded-full border border-white/15 bg-black/45 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
-      style={{ WebkitBackdropFilter: "blur(20px) saturate(180%)" }}
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] z-[10000] rounded-full border border-transparent md:border-white/15 bg-transparent md:bg-black/45 md:backdrop-blur-xl md:shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
     >
       {/* SEPARATED LOGO - Edit size and location here */}
       {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
-      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex items-center">
+      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex items-center">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -135,8 +136,8 @@ export default function Navigation() {
       <div className="absolute right-6 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex items-center gap-3">
         <button
           id="register-nav-cta"
-          className="hidden h-[30px] w-[116px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex"
-          onClick={() => window.open("#", "_blank")}
+          className="hidden h-[30px] w-[116px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex cursor-pointer"
+          onClick={() => openComingSoon("Tech Kurukshetra 2026")}
           aria-label="Register now"
         >
           <img src={registerNow} alt="" className="h-full w-full object-contain" />

@@ -9,11 +9,12 @@ export const FACULTY_COORDINATORS = [
 ];
 
 export const LEADS_SUMMARY = [
-  { symbol: '伝', name: 'Kaze Whisperer', role: 'Social Media Lead', seed: 0, dept: 'Social Media' },
-  { symbol: '声', name: 'Hana Commander', role: 'PR Director', seed: 3, dept: 'Public Relations' },
-  { symbol: '築', name: 'Kai Genki', role: 'Lead Web Architect', seed: 5, dept: 'Web Dev' },
-  { symbol: '斬', name: 'Void Kira', role: 'Video Lead', seed: 8, dept: 'Video Editing' },
-  { symbol: '墨', name: 'Ink Kuro', role: 'Graphics Lead', seed: 10, dept: 'Graphics Chamber' }
+  { symbol: '市', name: 'Marketing Lead', role: 'Head of Marketing', seed: 0, dept: 'Marketing' },
+  { symbol: '社', name: 'Social Lead', role: 'Head of Social', seed: 1, dept: 'Social' },
+  { symbol: '図', name: 'Graphics Lead', role: 'Head of Graphics', seed: 2, dept: 'Graphics' },
+  { symbol: '技', name: 'Tech Lead', role: 'Head of Tech', seed: 3, dept: 'Tech' },
+  { symbol: '管', name: 'Management Lead', role: 'Head of Management', seed: 4, dept: 'Management and logistics' },
+  { symbol: '映', name: 'Videography Lead', role: 'Head of Videography', seed: 5, dept: 'Videography' }
 ];
 
 export const COORDINATORS = [
@@ -41,55 +42,57 @@ export const COORDINATORS_VOLUNTEERS = [
 
 export const DEPTS = [
   {
-    name: 'Social Media',
+    name: 'Marketing',
     kana: '第一の間 — I',
-    title: 'Social<br><span>Media</span>',
-    desc: 'Elite content creators weaving shadows into digital signals. Masters of narrative and reach.',
+    title: 'Marketing',
+    desc: 'Driving the vision forward. Masters of strategy and audience engagement.',
     members: [
-      { symbol: '伝', name: 'Kaze Whisperer', role: 'Lead Strategist', seed: 0, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '影', name: 'Shadow Scribe',  role: 'Content Specialist', seed: 1, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '響', name: 'Echo Phantom',   role: 'Community Ranger', seed: 2, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+      { symbol: '市', name: 'Marketing Lead', role: 'Head of Marketing', seed: 0, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
     ]
   },
   {
-    name: 'Public Relations',
+    name: 'Social',
     kana: '第二の間 — II',
-    title: 'Public<br><span>Relations</span>',
-    desc: 'Voices that carry across the void. Ambassadors of the shadow realm\'s story.',
+    title: 'Social',
+    desc: 'Connecting with the community. Voices that carry across the digital realm.',
     members: [
-      { symbol: '声', name: 'Hana Commander',  role: 'PR Director',    seed: 3, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '書', name: 'Scroll Messenger', role: 'Liaison Agent',  seed: 4, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+      { symbol: '社', name: 'Social Lead', role: 'Head of Social', seed: 1, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
     ]
   },
   {
-    name: 'Web Dev',
+    name: 'Graphics',
     kana: '第三の間 — III',
-    title: 'Web<br><span>Dev</span>',
+    title: 'Graphics',
+    desc: 'Ink and pixel, bound by fire. Artists whose work defines our identity.',
+    members: [
+      { symbol: '図', name: 'Graphics Lead', role: 'Head of Graphics', seed: 2, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Tech',
+    kana: '第四の間 — IV',
+    title: 'Tech',
     desc: 'Architects of the digital fortress. Code forged in the fire of the dojo.',
     members: [
-      { symbol: '築', name: 'Kai Genki',  role: 'Lead Architect',    seed: 5, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '術', name: 'Ashi Zora',  role: 'Frontend Shinobi',  seed: 6, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '霊', name: 'Yoru Bane',  role: 'Database Phantom',  seed: 7, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+      { symbol: '技', name: 'Tech Lead', role: 'Head of Tech', seed: 3, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
     ]
   },
   {
-    name: 'Video Editing',
-    kana: '第四の間 — IV',
-    title: 'Video<br><span>Editing</span>',
-    desc: 'Frame cutters who sculpt time. Phantom editors hiding in every cut.',
-    members: [
-      { symbol: '斬', name: 'Void Kira',  role: 'Frame Cutter', seed: 8, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '幻', name: 'Shiro Haze', role: 'VFX Shadow',   seed: 9, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
-    ]
-  },
-  {
-    name: 'Graphics Chamber',
+    name: 'Management and logistics',
     kana: '第五の間 — V',
-    title: 'Graphics<br><span>Chamber</span>',
-    desc: 'Ink and pixel, bound by fire. Artists whose work becomes war paint.',
+    title: 'Management<br><span>& Logistics</span>',
+    desc: 'The backbone of the operation. Orchestrating every detail with precision.',
     members: [
-      { symbol: '墨', name: 'Ink Kuro',  role: 'Brush Master',    seed: 10, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-      { symbol: '画', name: 'Fuji Nori', role: 'Pixel Assassin',  seed: 11, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+      { symbol: '管', name: 'Management Lead', role: 'Head of Management', seed: 4, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+    ]
+  },
+  {
+    name: 'Videography',
+    kana: '第六の間 — VI',
+    title: 'Videography',
+    desc: 'Frame cutters who sculpt time. Capturing moments that last forever.',
+    members: [
+      { symbol: '映', name: 'Videography Lead', role: 'Head of Videography', seed: 5, instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
     ]
   }
 ];

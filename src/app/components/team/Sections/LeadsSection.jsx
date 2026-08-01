@@ -168,7 +168,7 @@ export default function LeadsSection({ onOpenChambers, setHoveredTorii }) {
 
         {/* Vertical Calligraphic Japanese Text (Tategaki - 縦書き) */}
         <div className="absolute left-5 top-1/2 -translate-y-1/2 hidden sm:flex flex-col items-center gap-1 font-serif text-[10px] tracking-[0.35em] text-[#B8322C]/50 select-none pointer-events-none [writing-mode:vertical-rl] z-0">
-          五大領域 • 5 DOJO CHAMBERS
+          コアチーム • CORE TEAM
         </div>
         <div className="absolute right-5 top-1/2 -translate-y-1/2 hidden sm:flex flex-col items-center gap-1 font-serif text-[10px] tracking-[0.35em] text-[#B88A3D]/50 select-none pointer-events-none [writing-mode:vertical-rl] z-0">
           奥義 • MASTER ARCHITECTS
@@ -231,7 +231,7 @@ export default function LeadsSection({ onOpenChambers, setHoveredTorii }) {
           {/* 1. Category Eyebrow Badge */}
           <div className="inline-flex items-center gap-2 font-accent text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#B8322C] font-semibold bg-[#B8322C]/10 border border-[#B8322C]/30 px-4 py-1.5 rounded-full shadow-sm">
             <Users className="size-3.5 text-[#B8322C]" />
-            <span>The Shadow Dojo • 5 Chambers</span>
+            <span>Core Team • Leads</span>
           </div>
 
           {/* 2. Main Title */}
@@ -242,7 +242,7 @@ export default function LeadsSection({ onOpenChambers, setHoveredTorii }) {
 
           {/* 3. Description Paragraph - Constrained to prevent touching corners */}
           <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-[#1D1B18]/80 font-sans font-medium max-w-[280px] sm:max-w-[320px] mx-auto px-4 mb-2">
-            Step inside the five specialized chambers of the Shadow Dojo where lead architects, strategists, and artists craft Tech Kurukshetra.
+            Meet the core team and leads who architect, design, and manage Tech Kurukshetra.
           </p>
 
           {/* 4. PREMIUM Redirect Button */}
