@@ -28,19 +28,20 @@ function CountdownUnit({
     >
       <div className="relative group">
         {/* Glow ring */}
-        <div className="absolute -inset-[1px] rounded-md bg-gradient-to-b from-[#b91919]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute -inset-[2px] rounded-md bg-gradient-to-b from-[#d51e1e]/80 via-[#b91919]/35 to-transparent opacity-80 blur-[2px] transition-opacity duration-500 group-hover:opacity-100" />
 
         {/* Main box */}
-        <div className="relative w-[76px] h-[76px] sm:w-[96px] sm:h-[96px] lg:w-[120px] lg:h-[120px] flex items-center justify-center border border-[#b91919]/30 bg-[#EDE0C4] overflow-hidden shadow-md">
-          <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-[#CDBF9E]/20" />
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#b91919]/50 to-transparent" />
-          <span className="font-display text-[36px] sm:text-[46px] lg:text-[58px] text-[#1A1208] leading-none relative z-10 tabular-nums">
+        <div className="relative w-[88px] h-[88px] sm:w-[104px] sm:h-[104px] lg:w-[140px] lg:h-[140px] flex items-center justify-center border border-[#d51e1e]/70 bg-[#090706]/92 overflow-hidden shadow-[0_0_28px_rgba(185,25,25,0.28),inset_0_0_24px_rgba(0,0,0,0.82)] backdrop-blur-sm">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(213,30,30,0.24),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%,rgba(0,0,0,0.42))]" />
+          <div className="absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-[#ff2a2a]/90 to-transparent" />
+          <div className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/70 to-transparent" />
+          <span className="font-display text-[42px] sm:text-[54px] lg:text-[74px] font-bold text-[#ff2626] leading-none relative z-10 tabular-nums drop-shadow-[0_0_14px_rgba(213,30,30,0.85)]">
             {display}
           </span>
         </div>
       </div>
 
-      <span className="font-accent text-[9px] sm:text-[11px] text-[#9A8060] mt-2.5 uppercase tracking-[0.28em]">
+      <span className="font-accent text-sm sm:text-base lg:text-lg font-bold text-white mt-3 uppercase tracking-[0.18em] drop-shadow-[0_0_12px_rgba(0,0,0,0.95)]">
         {label}
       </span>
     </motion.div>
@@ -50,13 +51,13 @@ function CountdownUnit({
 function Separator({ index }: { index: number }) {
   return (
     <motion.div
-      className="flex flex-col gap-2 pb-6 sm:pb-8"
+      className="hidden sm:flex flex-col gap-2 pb-7 sm:pb-9"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
     >
-      <div className="w-[5px] h-[5px] rounded-full bg-[#b91919]/50" />
-      <div className="w-[5px] h-[5px] rounded-full bg-[#b91919]/50" />
+      <div className="w-[6px] h-[6px] rounded-full bg-[#ff2626] shadow-[0_0_10px_rgba(213,30,30,0.8)]" />
+      <div className="w-[6px] h-[6px] rounded-full bg-[#ff2626] shadow-[0_0_10px_rgba(213,30,30,0.8)]" />
     </motion.div>
   );
 }
@@ -127,16 +128,16 @@ export default function CountdownSection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-accent text-[10px] sm:text-xs tracking-[0.35em] uppercase text-[#b91919] block">
+          <span className="font-accent text-sm sm:text-base font-bold tracking-[0.32em] uppercase text-[#8d0f0f] drop-shadow-[0_1px_10px_rgba(245,236,216,0.95)] block">
             Event Commences In
           </span>
         </motion.div>
 
         {/* Countdown or live/ended */}
         {units ? (
-          <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 place-items-center gap-x-8 gap-y-7 sm:flex sm:items-center sm:justify-center sm:gap-5 lg:gap-10">
             {units.map((unit, i) => (
-              <div key={unit.label} className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+              <div key={unit.label} className="flex items-center justify-center gap-4 sm:gap-5 lg:gap-10">
                 <CountdownUnit value={unit.value} label={unit.label} index={i} />
                 {i < units.length - 1 && <Separator index={i} />}
               </div>
@@ -149,13 +150,13 @@ export default function CountdownSection() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-3 px-6 py-3 border border-[#b91919]/40 bg-[#EDE0C4]">
+            <div className="inline-flex items-center gap-3 px-6 py-3 border border-[#d51e1e]/60 bg-[#090706]/90 shadow-[0_0_24px_rgba(185,25,25,0.2)]">
               <div
                 className={`w-2 h-2 rounded-full ${
-                  isOngoing ? "bg-[#d51e1e] animate-pulse" : "bg-[#CDBF9E]"
+                  isOngoing ? "bg-[#ff2626] animate-pulse" : "bg-[#3a3834]"
                 }`}
               />
-              <span className="font-accent text-sm tracking-[0.2em] uppercase text-[#1A1208]">
+              <span className="font-accent text-base font-bold tracking-[0.18em] uppercase text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.65)]">
                 {isOngoing ? "Event is Live Now" : "Tech Kurukshetra 2026 Has Concluded"}
               </span>
             </div>
@@ -164,12 +165,17 @@ export default function CountdownSection() {
 
         {/* Sub-label */}
         <motion.p
-          className="text-center font-accent text-[10px] sm:text-xs text-[#9A8060] tracking-[0.2em] uppercase mt-8"
+          className="mx-auto mt-10 w-fit border border-[#d51e1e]/55 bg-[#090706]/80 px-5 py-3 text-center font-accent text-base font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_24px_rgba(185,25,25,0.24),inset_0_0_18px_rgba(0,0,0,0.7)] drop-shadow-[0_0_14px_rgba(213,30,30,0.45)] sm:px-7 sm:text-xl lg:text-2xl"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.8 }}
         >
-          5th – 6th September 2026 &nbsp;·&nbsp; University of Engineering &amp; Management, Kolkata
+          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">5th</span>
+          <span className="px-2 text-[#f5f1e8] sm:px-3">-</span>
+          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">6th</span>
+          <span className="block pt-1 text-sm tracking-[0.28em] text-[#f5f1e8] sm:inline sm:pl-3 sm:pt-0 sm:text-xl lg:text-2xl">
+            September 2026
+          </span>
         </motion.p>
       </div>
     </section>
