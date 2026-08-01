@@ -180,11 +180,11 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
         </div>
 
         {/* MOBILE VIEW (Vertical List) */}
-        <div className="block lg:hidden h-full w-full overflow-y-auto overflow-x-hidden pt-24 pb-24 px-4 bg-[#0a0a0a]/90 backdrop-blur-md">
+        <div className="block lg:hidden h-full w-full overflow-y-auto overflow-x-hidden pt-24 pb-24 px-4 bg-[#F7F1E5]/95 backdrop-blur-2xl">
           <div className="mobile-departments-wrapper max-w-lg mx-auto">
             <div id="team-stage-label" className="mobile-stage-label text-center mb-8">
               <span className="ts-eyebrow text-[#B8322C] font-accent text-xs font-bold tracking-[0.2em] uppercase">影の道場 — Shadow Dojo</span>
-              <h2 className="ts-title font-display text-4xl text-white mt-2 drop-shadow-lg">THE CHAMBERS</h2>
+              <h2 className="ts-title font-display text-4xl text-[#1D1B18] mt-2 drop-shadow-sm">THE CHAMBERS</h2>
             </div>
             {DEPTS.map((dept, index) => (
               <MobileDepartment

@@ -73,8 +73,8 @@
   .mobile-dept-section {
     position: relative;
     width: 100%;
-    padding: 4rem 6vw;
-    border-bottom: 1px solid rgba(248,243,230,0.05);
+    padding: 3rem 4vw;
+    border-bottom: 1px solid rgba(184, 50, 44, 0.15);
   }
 
   .mobile-dept-header {
@@ -82,17 +82,16 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    margin-bottom: 3rem;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    padding: 1.5rem 6vw 1.5rem 6vw;
-    margin-left: -6vw;
-    margin-right: -6vw;
-    background: rgba(10, 10, 10, 0.65);
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 10;
+    padding: 1.8rem 1.8rem;
+    background: rgba(247, 241, 229, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 60, 0, 0.2);
+    border: 1px solid rgba(184, 50, 44, 0.25);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(29, 27, 24, 0.08);
   }
 
   .mobile-dept-text {
@@ -100,19 +99,20 @@
     min-width: 0;
     position: relative;
     z-index: 2;
-    max-width: 75%;
+    max-width: 70%;
   }
 
   .mobile-dept-image {
     position: absolute;
-    right: -2vw;
-    top: 1.2rem;
-    width: 110px;
-    height: 110px;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid rgba(248, 243, 230, 0.15);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(184, 50, 44, 0.35);
+    box-shadow: 0 8px 25px rgba(29, 27, 24, 0.15);
     z-index: 1;
   }
 
@@ -120,8 +120,8 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 85% center; /* Target the artwork on the right side of the horizontal banner */
-    opacity: 0.8;
+    object-position: 85% center;
+    opacity: 0.9;
   }
 
   .mobile-ts-kana {
@@ -130,21 +130,21 @@
     letter-spacing: 0.3em;
     color: var(--blood-bright);
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     display: block;
-    opacity: 0.9;
+    font-weight: 700;
   }
 
   .mobile-ts-title {
     font-family: 'Oswald', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.2rem, 7vw, 3rem);
+    font-size: clamp(1.8rem, 6.5vw, 2.5rem);
     line-height: 1.1;
-    color: var(--void);
+    color: var(--paper);
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    margin-bottom: 1.1rem;
-    text-shadow: 0 2px 20px rgba(44,42,38,0.4);
+    margin-bottom: 0.8rem;
+    text-shadow: 0 1px 4px rgba(29, 27, 24, 0.1);
   }
   
   .mobile-ts-title span {
@@ -153,27 +153,31 @@
 
   .mobile-ts-desc {
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(248, 243, 230, 0.72);
-    letter-spacing: 0.03em;
-    margin-bottom: 2rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(29, 27, 24, 0.82);
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
     max-width: 100%;
+    font-weight: 500;
   }
 
   .mobile-explore-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background-color: transparent;
-    border: 1px solid var(--blood-bright);
-    color: var(--void);
+    background: linear-gradient(135deg, #1D1B18 0%, #2A2621 100%);
+    border: 1px solid rgba(184, 138, 61, 0.4);
+    color: #EFE9DD;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.85rem 2rem;
-    border-radius: 2px;
+    padding: 0.75rem 1.6rem;
+    border-radius: 9999px;
+    box-shadow: 0 8px 20px rgba(29, 27, 24, 0.3);
+    transition: all 0.3s ease;
   }
 
   /* MOBILE CARDS GRID */
