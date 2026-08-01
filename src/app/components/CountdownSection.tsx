@@ -99,15 +99,24 @@ export default function CountdownSection() {
   return (
     <section
       id="countdown"
-      className="relative py-16 sm:py-20 overflow-hidden bg-[#EDE0C4]"
+      className="relative py-16 sm:py-20 overflow-hidden bg-[#120f0b]"
       ref={sectionRef}
     >
+      <img
+        src="/images/countdown-scroll-bg.png"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover object-center"
+      />
+
       {/* Decorative top/bottom lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/40 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/25 to-transparent" />
 
       {/* Subtle warm ambient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F5ECD8]/30 via-transparent to-[#F5ECD8]/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-[#F5ECD8]/5 to-black/40 pointer-events-none" />
+      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/65 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/5 blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[960px] mx-auto px-5">
