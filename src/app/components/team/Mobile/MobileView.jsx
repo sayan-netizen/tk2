@@ -3,16 +3,19 @@ import ConvenerSection from '../Sections/ConvenerSection';
 import FacultySection from '../Sections/FacultySection';
 import LeadsSection from '../Sections/LeadsSection';
 import CoordinatorsSection from '../Sections/CoordinatorsSection';
+import VolunteersSection from '../Sections/VolunteersSection';
 import ConvenerModal from '../Chambers/ConvenerModal';
 import FacultyModal from '../Chambers/FacultyModal';
 import ChambersModal from '../Chambers/ChambersModal';
 import CoordinatorsModal from '../Chambers/CoordinatorsModal';
+import VolunteersModal from '../Chambers/VolunteersModal';
 
 export default function MobileView({ onBurst, setHoveredTorii }) {
   const [isConvenerOpen, setIsConvenerOpen] = useState(false);
   const [isFacultyOpen, setIsFacultyOpen] = useState(false);
   const [isChambersOpen, setIsChambersOpen] = useState(false);
   const [isRosterOpen, setIsRosterOpen] = useState(false);
+  const [isVolunteersOpen, setIsVolunteersOpen] = useState(false);
 
   return (
     <div id="mobile-view" className="vertical-team-layout flex flex-col items-center gap-12 py-6">
@@ -34,9 +37,15 @@ export default function MobileView({ onBurst, setHoveredTorii }) {
         setHoveredTorii={setHoveredTorii}
       />
 
-      {/* CIRCULAR BANNER 4: MEET THE COORDINATORS & VOLUNTEERS */}
+      {/* CIRCULAR BANNER 4: MEET THE COORDINATORS */}
       <CoordinatorsSection
-        onOpenRoster={() => setIsRosterOpen(true)}
+        onOpenCoordinators={() => setIsRosterOpen(true)}
+        setHoveredTorii={setHoveredTorii}
+      />
+
+      {/* CIRCULAR BANNER 5: MEET THE VOLUNTEERS */}
+      <VolunteersSection
+        onOpenVolunteers={() => setIsVolunteersOpen(true)}
         setHoveredTorii={setHoveredTorii}
       />
 
@@ -64,10 +73,18 @@ export default function MobileView({ onBurst, setHoveredTorii }) {
         setHoveredTorii={setHoveredTorii}
       />
 
-      {/* COORDINATORS & VOLUNTEERS MODAL */}
+      {/* COORDINATORS MODAL */}
       <CoordinatorsModal
         isOpen={isRosterOpen}
         onClose={() => setIsRosterOpen(false)}
+        onBurst={onBurst}
+        setHoveredTorii={setHoveredTorii}
+      />
+
+      {/* VOLUNTEERS MODAL */}
+      <VolunteersModal
+        isOpen={isVolunteersOpen}
+        onClose={() => setIsVolunteersOpen(false)}
         onBurst={onBurst}
         setHoveredTorii={setHoveredTorii}
       />

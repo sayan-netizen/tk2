@@ -57,17 +57,20 @@ export default function TeamBanner() {
             </p>
           </div>
 
-          {/* Light Theme Redirect Button with Custom Cursor & Scroll-to-Top Support */}
+          {/* PREMIUM Redirect Button with Katana Sweep */}
           <motion.a
             href="#team"
             onClick={handleRedirect}
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="group relative inline-flex shrink-0 items-center gap-5 rounded-2xl border border-[#B8322C] bg-[#B8322C] hover:bg-[#d54536] px-9 py-6 font-accent text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-white shadow-[0_8px_25px_rgba(184,50,44,0.35)] transition-all duration-300 pointer-events-auto cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group/btn relative inline-flex shrink-0 items-center gap-4 rounded-full bg-gradient-to-br from-[#1D1B18] to-[#2A2621] px-8 py-4 sm:px-10 sm:py-5 font-accent text-xs sm:text-sm font-bold uppercase tracking-[0.22em] text-[#EFE9DD] shadow-[0_12px_30px_rgba(29,27,24,0.4)] transition-all duration-300 pointer-events-auto cursor-pointer border border-[#B88A3D]/30 hover:border-[#B88A3D] hover:shadow-[0_18px_40px_rgba(184,138,61,0.25)] overflow-hidden"
           >
-            <span>ENTER THE CHAMBERS</span>
-            <span className="flex size-10 items-center justify-center rounded-xl bg-black/20 text-white backdrop-blur-sm transition-transform duration-300 group-hover:rotate-45">
-              <ArrowUpRight className="size-5" />
+            {/* Katana Light Sweep on Hover */}
+            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/40 to-transparent group-hover/btn:translate-x-[200%] transition-transform duration-700 ease-in-out" />
+            
+            <span className="relative z-10 transition-colors group-hover/btn:text-white">ENTER THE CHAMBERS</span>
+            <span className="relative z-10 flex size-10 sm:size-12 items-center justify-center rounded-full bg-[#B8322C] text-white shadow-[0_0_15px_rgba(184,50,44,0.5)] transition-transform duration-300 group-hover/btn:rotate-45 group-hover/btn:scale-110">
+              <ArrowUpRight className="size-5" strokeWidth={2.5} />
             </span>
           </motion.a>
         </div>

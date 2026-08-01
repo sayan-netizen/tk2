@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { ArrowUpRight, Flame } from "lucide-react";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
 
-export default function CoordinatorsSection({ onOpenCoordinators, setHoveredTorii }) {
+export default function CoordinatorsSection({ onOpenCoordinators, onOpenRoster, setHoveredTorii }) {
   const [isAnimating, setIsAnimating] = useState(false);
   const cardRef = useRef(null);
 
@@ -40,7 +40,8 @@ export default function CoordinatorsSection({ onOpenCoordinators, setHoveredTori
     x.set(0);
     y.set(0);
     setTimeout(() => {
-      onOpenCoordinators();
+      if (typeof onOpenCoordinators === 'function') onOpenCoordinators();
+      else if (typeof onOpenRoster === 'function') onOpenRoster();
     }, 250);
     setTimeout(() => {
       setIsAnimating(false);
@@ -166,11 +167,11 @@ export default function CoordinatorsSection({ onOpenCoordinators, setHoveredTori
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={(e) => setHoveredTorii && setHoveredTorii(e.currentTarget)}
-            className="group/btn relative inline-flex items-center gap-3.5 rounded-full bg-gradient-to-br from-[#1D1B18] to-[#2A2621] px-7 py-3.5 font-accent text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#EFE9DD] shadow-[0_10px_25px_rgba(29,27,24,0.4)] transition-all duration-300 pointer-events-auto cursor-pointer mt-2 sm:mt-4 border border-[#B88A3D]/30 hover:border-[#B88A3D] hover:shadow-[0_15px_35px_rgba(184,138,61,0.25)] overflow-hidden"
+            className="group/btn relative inline-flex shrink-0 items-center justify-center gap-5 rounded-full bg-gradient-to-br from-[#1D1B18] to-[#2A2621] px-12 py-4.5 font-accent text-[11px] sm:text-sm font-bold uppercase tracking-[0.2em] text-[#EFE9DD] shadow-[0_10px_25px_rgba(29,27,24,0.4)] transition-all duration-300 pointer-events-auto cursor-pointer mt-2 sm:mt-4 border border-[#B88A3D]/30 hover:border-[#B88A3D] hover:shadow-[0_15px_35px_rgba(184,138,61,0.25)] overflow-hidden"
           >
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/40 to-transparent group-hover/btn:translate-x-[200%] transition-transform duration-700 ease-in-out" />
             
-            <span className="relative z-10 transition-colors group-hover/btn:text-white">VIEW COORDINATORS</span>
+            <span className="relative z-10 transition-colors group-hover/btn:text-white whitespace-nowrap">VIEW COORDINATORS</span>
             <span className="relative z-10 flex size-8 items-center justify-center rounded-full bg-[#B8322C] text-white shadow-[0_0_12px_rgba(184,50,44,0.5)] transition-transform duration-300 group-hover/btn:rotate-45 group-hover/btn:scale-110">
               <ArrowUpRight className="size-4" strokeWidth={2.5} />
             </span>

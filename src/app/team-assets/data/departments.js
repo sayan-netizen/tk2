@@ -16,13 +16,27 @@ export const LEADS_SUMMARY = [
   { symbol: '墨', name: 'Ink Kuro', role: 'Graphics Lead', seed: 10, dept: 'Graphics Chamber' }
 ];
 
-export const COORDINATORS_VOLUNTEERS = [
+export const COORDINATORS = [
   { symbol: '協', name: 'Rohan Verma', role: 'Head Coordinator', seed: 200, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
   { symbol: '統', name: 'Ananya Roy', role: 'Event Coordinator', seed: 201, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-  { symbol: '運', name: 'Vikram Sethi', role: 'Logistics Lead', seed: 202, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-  { symbol: '奉', name: 'Priya Das', role: 'Senior Volunteer', seed: 203, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-  { symbol: '力', name: 'Amit Kumar', role: 'Technical Volunteer', seed: 204, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
-  { symbol: '和', name: 'Sneha Kapoor', role: 'Operations Volunteer', seed: 205, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+  { symbol: '運', name: 'Vikram Sethi', role: 'Logistics Lead Coordinator', seed: 202, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '技', name: 'Devika Sharma', role: 'Technical Coordinator', seed: 203, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '広', name: 'Arjun Mehta', role: 'PR & Media Coordinator', seed: 204, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '創', name: 'Ishita Gupta', role: 'Creative & Stage Coordinator', seed: 205, category: 'Coordinator', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+];
+
+export const VOLUNTEERS = [
+  { symbol: '奉', name: 'Priya Das', role: 'Senior Student Volunteer', seed: 210, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '力', name: 'Amit Kumar', role: 'Technical Support Volunteer', seed: 211, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '和', name: 'Sneha Kapoor', role: 'Operations & Crowd Volunteer', seed: 212, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '心', name: 'Kabir Malhotra', role: 'Hospitality Volunteer', seed: 213, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '光', name: 'Riya Nair', role: 'Media & Design Volunteer', seed: 214, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' },
+  { symbol: '疾', name: 'Siddharth Rao', role: 'Ground Logistics Volunteer', seed: 215, category: 'Volunteer', instagram: 'https://instagram.com', linkedin: 'https://linkedin.com' }
+];
+
+export const COORDINATORS_VOLUNTEERS = [
+  ...COORDINATORS,
+  ...VOLUNTEERS
 ];
 
 export const DEPTS = [

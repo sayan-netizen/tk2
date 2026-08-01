@@ -20,39 +20,56 @@ const TeamPage = lazy(() => import("./TeamPage"));
 const EventPage = lazy(() => import("./EventPage"));
 
 export default function App() {
-  const [isTeamPage, setIsTeamPage] = useState(() => window.location.hash === "#team");
   const [burstOrigin, setBurstOrigin] = useState<any>(null);
   const [hoveredTorii, setHoveredTorii] = useState<any>(null);
   const { pointerRef } = usePointer();
   const isMobile = useMediaQuery("(max-width: 768px)");
-
-  useEffect(() => {
-    const syncRoute = () => {
-      const onTeam = window.location.hash === "#team";
-      setIsTeamPage(onTeam);
-      window.scrollTo(0, 0);
-    };
   const [route, setRoute] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const syncRoute = () => setRoute(window.location.hash);
+    const syncRoute = () => {
+      setRoute(window.location.hash);
+      window.scrollTo(0, 0);
+    };
     window.addEventListener("hashchange", syncRoute);
     return () => window.removeEventListener("hashchange", syncRoute);
   }, []);
 
   if (route === "#team") {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
-        <TeamPage />
-      </Suspense>
+      <>
+        <FXCanvas
+          pointerRef={pointerRef}
+          burstOrigin={burstOrigin}
+          hoveredTorii={hoveredTorii}
+          isMobile={isMobile}
+        />
+        <NinjaCursor />
+        <Background />
+        <Navigation />
+        <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
+          <TeamPage setBurstOrigin={setBurstOrigin} setHoveredTorii={setHoveredTorii} />
+        </Suspense>
+      </>
     );
   }
 
   if (route === "#events-page") {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
-        <EventPage />
-      </Suspense>
+      <>
+        <FXCanvas
+          pointerRef={pointerRef}
+          burstOrigin={burstOrigin}
+          hoveredTorii={hoveredTorii}
+          isMobile={isMobile}
+        />
+        <NinjaCursor />
+        <Background />
+        <Navigation />
+        <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
+          <EventPage />
+        </Suspense>
+      </>
     );
   }
 
@@ -67,37 +84,20 @@ export default function App() {
       <NinjaCursor />
       <Background />
       <Navigation />
-      {isTeamPage ? (
-        <Suspense fallback={<div className="min-h-screen bg-[#0A0A0A]" />}>
-          <TeamPage setBurstOrigin={setBurstOrigin} setHoveredTorii={setHoveredTorii} />
-        </Suspense>
-      ) : (
-        <div className="main-site min-h-screen text-[#f1eeee]">
-          <IntroOverlay />
-          <main>
-            <HeroSection />
-            <AboutSection />
-            <ScheduleSection />
-            <EventsSection />
-            <TeamBanner />
-            <SponsorsSection />
-            <VenueSection />
-          </main>
-          <Footer />
-        </div>
-      )}
+      <div className="main-site min-h-screen text-[#f1eeee]">
+        <IntroOverlay />
+        <main>
+          <HeroSection />
+          <CountdownSection />
+          <AboutSection />
+          <ScheduleSection />
+          <EventsSection />
+          <TeamBanner />
+          <SponsorsSection />
+          <VenueSection />
+        </main>
+        <Footer />
+      </div>
     </>
-      <main>
-        <HeroSection />
-        <CountdownSection />
-        <AboutSection />
-        <ScheduleSection />
-        <EventsSection />
-        <TeamBanner />
-        <SponsorsSection />
-        <VenueSection />
-      </main>
-      <Footer />
-    </div>
   );
 }

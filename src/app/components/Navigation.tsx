@@ -22,7 +22,7 @@ const navLinks = [
   { label: "HOME", href: "#hero" },
   { label: "ABOUT", href: "#about" },
   { label: "SCHEDULE", href: "#schedule" },
-  { label: "EVENTS", href: "#events" },
+  { label: "EVENTS", href: "#events-page" },
   { label: "SPONSORS", href: "#sponsors" },
   { label: "TEAM", href: "#team" },
   { label: "CONTACT", href: "#contact" },
@@ -58,25 +58,25 @@ export default function Navigation() {
 
   const handleNavClick = (href: string) => {
     setOpen(false);
-    if (href === "#team") {
-      window.location.hash = "team";
+    if (href === "#team" || href === "#events-page") {
+      window.location.hash = href.replace("#", "");
       return;
     }
-    if (window.location.hash === "#team") {
+    if (window.location.hash === "#team" || window.location.hash === "#events-page") {
       window.location.hash = href;
       setTimeout(() => {
         const targetId = href.startsWith('#') ? href : `#${href}`;
         const el = document.querySelector(targetId);
         if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 50);
+      }, 100);
       return;
     }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const isTeam = typeof window !== "undefined" && window.location.hash === "#team";
-  const currentActiveSection = isTeam ? "team" : activeSection;
+  const isDedicatedPage = typeof window !== "undefined" && (window.location.hash === "#team" || window.location.hash === "#events-page");
+  const currentActiveSection = isDedicatedPage ? window.location.hash.slice(1) : activeSection;
 
   return (
     <nav
@@ -86,7 +86,7 @@ export default function Navigation() {
     >
       {/* SEPARATED LOGO - Edit size and location here */}
       {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
-      <div className="absolute left-5 sm:left-7 top-[6px] z-50">
+      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex items-center">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -96,7 +96,7 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[44px] w-[110px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            className="h-[36px] sm:h-[44px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
       </div>
@@ -131,10 +131,8 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* SEPARATED REGISTER BUTTON - Edit size and location here */}
-      {/* -> Change 'right-[...]' and 'top-[...]' in the div below to move the button */}
-      <div className="absolute right-5 sm:right-7 top-[12px] z-50 flex items-center gap-3">
-        {/* -> Change 'h-[...]' and 'w-[...]' in the button below to resize the button */}
+      {/* RIGHT ACTION ITEMS: REGISTER & MOBILE HAMBURGER */}
+      <div className="absolute right-6 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex items-center gap-3">
         <button
           id="register-nav-cta"
           className="hidden h-[30px] w-[116px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex"
@@ -143,45 +141,46 @@ export default function Navigation() {
         >
           <img src={registerNow} alt="" className="h-full w-full object-contain" />
         </button>
-      </div>
 
-      {/* Mobile hamburger */}
-      <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger asChild>
-          <button
-            id="mobile-menu-trigger"
-            className="fixed right-4 top-3 z-[120] flex h-10 w-10 items-center justify-center rounded-none border border-[#b91919]/50 bg-black/90 text-[#F5F5F5] shadow-[0_0_15px_rgba(185,25,25,0.15)] transition-all hover:bg-black hover:border-[#b91919] hover:shadow-[0_0_20px_rgba(185,25,25,0.25)] lg:hidden"
-            aria-label="Open menu"
+        {/* Mobile hamburger button */}
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <button
+              id="mobile-menu-trigger"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d51e1e]/40 bg-[#d51e1e]/15 text-[#F5F5F5] shadow-[0_0_12px_rgba(213,30,30,0.25)] transition-all hover:bg-[#d51e1e] hover:text-white hover:shadow-[0_0_18px_rgba(213,30,30,0.5)] active:scale-95 lg:hidden cursor-pointer"
+              aria-label="Open menu"
+            >
+              <Menu className="size-4.5" />
+            </button>
+          </SheetTrigger>
+          <SheetContent
+            side="right"
+            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-64 p-6 flex flex-col justify-center"
           >
-            <Menu className="size-5" />
-          </button>
-        </SheetTrigger>
-        <SheetContent
-          side="right"
-          className="bg-black/95 border-l border-[#b91919]/30 w-72"
-        >
-          <SheetHeader>
-            <SheetTitle className="font-heading text-[#F5F5F5] text-lg tracking-wider">
-              Navigation
-            </SheetTitle>
-          </SheetHeader>
-          <div className="flex flex-col gap-1 mt-6 px-4">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`text-left px-4 py-3 rounded-none text-[15px] tracking-[0.06em] font-accent transition-all cursor-pointer border-l-2 ${
-                  activeSection === link.href.slice(1)
-                    ? "bg-black/5 text-[#f5f5f5] border-[#b91919] shadow-[inset_10px_0_15px_-10px_rgba(185,25,25,0.15)]"
-                    : "border-transparent text-[#999] hover:text-[#F5F5F5] hover:border-[#b91919]/50 hover:bg-black/20"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-        </SheetContent>
-      </Sheet>
+            <div className="flex flex-col gap-2 my-auto pt-6">
+              {navLinks.map((link) => {
+                const isActive = currentActiveSection === link.href.slice(1);
+                return (
+                  <button
+                    key={link.href}
+                    onClick={() => handleNavClick(link.href)}
+                    className={`text-left px-5 py-3.5 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${
+                      isActive
+                        ? "bg-[#d51e1e]/20 text-white border-[#d51e1e]/50 font-bold shadow-[0_0_15px_rgba(213,30,30,0.25)]"
+                        : "border-transparent text-[#aaa] hover:text-white hover:bg-white/5 hover:border-white/10"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {isActive && (
+                      <span className="size-2 rounded-full bg-[#d51e1e] shadow-[0_0_8px_#d51e1e]" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
 
     </nav>
   );

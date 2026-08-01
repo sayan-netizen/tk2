@@ -11,12 +11,13 @@ export function useCarouselNavigation({
 }) {
   const wheelAccumRef = useRef(0);
   const wheelTimerRef = useRef(null);
+  const cooldownRef = useRef(false);
   const touchStartRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const handleWheel = (e) => {
       e.preventDefault();
-      if (pageAnimating || teamAnimating) return;
+      if (pageAnimating || teamAnimating || cooldownRef.current) return;
 
       const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       wheelAccumRef.current += delta;
@@ -24,12 +25,19 @@ export function useCarouselNavigation({
       clearTimeout(wheelTimerRef.current);
       wheelTimerRef.current = setTimeout(() => {
         wheelAccumRef.current = 0;
-      }, 300);
+      }, 350);
 
-      if (Math.abs(wheelAccumRef.current) < 55) return;
+      // Decreased horizontal scroll sensitivity: require delta of 200 (up from 55)
+      if (Math.abs(wheelAccumRef.current) < 200) return;
 
       const dir = wheelAccumRef.current > 0 ? 1 : -1;
       wheelAccumRef.current = 0;
+
+      // Cooldown to prevent trackpad momentum from rapidly skipping slides
+      cooldownRef.current = true;
+      setTimeout(() => {
+        cooldownRef.current = false;
+      }, 450);
 
       if (currentPage === 0) {
         if (dir > 0) onGoToPage(1);
@@ -74,22 +82,27 @@ export function useCarouselNavigation({
     };
 
     const handleTouchEnd = (e) => {
-      if (pageAnimating || teamAnimating) return;
+      if (pageAnimating || teamAnimating || cooldownRef.current) return;
       
       const dx = touchStartRef.current.x - e.changedTouches[0].clientX;
       const dy = touchStartRef.current.y - e.changedTouches[0].clientY;
 
       if (currentPage === 0) {
-        if (dx < -50) onGoToPage(1);
+        if (dx > 80 || dy > 80) onGoToPage(1);
       } else if (currentPage === 1) {
-        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 45) {
+        if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 80) {
+          cooldownRef.current = true;
+          setTimeout(() => {
+            cooldownRef.current = false;
+          }, 450);
+
           if (dx > 0) {
             if (currentTeam < totalDepts - 1) onGoToTeam(currentTeam + 1);
           } else {
             if (currentTeam > 0) onGoToTeam(currentTeam - 1);
             else onGoToPage(0);
           }
-        } else if (dx > 50 && currentTeam === 0) {
+        } else if (dx < -80 && currentTeam === 0) {
           onGoToPage(0);
         }
       }

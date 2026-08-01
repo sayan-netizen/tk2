@@ -50,7 +50,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
 
   // Initialize embers once
   useEffect(() => {
-    const MAX_EMBERS = isMobile ? 150 : 450;
+    const MAX_EMBERS = isMobile ? 50 : 150;
     const embers = [];
     for(let i = 0; i < MAX_EMBERS; i++) {
       const isYellow = Math.random() < 0.4;
@@ -60,7 +60,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       embers.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        r: rand(0.6, 1.8),
+        r: rand(0.3, 1.0),
         vx: rand(-0.4, 0.4),
         vy: rand(-0.2, -0.9),
         life: rand(0, Math.PI * 2),
@@ -183,46 +183,6 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
     let animationFrameId;
 
     const tick = () => {
-      // Hover ooze
-      if (hoveredTorii) {
-        oozeAccumRef.current += 1.3;
-        while (oozeAccumRef.current >= 1) {
-          const portrait = hoveredTorii.querySelector('.portrait-symbol-container');
-          const target = portrait || hoveredTorii;
-          const rect = target.getBoundingClientRect();
-          const fcx = rect.left + rect.width / 2;
-          const halfW = rect.width * 0.52;
-          const ex = fcx + rand(-halfW, halfW);
-          const ey = rect.top + rand(-3, 5);
-          
-          const spread = 0.45;
-          const angle  = -Math.PI / 2 + rand(-spread, spread);
-          const speed  = rand(0.2, 0.9);
-      
-          const isGold    = Math.random() < 0.30;
-          const isCrimson = !isGold && Math.random() < 0.28;
-          const color = isGold    ? '255, 215, 0'
-                      : isCrimson ? '200, 35, 15'
-                      :              '255, 85, 20';
-          const r = isGold ? rand(2.5, 5.2) : rand(1.4, 3.5);
-      
-          toriiBurstsRef.current.push({
-            x: ex, y: ey,
-            vx: Math.cos(angle) * speed,
-            vy: Math.sin(angle) * speed,
-            life: rand(0.75, 1.0),
-            decay: rand(0.003, 0.010),
-            r, color,
-            trail: Math.random() < 0.35,
-            px: ex, py: ey,
-            isOoze: true
-          });
-          oozeAccumRef.current -= 1;
-        }
-      } else {
-        oozeAccumRef.current = 0;
-      }
-
       ctx.clearRect(0, 0, fW, fH);
       
       const p = pointerRef.current;

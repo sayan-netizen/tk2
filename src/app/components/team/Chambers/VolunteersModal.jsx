@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import MemberCard from '../Members/MemberCard';
-import { COORDINATORS } from '../../../team-assets/data/departments';
-import { X, Users } from 'lucide-react';
+import { VOLUNTEERS } from '../../../team-assets/data/departments';
+import { X, HeartHandshake } from 'lucide-react';
 
-export default function CoordinatorsModal({ isOpen, onClose, onBurst, setHoveredTorii }) {
+export default function VolunteersModal({ isOpen, onClose, onBurst, setHoveredTorii }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -32,8 +32,8 @@ export default function CoordinatorsModal({ isOpen, onClose, onBurst, setHovered
         {/* Top Header Controls */}
         <div className="chambers-modal-header sticky top-0 bg-[#0a0a0a]/90 backdrop-blur-md z-50">
           <div className="chambers-badge">
-            <span className="chambers-badge-title">STUDENT COORDINATORS ROSTER</span>
-            <span className="chambers-badge-sub">Lead Student Coordinators</span>
+            <span className="chambers-badge-title">VOLUNTEERS & SUPPORT SQUAD</span>
+            <span className="chambers-badge-sub">Student Volunteers & Ground Squad</span>
           </div>
 
           <button 
@@ -51,20 +51,20 @@ export default function CoordinatorsModal({ isOpen, onClose, onBurst, setHovered
           {/* Section Header */}
           <div className="text-center mb-10">
             <div className="mb-2 inline-flex items-center gap-2 font-accent text-xs uppercase tracking-[0.25em] text-[#B8322C]">
-              <Users className="size-4" />
-              <span>Execution Command</span>
+              <HeartHandshake className="size-4" />
+              <span>Ground Support Force</span>
             </div>
             <h3 className="font-display text-3xl sm:text-4xl text-[#F2ECE1] uppercase tracking-wide">
-              COORDINATORS <span className="text-[#B8322C]">CHAMBER</span>
+              MEET THE <span className="text-[#B8322C]">VOLUNTEERS</span>
             </h3>
             <p className="text-sm text-[#F2ECE1]/70 max-w-md mx-auto mt-2 font-sans">
-              The driving force orchestrating events, logistics, technical operations, and stage production across Tech Kurukshetra.
+              The passionate student volunteers working tirelessly behind the scenes to power every moment of Tech Kurukshetra.
             </p>
           </div>
 
           {/* Members Cards Grid */}
-          <div className="members-grid coordinators-grid">
-            {COORDINATORS.map((member, i) => (
+          <div className="members-grid volunteers-grid">
+            {VOLUNTEERS.map((member, i) => (
               <MemberCard
                 key={member.name}
                 member={member}
