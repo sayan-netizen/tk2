@@ -40,7 +40,7 @@ export default function Navigation() {
       setScrolled(window.scrollY > 50);
 
       // Section IDs on main page in top-to-bottom order
-      const sectionIds = ["venue", "sponsors", "events", "schedule", "about", "hero"];
+      const sectionIds = ["venue", "sponsors", "team-banner", "events", "schedule", "about", "hero"];
       const scrollPosition = window.scrollY + 250;
 
       for (const id of sectionIds) {
@@ -81,7 +81,7 @@ export default function Navigation() {
   };
 
   const isDedicatedPage = typeof window !== "undefined" && (window.location.hash === "#team" || window.location.hash === "#events-page");
-  const mappedActive = activeSection === "events" ? "events-page" : activeSection;
+  const mappedActive = activeSection === "events" ? "events-page" : activeSection === "team-banner" ? "team" : activeSection;
   const currentActiveSection = isDedicatedPage ? window.location.hash.slice(1) : mappedActive;
 
   return (

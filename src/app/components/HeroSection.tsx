@@ -85,7 +85,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative z-10 isolate min-h-[100dvh] w-full overflow-hidden bg-black text-[#f5f5f5] flex flex-col justify-between px-4 sm:px-8 pt-16 sm:pt-24 pb-8 sm:pb-16"
+      className="sticky top-0 z-0 isolate h-[100dvh] min-h-[626px] w-full overflow-hidden bg-black text-[#f5f5f5] flex flex-col justify-between px-4 sm:px-8 pt-16 sm:pt-24 pb-8 sm:pb-16"
     >
       {/* Video background */}
       <video
