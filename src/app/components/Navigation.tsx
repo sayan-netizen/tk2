@@ -73,7 +73,7 @@ export default function Navigation() {
         const targetId = href.startsWith('#') ? href : `#${href}`;
         const el = document.querySelector(targetId);
         if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
+      }, 200);
       return;
     }
     const el = document.querySelector(href);
@@ -87,7 +87,7 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] h-[56px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/55 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6 flex items-center justify-between"
+      className="fixed top-2 sm:top-3 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] max-w-[1480px] h-[52px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/65 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(213,30,30,0.15)] transition-all duration-300 px-3.5 sm:px-6 flex items-center justify-between"
     >
       {/* SEPARATED LOGO */}
       <div className="z-50 flex items-center">
@@ -99,12 +99,12 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[34px] sm:h-[42px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            className="h-[30px] sm:h-[42px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
       </div>
 
-      {/* CENTERED NAV LINKS */}
+      {/* CENTERED NAV LINKS (DESKTOP) */}
       <div className="hidden lg:flex items-center gap-[24px] xl:gap-[32px]">
         {navLinks.map((link) => {
           const isActive = currentActiveSection === link.href.slice(1);
@@ -132,7 +132,7 @@ export default function Navigation() {
       </div>
 
       {/* RIGHT ACTION ITEMS: REGISTER & MOBILE HAMBURGER */}
-      <div className="z-50 flex items-center gap-3">
+      <div className="z-50 flex items-center gap-2 sm:gap-3">
         <button
           id="register-nav-cta"
           className="hidden sm:inline-flex h-[32px] w-[120px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] cursor-pointer"
@@ -155,37 +155,45 @@ export default function Navigation() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-72 p-6 flex flex-col justify-between"
+            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-[85vw] max-w-[320px] p-6 flex flex-col justify-between"
           >
-            <div className="flex flex-col gap-2 pt-10">
-              {navLinks.map((link) => {
-                const isActive = currentActiveSection === link.href.slice(1);
-                return (
-                  <button
-                    key={link.href}
-                    onClick={() => handleNavClick(link.href)}
-                    className={`text-left px-5 py-3.5 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${
-                      isActive
-                        ? "bg-[#d51e1e]/20 text-white border-[#d51e1e]/50 font-bold shadow-[0_0_15px_rgba(213,30,30,0.25)]"
-                        : "border-transparent text-[#aaa] hover:text-white hover:bg-white/5 hover:border-white/10"
-                    }`}
-                  >
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <span className="size-2 rounded-full bg-[#d51e1e] shadow-[0_0_8px_#d51e1e]" />
-                    )}
-                  </button>
-                );
-              })}
+            <div className="flex flex-col gap-6 pt-6">
+              {/* Drawer Header Logo */}
+              <div className="flex items-center gap-2 border-b border-white/10 pb-4">
+                <img src={navLogo} alt="Tech Kurukshetra" className="h-8 w-auto object-contain" />
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex flex-col gap-1.5">
+                {navLinks.map((link) => {
+                  const isActive = currentActiveSection === link.href.slice(1);
+                  return (
+                    <button
+                      key={link.href}
+                      onClick={() => handleNavClick(link.href)}
+                      className={`text-left px-4 py-3 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${
+                        isActive
+                          ? "bg-[#d51e1e]/20 text-white border-[#d51e1e]/50 font-bold shadow-[0_0_15px_rgba(213,30,30,0.25)]"
+                          : "border-transparent text-[#aaa] hover:text-white hover:bg-white/5 hover:border-white/10"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive && (
+                        <span className="size-2 rounded-full bg-[#d51e1e] shadow-[0_0_8px_#d51e1e]" />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            <div className="pb-6">
+            <div className="pb-4 pt-4 border-t border-white/10">
               <button
                 onClick={() => {
                   setOpen(false);
                   openComingSoon("Tech Kurukshetra 2026");
                 }}
-                className="w-full py-3 rounded-xl border border-[#d51e1e] bg-[#d51e1e]/20 font-accent text-xs uppercase tracking-[0.2em] text-white shadow-[0_0_15px_rgba(213,30,30,0.3)] hover:bg-[#d51e1e]"
+                className="w-full py-3.5 rounded-xl border border-[#d51e1e] bg-gradient-to-r from-[#d51e1e]/30 to-[#b91919]/50 font-accent text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_18px_rgba(213,30,30,0.35)] hover:bg-[#d51e1e] active:scale-98 transition-all cursor-pointer"
               >
                 REGISTER NOW →
               </button>
@@ -193,7 +201,6 @@ export default function Navigation() {
           </SheetContent>
         </Sheet>
       </div>
-
     </nav>
   );
 }
