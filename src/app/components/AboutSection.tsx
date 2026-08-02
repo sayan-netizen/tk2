@@ -51,7 +51,7 @@ export default function AboutSection() {
   const glowY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
+    <section id="about" className="relative z-20 -mt-16 sm:-mt-24 lg:-mt-32 py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
       {/* Parallax decorative elements */}
       <motion.div className="absolute top-0 left-0" style={{ y: glowY }}>
         <div className="w-72 h-72 bg-[#d51e1e]/3 rounded-full blur-[120px]" />
