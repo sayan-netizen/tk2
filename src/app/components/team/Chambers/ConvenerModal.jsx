@@ -40,7 +40,7 @@ export default function ConvenerModal({ isOpen, onClose, onBurst, setHoveredTori
             type="button" 
             className="chambers-modal-close-btn" 
             onClick={onClose}
-            aria-label="Close Convener Modal"
+            aria-label="Close"
           >
             <X className="size-6" />
             <span>Close</span>

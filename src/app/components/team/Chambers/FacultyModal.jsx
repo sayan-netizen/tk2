@@ -40,7 +40,7 @@ export default function FacultyModal({ isOpen, onClose, onBurst, setHoveredTorii
             type="button" 
             className="chambers-modal-close-btn" 
             onClick={onClose}
-            aria-label="Close Faculty Modal"
+            aria-label="Close"
           >
             <X className="size-6" />
             <span>Close</span>

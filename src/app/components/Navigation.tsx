@@ -24,8 +24,8 @@ const navLinks = [
   { label: "ABOUT", href: "#about" },
   { label: "SCHEDULE", href: "#schedule" },
   { label: "EVENTS", href: "#events-page" },
-  { label: "SPONSORS", href: "#sponsors" },
   { label: "TEAM", href: "#team" },
+  { label: "SPONSORS", href: "#sponsors" },
   { label: "VENUE", href: "#venue" },
 ];
 
@@ -40,7 +40,7 @@ export default function Navigation() {
       setScrolled(window.scrollY > 50);
 
       // Section IDs on main page in top-to-bottom order
-      const sectionIds = ["contact", "sponsors", "events", "schedule", "about", "hero"];
+      const sectionIds = ["venue", "sponsors", "events", "schedule", "about", "hero"];
       const scrollPosition = window.scrollY + 250;
 
       for (const id of sectionIds) {

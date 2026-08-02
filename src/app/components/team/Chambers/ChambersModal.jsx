@@ -129,10 +129,10 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
             type="button" 
             className="chambers-modal-close-btn" 
             onClick={onClose}
-            aria-label="Close Chambers"
+            aria-label="Close"
           >
             <X className="size-6" />
-            <span>Close Chambers</span>
+            <span>Close</span>
           </button>
         </div>
 

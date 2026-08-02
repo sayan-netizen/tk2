@@ -40,10 +40,10 @@ export default function VolunteersModal({ isOpen, onClose, onBurst, setHoveredTo
             type="button" 
             className="chambers-modal-close-btn" 
             onClick={onClose}
-            aria-label="Close Roster"
+            aria-label="Close"
           >
             <X className="size-6" />
-            <span>Close Roster</span>
+            <span>Close</span>
           </button>
         </div>
 

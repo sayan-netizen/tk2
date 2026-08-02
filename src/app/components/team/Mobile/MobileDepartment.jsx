@@ -9,7 +9,7 @@ export default function MobileDepartment({ dept, index, onBurst, setHoveredTorii
           <span className="mobile-ts-kana">{dept.kana}</span>
           <h2 className="mobile-ts-title" dangerouslySetInnerHTML={{ __html: dept.title }}></h2>
           <p className="mobile-ts-desc">{dept.desc}</p>
-          <button className="mobile-explore-btn">Enter Chamber ›</button>
+          <button className="mobile-explore-btn">View Leads ›</button>
         </div>
         <div className="mobile-dept-image">
           <img src={`/images/team/series-card-${index}.png`} alt={`${dept.name} icon`} />
