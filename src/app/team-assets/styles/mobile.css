@@ -9,10 +9,11 @@
   /* MOBILE ROOT CONTAINER */
   #mobile-view {
     position: relative;
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     min-height: 100vh;
     height: auto;
-    overflow: visible;
+    overflow: hidden;
     padding-bottom: 90px; /* space for new scrollable nav */
   }
 

@@ -87,10 +87,10 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className="fixed top-2 sm:top-3 left-1/2 -translate-x-1/2 w-[calc(100%-20px)] max-w-[1480px] h-[52px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/65 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(213,30,30,0.15)] transition-all duration-300 px-3.5 sm:px-6 flex items-center justify-between"
+      className="fixed top-2 sm:top-3 inset-x-3 sm:inset-x-6 sm:mx-auto sm:w-[calc(100%-48px)] max-w-[1480px] h-[48px] min-[380px]:h-[52px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/75 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(213,30,30,0.15)] transition-all duration-300 px-3 sm:px-6 flex items-center justify-between"
     >
       {/* SEPARATED LOGO */}
-      <div className="z-50 flex items-center">
+      <div className="z-50 flex items-center shrink-0">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -99,7 +99,7 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[30px] sm:h-[42px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            className="h-[26px] min-[380px]:h-[30px] sm:h-[40px] w-auto max-w-[170px] min-[380px]:max-w-[220px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
       </div>
@@ -147,10 +147,10 @@ export default function Navigation() {
           <SheetTrigger asChild>
             <button
               id="mobile-menu-trigger"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-[#d51e1e]/40 bg-[#d51e1e]/15 text-[#F5F5F5] shadow-[0_0_12px_rgba(213,30,30,0.25)] transition-all hover:bg-[#d51e1e] hover:text-white hover:shadow-[0_0_18px_rgba(213,30,30,0.5)] active:scale-95 lg:hidden cursor-pointer"
+              className="flex h-8 w-8 min-[380px]:h-9 min-[380px]:w-9 items-center justify-center rounded-full border border-[#d51e1e]/40 bg-[#d51e1e]/15 text-[#F5F5F5] shadow-[0_0_12px_rgba(213,30,30,0.25)] transition-all hover:bg-[#d51e1e] hover:text-white hover:shadow-[0_0_18px_rgba(213,30,30,0.5)] active:scale-95 lg:hidden cursor-pointer shrink-0"
               aria-label="Open menu"
             >
-              <Menu className="size-4.5" />
+              <Menu className="size-4 min-[380px]:size-4.5" />
             </button>
           </SheetTrigger>
           <SheetContent
