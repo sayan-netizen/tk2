@@ -45,7 +45,7 @@ export default function TeamPage({
   }, []);
 
   return (
-    <div className="shadow-dojo-page pt-32 sm:pt-36 lg:pt-40">
+    <div className="shadow-dojo-page pt-44 sm:pt-52 lg:pt-60">
       {isMobile ? (
         <MobileView onBurst={handleBurst} setHoveredTorii={handleSetHovered} />
       ) : (
