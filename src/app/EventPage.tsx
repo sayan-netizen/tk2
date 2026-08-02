@@ -221,7 +221,7 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
           </span>
           <div className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-black/80 text-[#b8322c] backdrop-blur-md transition-all group-hover:bg-[#b8322c]/40 group-hover:text-white shadow-[0_0_15px_rgba(0,0,0,0.8)]">
             <Icon className="relative z-20 size-5 drop-shadow-[0_0_5px_rgba(0,0,0,1)]" />
-            <svg className="absolute inset-[-15%] size-[130%] pointer-events-none z-10 overflow-visible opacity-90 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-12" viewBox="0 0 200 200">
+            <svg className="absolute inset-[-15%] size-[130%] pointer-events-none z-10 overflow-visible opacity-90 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100" viewBox="0 0 200 200" style={{ animation: 'spin 40s linear infinite' }}>
               <defs>
                 <filter id={`rough-ink-event-${index}`} x="-20%" y="-20%" width="140%" height="140%">
                   <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" result="noise" />
