@@ -90,8 +90,10 @@ export default function App() {
           <IntroOverlay />
           <main>
             <HeroSection />
-            <CountdownSection />
-            <AboutSection />
+            <div className="relative">
+              <CountdownSection />
+              <AboutSection />
+            </div>
             <ScheduleSection />
             <EventsSection />
             <TeamBanner />
