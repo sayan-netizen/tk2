@@ -100,25 +100,26 @@ export default function CountdownSection() {
   return (
     <section
       id="countdown"
-      className="sticky top-0 z-10 py-16 sm:py-20 overflow-hidden bg-[#120f0b] shadow-[0_-25px_50px_rgba(0,0,0,0.95)]"
+      className="sticky top-0 z-10 py-16 sm:py-20 overflow-hidden bg-[#1c140d] shadow-[0_-24px_48px_rgba(0,0,0,0.85),inset_0_24px_32px_-8px_rgba(0,0,0,0.7)]"
       ref={sectionRef}
     >
       <img
         src="/images/countdown-scroll-bg.png"
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center"
+        className="absolute inset-0 h-full w-full object-cover object-center scale-105"
       />
 
-      {/* Decorative top/bottom lines */}
+      {/* Decorative top/bottom accent lines */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/40 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/25 to-transparent" />
 
-      {/* Subtle warm ambient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-[#F5ECD8]/5 to-black/40 pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/65 to-transparent pointer-events-none" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/5 blur-[100px] pointer-events-none" />
+      {/* Top shadow gradient overlay */}
+      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/65 via-black/25 to-transparent pointer-events-none" />
+
+      {/* Subtle ambient red glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(213,30,30,0.06)_0%,transparent_75%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/8 blur-[100px] pointer-events-none" />
 
       <div className="relative z-10 max-w-[960px] mx-auto px-5">
         {/* Label */}
