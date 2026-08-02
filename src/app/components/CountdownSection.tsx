@@ -100,7 +100,7 @@ export default function CountdownSection() {
   return (
     <section
       id="countdown"
-      className="sticky top-0 z-10 py-16 sm:py-20 overflow-hidden bg-[#120f0b]"
+      className="sticky top-0 z-10 py-16 sm:py-20 overflow-hidden bg-[#120f0b] shadow-[0_-25px_50px_rgba(0,0,0,0.95)]"
       ref={sectionRef}
     >
       <img
