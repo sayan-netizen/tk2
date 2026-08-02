@@ -123,6 +123,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
   // Global mouse down for slashes
   useEffect(() => {
     const handleMouseDown = (e) => {
+      if (isMobile || (typeof window !== 'undefined' && window.innerWidth <= 768)) return;
       if (e.target.closest('.torii-frame')) return;
       
       const x = e.clientX;

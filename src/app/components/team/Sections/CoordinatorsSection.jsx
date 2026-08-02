@@ -36,6 +36,11 @@ export default function CoordinatorsSection({ onOpenCoordinators, onOpenRoster, 
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      if (typeof onOpenCoordinators === 'function') onOpenCoordinators();
+      else if (typeof onOpenRoster === 'function') onOpenRoster();
+      return;
+    }
     setIsAnimating(true);
     x.set(0);
     y.set(0);

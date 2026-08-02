@@ -36,6 +36,10 @@ export default function FacultySection({ onOpenFaculty, setHoveredTorii }) {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      onOpenFaculty();
+      return;
+    }
     setIsAnimating(true);
     x.set(0);
     y.set(0);

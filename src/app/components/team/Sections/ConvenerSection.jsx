@@ -36,6 +36,10 @@ export default function ConvenerSection({ onOpenConvener, setHoveredTorii }) {
 
   const handleClick = (e) => {
     e.preventDefault();
+    if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+      onOpenConvener();
+      return;
+    }
     setIsAnimating(true);
     x.set(0);
     y.set(0);

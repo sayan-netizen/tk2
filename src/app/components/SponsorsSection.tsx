@@ -125,7 +125,7 @@ export default function SponsorsSection() {
                         <TiltCard intensity={15}>
                           <motion.div
                             className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center font-heading font-bold text-[#666] grayscale hover:grayscale-0 hover:text-[#d51e1e] hover:border-[#b91919] hover:bg-black/60 transition-all duration-300 cursor-pointer group`}
-                            title={sponsor.name}
+                            title="TBD"
                             whileHover={{
                               boxShadow: "0 10px 30px rgba(196,30,58,0.15)",
                             }}
@@ -133,7 +133,7 @@ export default function SponsorsSection() {
                           >
                             <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <span className="relative z-10 group-hover:scale-110 transition-transform" style={{ transform: "translateZ(20px)" }}>
-                              {sponsor.initials}
+                              TBD
                             </span>
                           </motion.div>
                         </TiltCard>
