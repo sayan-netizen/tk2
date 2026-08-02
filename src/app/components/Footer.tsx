@@ -35,7 +35,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer" className="relative bg-[#050505] border-t border-[#b91919]/30 pt-16 pb-8">
+    <footer id="contact" className="relative bg-[#050505] border-t border-[#b91919]/30 pt-16 pb-8">
       {/* Top red accent line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#d51e1e] to-transparent" />
 

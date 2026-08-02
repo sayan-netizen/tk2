@@ -36,26 +36,28 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
 
-  // IntersectionObserver for active section
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+      // Section IDs on main page in top-to-bottom order
+      const sectionIds = ["contact", "sponsors", "events", "schedule", "about", "hero"];
+      const scrollPosition = window.scrollY + 250;
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          if (scrollPosition >= top) {
+            setActiveSection(id);
+            break;
           }
-        });
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -50% 0px" }
-    );
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (href: string) => {
@@ -78,7 +80,8 @@ export default function Navigation() {
   };
 
   const isDedicatedPage = typeof window !== "undefined" && (window.location.hash === "#team" || window.location.hash === "#events-page");
-  const currentActiveSection = isDedicatedPage ? window.location.hash.slice(1) : activeSection;
+  const mappedActive = activeSection === "events" ? "events-page" : activeSection;
+  const currentActiveSection = isDedicatedPage ? window.location.hash.slice(1) : mappedActive;
 
   return (
     <nav
