@@ -82,7 +82,7 @@ export default function TeamNavLayer({ currentTeam, onGoToTeam, currentPage }) {
             className={`nav-team-card ${idx === currentTeam ? 'ntc-active' : ''}`}
             onClick={() => onGoToTeam(idx)}
           >
-            <img src={`/images/team/card-${idx === 0 ? 'social-media' : idx === 1 ? 'pr' : idx === 2 ? 'web-dev' : idx === 3 ? 'video-editing' : 'graphics'}.webp`} alt={dept.name} />
+            <img src={`/images/team/series-card-${idx}.png`} alt={dept.name} />
           </div>
         ))}
       </div>

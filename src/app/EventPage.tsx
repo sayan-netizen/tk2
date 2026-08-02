@@ -57,12 +57,12 @@ export default function EventPage() {
     <div className="relative min-h-screen bg-[#050505] text-[#f1eeee]">
       {/* Full Page Background Image - Brighter Display */}
       <div 
-        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100 brightness-110 pointer-events-none"
+        className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100 brightness-[1.3] pointer-events-none"
         style={{ backgroundImage: "url('/images/Event_page_background.webp')" }}
       />
       {/* Soft Light Vignette */}
-      <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(5,5,5,0.45)_100%)] pointer-events-none" />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-[#050505]/20 via-transparent to-[#050505]/60 pointer-events-none" />
+      <div className="fixed inset-0 z-0 bg-[radial-gradient(circle_at_center,transparent_60%,rgba(5,5,5,0.2)_100%)] pointer-events-none" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]/40 pointer-events-none" />
 
       <main className="relative z-10 overflow-hidden px-4 pb-20 pt-24 sm:px-6 lg:px-8">
         <div className="absolute left-[-12rem] top-24 size-[34rem] rounded-full bg-[#d51e1e]/10 blur-[160px]" />
@@ -186,7 +186,7 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
         rotateX,
         rotateY,
       }}
-      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#111111]/80 p-6 shadow-[0_0_20px_rgba(184,50,44,0.15)] transition-all hover:bg-[#1a1a1a]/90 hover:shadow-[0_0_30px_rgba(184,50,44,0.4)]"
+      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#111111]/80 border border-[#8A1C17]/50 p-6 shadow-[0_0_20px_rgba(184,50,44,0.2),inset_0_0_15px_rgba(184,50,44,0.2)] transition-all hover:bg-[#1a1a1a]/90 hover:border-[#b8322c]/90 hover:shadow-[0_0_30px_rgba(184,50,44,0.5),inset_0_0_25px_rgba(184,50,44,0.4)]"
     >
       {/* Rectangular Enso Ink Border - Bold Brush Stroke */}
       <svg className="absolute inset-0 size-full pointer-events-none z-30 opacity-85 transition-opacity duration-500 group-hover:opacity-100" preserveAspectRatio="none">
@@ -202,18 +202,18 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
           <rect x="4" y="4" rx="9" ry="9" width="calc(100% - 8px)" height="calc(100% - 8px)" fill="none" stroke="#B88A3D" strokeWidth="2.5" strokeDasharray="30 50 120 90" opacity="0.8" />
         </g>
       </svg>
+
       <div
-        className="absolute inset-0 z-0 opacity-60 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute inset-0 z-0 opacity-100 transition-opacity duration-500 bg-cover bg-center"
         style={{
-          backgroundImage: index < 3 ? "url('/images/events-bg.webp')" : "url('/images/events-bg-2.webp')",
-          backgroundPosition: index < 3 
-            ? `${index * 50}% center`
-            : `${((index - 3) % 3) * 50}% ${Math.floor((index - 3) / 3) * 100}%`,
-          backgroundSize: index < 3 ? "300% 100%" : "300% 200%",
-          transform: "translateZ(0)"
+          backgroundImage: `url('/images/event-card-${index % 9}.png')`,
+          transform: `translateZ(0) scale(${index < 6 ? 1.25 : 1}) ${index < 3 ? 'translateY(-8%)' : (index < 6 ? 'translateY(8%)' : '')}`
         }}
       />
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#000000]/95 via-[#000000]/60 to-[#b8322c]/20 opacity-80 transition-opacity duration-500 group-hover:opacity-60" style={{ transform: "translateZ(0)" }} />
+      {/* Noise Texture */}
+      <div className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-[5]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+      
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#000000]/90 via-[#000000]/50 to-[#b8322c]/20 opacity-80 transition-opacity duration-500 group-hover:opacity-60" style={{ transform: "translateZ(0)" }} />
       <div className="relative z-20 flex h-full flex-col" style={{ transform: "translateZ(10px)" }}>
         <div className="mb-5 flex items-start justify-between gap-4">
           <span className={`border px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${categoryClasses[event.category]} bg-black/50 backdrop-blur-md shadow-[0_0_10px_rgba(0,0,0,0.8)]`}>

@@ -1,8 +1,6 @@
 import MemberCard from '../Members/MemberCard';
 
 export default function MobileDepartment({ dept, index, onBurst, setHoveredTorii }) {
-  const deptImages = ['social-media', 'pr', 'web-dev', 'video-editing', 'graphics'];
-  const imageSrc = `/images/team/card-${deptImages[index]}.webp`;
 
   return (
     <section className="mobile-dept-section" id={`dept-${index}`}>
@@ -14,7 +12,7 @@ export default function MobileDepartment({ dept, index, onBurst, setHoveredTorii
           <button className="mobile-explore-btn">Enter Chamber ›</button>
         </div>
         <div className="mobile-dept-image">
-          <img src={imageSrc} alt={`${dept.name} icon`} />
+          <img src={`/images/team/series-card-${index}.png`} alt={`${dept.name} icon`} />
         </div>
       </div>
 

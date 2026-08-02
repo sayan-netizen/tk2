@@ -184,7 +184,7 @@
   .mobile-cards-grid {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.25rem;
     width: 100%;
     align-items: center;
   }

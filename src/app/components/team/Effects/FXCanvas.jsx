@@ -50,7 +50,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
 
   // Initialize embers once
   useEffect(() => {
-    const MAX_EMBERS = isMobile ? 50 : 150;
+    const MAX_EMBERS = isMobile ? 120 : 350;
     const embers = [];
     for(let i = 0; i < MAX_EMBERS; i++) {
       const isYellow = Math.random() < 0.4;
@@ -60,7 +60,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       embers.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        r: rand(0.3, 1.0),
+        r: rand(0.5, 1.3),
         vx: rand(-0.4, 0.4),
         vy: rand(-0.2, -0.9),
         life: rand(0, Math.PI * 2),

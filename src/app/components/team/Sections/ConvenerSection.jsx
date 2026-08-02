@@ -72,7 +72,7 @@ export default function ConvenerSection({ onOpenConvener, setHoveredTorii }) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_45%,rgba(184,138,61,0.12)_80%,rgba(184,50,44,0.15)_100%)] rounded-full pointer-events-none z-0"></div>
 
         {/* Japanese Ensō (円相) Zen Ink Brush Circle Overlay - Enhanced Authentic Calligraphy */}
-        <svg className="absolute inset-[-6%] size-[112%] pointer-events-none z-10 overflow-visible" viewBox="0 0 200 200">
+        <svg className="absolute inset-[-6%] size-[112%] pointer-events-none z-10 overflow-visible" viewBox="0 0 200 200" style={{ animation: 'spin 40s linear infinite' }}>
           <defs>
             {/* SVG Filter for realistic Sumi-e ink bleeding and rough paper texture */}
             <filter id="rough-ink-convener" x="-20%" y="-20%" width="140%" height="140%">
@@ -226,7 +226,7 @@ export default function ConvenerSection({ onOpenConvener, setHoveredTorii }) {
         {/* Content Container inside the Circular Banner - Parallaxed on hover */}
         <motion.div 
           style={{ transform: "translateZ(40px)" }} 
-          className="relative z-20 flex flex-col items-center justify-center gap-3 sm:gap-4 h-full py-12 px-10 sm:px-14 lg:px-16 w-full"
+          className="relative z-20 flex flex-col items-center justify-center gap-3 sm:gap-4 h-full py-12 px-4 sm:px-8 lg:px-10 w-full"
         >
           {/* 1. Category Eyebrow Badge */}
           <div className="inline-flex items-center gap-2 font-accent text-[11px] sm:text-xs uppercase tracking-[0.25em] text-[#B8322C] font-semibold bg-[#B8322C]/10 border border-[#B8322C]/30 px-4 py-1.5 rounded-full shadow-sm">
@@ -252,7 +252,7 @@ export default function ConvenerSection({ onOpenConvener, setHoveredTorii }) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onMouseEnter={(e) => setHoveredTorii && setHoveredTorii(e.currentTarget)}
-            className="group/btn relative inline-flex shrink-0 items-center justify-center gap-5 rounded-full bg-gradient-to-br from-[#1D1B18] to-[#2A2621] px-12 py-4.5 font-accent text-[11px] sm:text-sm font-bold uppercase tracking-[0.2em] text-[#EFE9DD] shadow-[0_10px_25px_rgba(29,27,24,0.4)] transition-all duration-300 pointer-events-auto cursor-pointer mt-2 sm:mt-4 border border-[#B88A3D]/30 hover:border-[#B88A3D] hover:shadow-[0_15px_35px_rgba(184,138,61,0.25)] overflow-hidden"
+            className="group/btn relative inline-flex shrink-0 items-center justify-center gap-3.5 sm:gap-4 rounded-full bg-gradient-to-br from-[#1D1B18] to-[#2A2621] pl-7 pr-2.5 py-3 sm:pl-8 sm:pr-3 sm:py-3.5 font-accent text-[11px] sm:text-sm font-bold uppercase tracking-[0.18em] text-[#EFE9DD] shadow-[0_10px_25px_rgba(29,27,24,0.4)] transition-all duration-300 pointer-events-auto cursor-pointer mt-2 sm:mt-4 border border-[#B88A3D]/30 hover:border-[#B88A3D] hover:shadow-[0_15px_35px_rgba(184,138,61,0.25)] overflow-hidden"
           >
             {/* Katana Light Sweep on Hover */}
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/40 to-transparent group-hover/btn:translate-x-[200%] transition-transform duration-700 ease-in-out" />

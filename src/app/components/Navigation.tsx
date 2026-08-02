@@ -83,11 +83,11 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] z-[10000] rounded-full border border-transparent md:border-white/15 bg-transparent md:bg-black/45 md:backdrop-blur-xl md:shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] h-[56px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/45 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
     >
       {/* SEPARATED LOGO - Edit size and location here */}
       {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
-      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 hidden md:flex items-center">
+      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex items-center">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -103,7 +103,7 @@ export default function Navigation() {
       </div>
 
       {/* CENTERED NAV LINKS */}
-      <div className="mx-auto flex h-[56px] w-full max-w-[960px] items-center justify-center px-5 sm:px-6 lg:px-0">
+      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex h-[56px] w-max items-center justify-center">
         {/* Desktop links */}
         <div className="hidden items-center gap-[28px] lg:flex">
           {navLinks.map((link) => {
