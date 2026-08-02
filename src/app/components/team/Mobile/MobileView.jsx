@@ -18,7 +18,7 @@ export default function MobileView({ onBurst, setHoveredTorii }) {
   const [isVolunteersOpen, setIsVolunteersOpen] = useState(false);
 
   return (
-    <div id="mobile-view" className="vertical-team-layout flex flex-col items-center gap-12 py-6">
+    <div id="mobile-view" className="vertical-team-layout flex flex-col items-center gap-4 sm:gap-8 py-4 sm:py-6">
       {/* CIRCULAR BANNER 1: MEET THE CONVENER */}
       <ConvenerSection
         onOpenConvener={() => setIsConvenerOpen(true)}

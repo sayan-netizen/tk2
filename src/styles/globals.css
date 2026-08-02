@@ -73,21 +73,10 @@ body {
   background: #050505;
 }
 
-#mobile-menu-trigger {
-  position: fixed !important;
-  top: 0.75rem !important;
-  right: 1rem !important;
-  z-index: 9999 !important;
-  display: flex !important;
+/* Navigation responsive utilities */
+.main-site {
+  background: #000000;
 }
-
-@media (min-width: 1024px) {
-  #mobile-menu-trigger {
-    display: none !important;
-  }
-}
-
-/* Selection styling */
 ::selection {
   background: rgba(213, 30, 30, 0.4);
   color: #fff;

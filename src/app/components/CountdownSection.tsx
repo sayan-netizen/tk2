@@ -31,17 +31,17 @@ function CountdownUnit({
         <div className="absolute -inset-[2px] rounded-md bg-gradient-to-b from-[#d51e1e]/80 via-[#b91919]/35 to-transparent opacity-80 blur-[2px] transition-opacity duration-500 group-hover:opacity-100" />
 
         {/* Main box */}
-        <div className="relative w-[88px] h-[88px] sm:w-[104px] sm:h-[104px] lg:w-[140px] lg:h-[140px] flex items-center justify-center border border-[#d51e1e]/70 bg-[#090706]/92 overflow-hidden shadow-[0_0_28px_rgba(185,25,25,0.28),inset_0_0_24px_rgba(0,0,0,0.82)] backdrop-blur-sm">
+        <div className="relative w-[68px] h-[68px] min-[400px]:w-[78px] min-[400px]:h-[78px] sm:w-[104px] sm:h-[104px] lg:w-[130px] lg:h-[130px] flex items-center justify-center border border-[#d51e1e]/70 bg-[#090706]/92 overflow-hidden shadow-[0_0_24px_rgba(185,25,25,0.28),inset_0_0_20px_rgba(0,0,0,0.82)] backdrop-blur-sm">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(213,30,30,0.24),transparent_36%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%,rgba(0,0,0,0.42))]" />
           <div className="absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-[#ff2a2a]/90 to-transparent" />
           <div className="absolute inset-x-4 bottom-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/70 to-transparent" />
-          <span className="font-display text-[42px] sm:text-[54px] lg:text-[74px] font-bold text-[#ff2626] leading-none relative z-10 tabular-nums drop-shadow-[0_0_14px_rgba(213,30,30,0.85)]">
+          <span className="font-display text-[30px] min-[400px]:text-[36px] sm:text-[54px] lg:text-[68px] font-bold text-[#ff2626] leading-none relative z-10 tabular-nums drop-shadow-[0_0_14px_rgba(213,30,30,0.85)]">
             {display}
           </span>
         </div>
       </div>
 
-      <span className="font-accent text-sm sm:text-base lg:text-lg font-bold text-white mt-3 uppercase tracking-[0.18em] drop-shadow-[0_0_12px_rgba(0,0,0,0.95)]">
+      <span className="font-accent text-xs sm:text-base lg:text-lg font-bold text-white mt-2 sm:mt-3 uppercase tracking-[0.14em] sm:tracking-[0.18em] drop-shadow-[0_0_12px_rgba(0,0,0,0.95)]">
         {label}
       </span>
     </motion.div>
@@ -121,24 +121,24 @@ export default function CountdownSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(213,30,30,0.06)_0%,transparent_75%)] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/8 blur-[100px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-[960px] mx-auto px-5">
+      <div className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6">
         {/* Label */}
         <motion.div
-          className="text-center mb-10"
+          className="text-center mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="font-accent text-sm sm:text-base font-bold tracking-[0.32em] uppercase text-[#8d0f0f] drop-shadow-[0_1px_10px_rgba(245,236,216,0.95)] block">
+          <span className="font-accent text-xs sm:text-base font-bold tracking-[0.24em] sm:tracking-[0.32em] uppercase text-[#8d0f0f] drop-shadow-[0_1px_10px_rgba(245,236,216,0.95)] block">
             Event Commences In
           </span>
         </motion.div>
 
         {/* Countdown or live/ended */}
         {units ? (
-          <div className="grid grid-cols-2 place-items-center gap-x-8 gap-y-7 sm:flex sm:items-center sm:justify-center sm:gap-5 lg:gap-10">
+          <div className="flex flex-wrap items-center justify-center gap-3 min-[400px]:gap-4 sm:gap-6 lg:gap-10">
             {units.map((unit, i) => (
-              <div key={unit.label} className="flex items-center justify-center gap-4 sm:gap-5 lg:gap-10">
+              <div key={unit.label} className="flex items-center justify-center gap-3 sm:gap-5 lg:gap-10">
                 <CountdownUnit value={unit.value} label={unit.label} index={i} />
                 {i < units.length - 1 && <Separator index={i} />}
               </div>

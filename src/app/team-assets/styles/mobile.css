@@ -16,6 +16,17 @@
     padding-bottom: 90px; /* space for new scrollable nav */
   }
 
+  /* MOBILE TEAM LAYOUT OVERRIDES */
+  .vertical-team-layout {
+    gap: 1.5rem !important;
+    padding: 2rem 1rem 5rem !important;
+  }
+
+  .vertical-team-section {
+    min-height: 0 !important;
+    padding: 0.5rem 0 !important;
+  }
+
   /* HERO ADJUSTMENTS */
   #mobile-view #page-hero {
     height: 100vh;

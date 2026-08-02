@@ -67,10 +67,10 @@ const sponsorTiers: { tier: string; size: string; sponsors: Sponsor[] }[] = [
 ];
 
 const sizeClasses: Record<string, string> = {
-  large: "w-40 h-40 sm:w-48 sm:h-48 text-3xl",
-  medium: "w-28 h-28 sm:w-32 sm:h-32 text-xl",
-  small: "w-20 h-20 sm:w-24 sm:h-24 text-lg",
-  tiny: "w-16 h-16 sm:w-20 sm:h-20 text-sm",
+  large: "w-32 h-32 sm:w-48 sm:h-48 text-2xl sm:text-3xl",
+  medium: "w-24 h-24 sm:w-32 sm:h-32 text-lg sm:text-xl",
+  small: "w-16 h-16 sm:w-24 sm:h-24 text-base sm:text-lg",
+  tiny: "w-12 h-12 sm:w-20 sm:h-20 text-xs sm:text-sm",
 };
 
 export default function SponsorsSection() {
@@ -82,13 +82,13 @@ export default function SponsorsSection() {
   const bgRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
 
   return (
-    <section id="sponsors" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
+    <section id="sponsors" className="relative py-16 sm:py-32 overflow-hidden" ref={sectionRef}>
       {/* Decorative rotating glow */}
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] aspect-square pointer-events-none"
         style={{ rotate: bgRotate }}
       >
-        <div className="w-full h-full bg-[#d51e1e]/3 rounded-full blur-[200px]" />
+        <div className="w-full h-full bg-[#d51e1e]/3 rounded-full blur-[150px]" />
       </motion.div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -150,11 +150,11 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
   const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
   const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["4deg", "-4deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-4deg", "4deg"]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (!cardRef.current) return;
+    if (window.innerWidth < 768 || !cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -180,27 +180,18 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
       onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.04 }}
+      transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.3) }}
       style={{
         transformStyle: "preserve-3d",
         rotateX,
         rotateY,
       }}
-      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#111111]/80 border border-[#8A1C17]/50 p-6 shadow-[0_0_20px_rgba(184,50,44,0.2),inset_0_0_15px_rgba(184,50,44,0.2)] transition-all hover:bg-[#1a1a1a]/90 hover:border-[#b8322c]/90 hover:shadow-[0_0_30px_rgba(184,50,44,0.5),inset_0_0_25px_rgba(184,50,44,0.4)]"
+      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#111111]/80 border border-[#8A1C17]/50 p-6 shadow-[0_0_20px_rgba(184,50,44,0.2),inset_0_0_15px_rgba(184,50,44,0.2)] transition-all duration-300 hover:bg-[#1a1a1a]/90 hover:border-[#b8322c]/90 hover:shadow-[0_0_30px_rgba(184,50,44,0.5),inset_0_0_25px_rgba(184,50,44,0.4)]"
     >
-      {/* Rectangular Enso Ink Border - Bold Brush Stroke */}
-      <svg className="absolute inset-0 size-full pointer-events-none z-30 opacity-85 transition-opacity duration-500 group-hover:opacity-100" preserveAspectRatio="none">
-        <defs>
-          <filter id={`rough-ink-rect-${index}`} x="-10%" y="-10%" width="120%" height="120%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="4" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-        <g filter={`url(#rough-ink-rect-${index})`}>
-          <rect x="3" y="3" rx="10" ry="10" width="calc(100% - 6px)" height="calc(100% - 6px)" fill="none" stroke="#b8322c" strokeWidth="8" />
-          <rect x="2" y="2" rx="11" ry="11" width="calc(100% - 4px)" height="calc(100% - 4px)" fill="none" stroke="#8A1C17" strokeWidth="4" strokeDasharray="50 15 150 40" opacity="0.9" />
-          <rect x="4" y="4" rx="9" ry="9" width="calc(100% - 8px)" height="calc(100% - 8px)" fill="none" stroke="#B88A3D" strokeWidth="2.5" strokeDasharray="30 50 120 90" opacity="0.8" />
-        </g>
+      {/* Crisp Enso Ink Border */}
+      <svg className="absolute inset-0 size-full pointer-events-none z-30 opacity-75 transition-opacity duration-300 group-hover:opacity-100" preserveAspectRatio="none">
+        <rect x="3" y="3" rx="10" ry="10" width="calc(100% - 6px)" height="calc(100% - 6px)" fill="none" stroke="#b8322c" strokeWidth="3" />
+        <rect x="2" y="2" rx="11" ry="11" width="calc(100% - 4px)" height="calc(100% - 4px)" fill="none" stroke="#8A1C17" strokeWidth="1.5" strokeDasharray="50 15 150 40" opacity="0.9" />
       </svg>
 
       <div
@@ -210,35 +201,19 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
           transform: `translateZ(0) scale(${index < 6 ? 1.25 : 1}) ${index < 3 ? 'translateY(-8%)' : (index < 6 ? 'translateY(8%)' : '')}`
         }}
       />
-      {/* Noise Texture */}
-      <div className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-[5]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
       
-      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#000000]/90 via-[#000000]/50 to-[#b8322c]/20 opacity-80 transition-opacity duration-500 group-hover:opacity-60" style={{ transform: "translateZ(0)" }} />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#000000]/95 via-[#000000]/65 to-[#b8322c]/20 opacity-90 transition-opacity duration-300 group-hover:opacity-75" style={{ transform: "translateZ(0)" }} />
+      
       <div className="relative z-20 flex h-full flex-col" style={{ transform: "translateZ(10px)" }}>
         <div className="mb-5 flex items-start justify-between gap-4">
-          <span className={`border px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${categoryClasses[event.category]} bg-black/50 backdrop-blur-md shadow-[0_0_10px_rgba(0,0,0,0.8)]`}>
+          <span className={`border px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${categoryClasses[event.category]} bg-black/60 backdrop-blur-md shadow-[0_0_10px_rgba(0,0,0,0.8)]`}>
             {event.category}
           </span>
-          <div className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-black/80 text-[#b8322c] backdrop-blur-md transition-all group-hover:bg-[#b8322c]/40 group-hover:text-white shadow-[0_0_15px_rgba(0,0,0,0.8)]">
+          <div className="relative flex size-12 shrink-0 items-center justify-center rounded-full bg-black/80 text-[#b8322c] backdrop-blur-md transition-all duration-300 group-hover:bg-[#b8322c]/40 group-hover:text-white shadow-[0_0_15px_rgba(0,0,0,0.8)]">
             <Icon className="relative z-20 size-5 drop-shadow-[0_0_5px_rgba(0,0,0,1)]" />
-            <svg className="absolute inset-[-15%] size-[130%] pointer-events-none z-10 overflow-visible opacity-90 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-12" viewBox="0 0 200 200">
-              <defs>
-                <filter id={`rough-ink-event-${index}`} x="-20%" y="-20%" width="140%" height="140%">
-                  <feTurbulence type="fractalNoise" baseFrequency="0.12" numOctaves="4" result="noise" />
-                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
-                </filter>
-                <linearGradient id={`ensoGradEvent-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#d54536" />
-                  <stop offset="60%" stopColor="#B8322C" />
-                  <stop offset="100%" stopColor="#7A1814" />
-                </linearGradient>
-              </defs>
-              <g filter={`url(#rough-ink-event-${index})`}>
-                <path d="M 94 10 C 146 8 190 48 190 100 C 190 152 148 192 100 190 C 50 188 8 148 10 98 C 12 50 50 12 86 10" fill="none" stroke={`url(#ensoGradEvent-${index})`} strokeWidth="12" strokeLinecap="round" strokeDasharray="560 40" className="opacity-95" />
-                <path d="M 92 6 C 148 4 196 46 194 100 C 194 156 150 196 100 194 C 46 194 4 150 6 98 C 8 46 48 8 84 8" fill="none" stroke="#B8322C" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="60 15 120 25 200 50" className="opacity-80" />
-                <path d="M 96 14 C 142 14 184 52 184 100 C 184 146 144 184 100 184 C 54 184 16 144 16 98 C 16 54 52 16 90 14" fill="none" stroke="#8A1C17" strokeWidth="4" strokeLinecap="round" strokeDasharray="40 10 80 5 150 20" className="opacity-65" />
-                <path d="M 95 12 C 144 10 187 49 187 100 C 187 149 146 188 100 187 C 52 186 12 146 13 98 C 14 52 51 14 88 12" fill="none" stroke="#B88A3D" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="180 40 300 80" className="opacity-90" />
-              </g>
+            <svg className="absolute inset-[-10%] size-[120%] pointer-events-none z-10 overflow-visible opacity-80 transition-all duration-300 group-hover:scale-105 group-hover:opacity-100" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="44" fill="none" stroke="#B8322C" strokeWidth="2.5" strokeDasharray="180 30" opacity="0.9" />
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#B88A3D" strokeWidth="1.5" strokeDasharray="120 40" opacity="0.7" />
             </svg>
           </div>
         </div>

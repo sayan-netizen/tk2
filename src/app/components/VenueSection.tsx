@@ -15,8 +15,8 @@ export default function VenueSection() {
 
   return (
     <section id="venue" className="relative py-24 sm:py-32 overflow-hidden" ref={sectionRef}>
-      <Parallax speed={-0.3} className="absolute bottom-0 left-1/2 -translate-x-1/2">
-        <div className="w-[600px] h-[600px] bg-[#d51e1e]/3 rounded-full blur-[200px]" />
+      <Parallax speed={-0.3} className="absolute bottom-0 left-1/2 -translate-x-1/2 pointer-events-none">
+        <div className="w-full max-w-[500px] aspect-square bg-[#d51e1e]/3 rounded-full blur-[150px]" />
       </Parallax>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

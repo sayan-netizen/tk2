@@ -17,8 +17,11 @@ export default function TeamBanner() {
         transition={{ duration: 0.55, ease: "easeOut" }}
         className="relative mx-auto max-w-7xl overflow-hidden rounded-none border border-[#b91919]/50 bg-black/40 shadow-[0_0_20px_rgba(185,25,25,0.15)]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_24%,rgba(196,30,58,0.25),transparent_26%),linear-gradient(115deg,#111111_0%,#111111_48%,#1c0c10_100%)]" />
-        <div className="absolute -right-6 -top-20 select-none font-display text-[17rem] leading-none text-[#d51e1e]/10 sm:right-10 sm:text-[22rem]">
+        {/* Background Warm Radial Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_50%,rgba(184,50,44,0.12),transparent_70%)] pointer-events-none" />
+        
+        {/* Faint Gradient Kanji Watermark */}
+        <div className="absolute -right-2 -top-6 select-none font-display text-[10rem] sm:text-[18rem] lg:text-[24rem] leading-none bg-gradient-to-b from-[#B8322C]/25 via-[#B8322C]/10 to-transparent bg-clip-text text-transparent opacity-60 sm:right-6 pointer-events-none z-0">
           戦
         </div>
         <div className="absolute inset-y-0 right-[18%] w-px bg-gradient-to-b from-transparent via-[#d51e1e]/45 to-transparent" />

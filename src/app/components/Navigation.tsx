@@ -26,7 +26,7 @@ const navLinks = [
   { label: "EVENTS", href: "#events-page" },
   { label: "SPONSORS", href: "#sponsors" },
   { label: "TEAM", href: "#team" },
-  { label: "CONTACT", href: "#contact" },
+  { label: "VENUE", href: "#venue" },
 ];
 
 export default function Navigation() {
@@ -64,6 +64,7 @@ export default function Navigation() {
     setOpen(false);
     if (href === "#team" || href === "#events-page") {
       window.location.hash = href.replace("#", "");
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     if (window.location.hash === "#team" || window.location.hash === "#events-page") {
@@ -86,60 +87,55 @@ export default function Navigation() {
   return (
     <nav
       id="main-nav"
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] h-[56px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/45 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6"
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 w-[calc(100%-24px)] max-w-[1480px] h-[56px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/55 backdrop-blur-xl shadow-[0_10px_35px_rgba(0,0,0,0.5),0_0_20px_rgba(213,30,30,0.12)] transition-all duration-300 px-6 flex items-center justify-between"
     >
-      {/* SEPARATED LOGO - Edit size and location here */}
-      {/* -> Change 'left-[...]' and 'top-[...]' in the div below to move the logo */}
-      <div className="absolute left-6 sm:left-8 top-1/2 -translate-y-1/2 z-50 flex items-center">
+      {/* SEPARATED LOGO */}
+      <div className="z-50 flex items-center">
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
           aria-label="Go to home"
         >
-          {/* -> Change 'h-[...]' and 'w-[...]' in the img below to resize the logo */}
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[36px] sm:h-[44px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            className="h-[34px] sm:h-[42px] w-auto object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
       </div>
 
       {/* CENTERED NAV LINKS */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex h-[56px] w-max items-center justify-center">
-        {/* Desktop links */}
-        <div className="hidden items-center gap-[28px] lg:flex">
-          {navLinks.map((link) => {
-            const isActive = currentActiveSection === link.href.slice(1);
-            return (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`relative cursor-pointer px-0 py-1.5 font-accent text-[14px] tracking-[0.06em] transition-colors ${
-                  isActive
-                    ? "text-[#d51e1e]"
-                    : "text-[#f1eeee]/90 hover:text-[#d51e1e]"
-                }`}
-              >
-                {link.label}
-                {isActive && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute bottom-0 left-0 right-0 h-px bg-[#d51e1e]"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
+      <div className="hidden lg:flex items-center gap-[24px] xl:gap-[32px]">
+        {navLinks.map((link) => {
+          const isActive = currentActiveSection === link.href.slice(1);
+          return (
+            <button
+              key={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className={`relative cursor-pointer px-1 py-1 font-accent text-[13px] xl:text-[14px] tracking-[0.08em] transition-colors ${
+                isActive
+                  ? "text-[#d51e1e] font-semibold"
+                  : "text-[#f1eeee]/90 hover:text-[#d51e1e]"
+              }`}
+            >
+              {link.label}
+              {isActive && (
+                <motion.div
+                  layoutId="nav-indicator"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#d51e1e]"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
+          );
+        })}
       </div>
 
       {/* RIGHT ACTION ITEMS: REGISTER & MOBILE HAMBURGER */}
-      <div className="absolute right-6 sm:right-8 top-1/2 -translate-y-1/2 z-50 flex items-center gap-3">
+      <div className="z-50 flex items-center gap-3">
         <button
           id="register-nav-cta"
-          className="hidden h-[30px] w-[116px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] sm:inline-flex cursor-pointer"
+          className="hidden sm:inline-flex h-[32px] w-[120px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] cursor-pointer"
           onClick={() => openComingSoon("Tech Kurukshetra 2026")}
           aria-label="Register now"
         >
@@ -159,9 +155,9 @@ export default function Navigation() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-64 p-6 flex flex-col justify-center"
+            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-72 p-6 flex flex-col justify-between"
           >
-            <div className="flex flex-col gap-2 my-auto pt-6">
+            <div className="flex flex-col gap-2 pt-10">
               {navLinks.map((link) => {
                 const isActive = currentActiveSection === link.href.slice(1);
                 return (
@@ -181,6 +177,18 @@ export default function Navigation() {
                   </button>
                 );
               })}
+            </div>
+
+            <div className="pb-6">
+              <button
+                onClick={() => {
+                  setOpen(false);
+                  openComingSoon("Tech Kurukshetra 2026");
+                }}
+                className="w-full py-3 rounded-xl border border-[#d51e1e] bg-[#d51e1e]/20 font-accent text-xs uppercase tracking-[0.2em] text-white shadow-[0_0_15px_rgba(213,30,30,0.3)] hover:bg-[#d51e1e]"
+              >
+                REGISTER NOW →
+              </button>
             </div>
           </SheetContent>
         </Sheet>

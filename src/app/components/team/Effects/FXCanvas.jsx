@@ -50,7 +50,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
 
   // Initialize embers once
   useEffect(() => {
-    const MAX_EMBERS = isMobile ? 120 : 350;
+    const MAX_EMBERS = isMobile ? 30 : 150;
     const embers = [];
     for(let i = 0; i < MAX_EMBERS; i++) {
       const isYellow = Math.random() < 0.4;
@@ -69,13 +69,13 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       });
     }
     embersRef.current = embers;
-  }, []);
+  }, [isMobile]);
 
   // Listen for bursts
   useEffect(() => {
     if (burstOrigin) {
       const { x, y } = burstOrigin;
-      const COUNT = 110;
+      const COUNT = isMobile ? 40 : 80;
       for (let i = 0; i < COUNT; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() < 0.3 ? rand(0.4, 2.5) : rand(2.5, 11.5);
@@ -100,7 +100,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
           isOoze: false
         });
       }
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < (isMobile ? 12 : 24); i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = rand(0.2, 1.8);
         toriiBurstsRef.current.push({
@@ -118,7 +118,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
         });
       }
     }
-  }, [burstOrigin]);
+  }, [burstOrigin, isMobile]);
 
   // Global mouse down for slashes
   useEffect(() => {
@@ -142,7 +142,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
         });
       }
 
-      const count = 60;
+      const count = isMobile ? 25 : 45;
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = rand(4, 14);
@@ -160,7 +160,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
 
     window.addEventListener('mousedown', handleMouseDown);
     return () => window.removeEventListener('mousedown', handleMouseDown);
-  }, []);
+  }, [isMobile]);
 
   // Main render loop
   useEffect(() => {
@@ -172,6 +172,12 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
     let fH = window.innerHeight;
     canvas.width = fW;
     canvas.height = fH;
+
+    // Cache DOM nodes once or on DOM changes
+    const fogs = Array.from(document.querySelectorAll('.fog'));
+    const blob1 = document.querySelector('.blob-1');
+    const blob2 = document.querySelector('.blob-2');
+    const blob3 = document.querySelector('.blob-3');
 
     const handleResize = () => {
       fW = window.innerWidth;
@@ -188,9 +194,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       
       const p = pointerRef.current;
 
-      // Draw embers
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = '#FF4400';
+      // Draw embers (no costly shadowBlur)
       embersRef.current.forEach(e => {
         e.x += e.vx;
         e.y += e.vy;
@@ -214,12 +218,9 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
         ctx.fillStyle = `rgba(${e.color}, ${alpha})`;
         ctx.fill();
       });
-      ctx.shadowBlur = 0;
 
       // Draw slashes
       if (slashesRef.current.length > 0) {
-        ctx.shadowBlur = 16;
-        ctx.shadowColor = '#FF2200';
         for (let i = slashesRef.current.length - 1; i >= 0; i--) {
           const s = slashesRef.current[i];
           s.length = lerp(s.length, s.maxLength, 0.35);
@@ -244,8 +245,6 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
 
       // Draw sparks
       if (sparksRef.current.length > 0) {
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = '#FF6600';
         for (let i = sparksRef.current.length - 1; i >= 0; i--) {
           const spark = sparksRef.current[i];
           spark.x += spark.vx;
@@ -279,9 +278,6 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
           const alpha = Math.min(d.life, 0.92);
           const radius = d.r * (0.4 + d.life * 0.6);
 
-          ctx.shadowBlur = 14;
-          ctx.shadowColor = `rgba(${d.color}, ${alpha * 0.9})`;
-
           if (d.trail && d.life > 0.2) {
             ctx.beginPath();
             ctx.moveTo(d.px, d.py);
@@ -302,7 +298,6 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
           ctx.fill();
         }
       }
-      ctx.shadowBlur = 0;
 
       // --- DOM PHYSICS ANIMATIONS ---
       const t = performance.now();
@@ -312,6 +307,7 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       // 1. Tick Float (Member Cards) - Desktop only
       if (!isMobile) {
         floatStatesRef.current.forEach(s => {
+          if (!s.el) return;
           const fY = Math.sin(t * s.freqY + s.phaseY) * s.ampY;
           const fX = Math.cos(t * s.freqX + s.phaseX) * s.ampX;
           const fRot = Math.sin(t * s.rotFreq + s.phaseX) * s.rotAmp;
@@ -332,17 +328,12 @@ export default function FXCanvas({ pointerRef, burstOrigin, hoveredTorii, curren
       // 2. Tick Fog
       fogFxRef.current = lerp(fogFxRef.current, normMx, 0.035);
       fogFyRef.current = lerp(fogFyRef.current, normMy, 0.035);
-      const fogs = document.querySelectorAll('.fog');
       fogs.forEach((f, i) => {
         const depth = (i + 1) * 15;
         f.style.transform = `translate(${fogFxRef.current * depth}px, ${fogFyRef.current * depth}px)`;
       });
 
       // 3. Tick Gooey Bg
-      const blob1 = document.querySelector('.blob-1');
-      const blob2 = document.querySelector('.blob-2');
-      const blob3 = document.querySelector('.blob-3');
-
       if (blob1 && blob2 && blob3) {
         cxRef.current = lerp(cxRef.current, p.x, 0.35);
         cyRef.current = lerp(cyRef.current, p.y, 0.35);

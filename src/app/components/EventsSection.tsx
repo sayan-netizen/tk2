@@ -13,7 +13,7 @@ export default function EventsSection() {
         className="relative mx-auto max-w-7xl overflow-hidden rounded-none border border-[#b91919]/50 bg-black/40 shadow-[0_0_20px_rgba(185,25,25,0.15)]"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_24%,rgba(196,30,58,0.25),transparent_26%),linear-gradient(115deg,#111111_0%,#111111_48%,#1c0c10_100%)]" />
-        <div className="absolute -right-6 -top-20 select-none font-display text-[17rem] leading-none text-[#d51e1e]/10 sm:right-10 sm:text-[22rem]">
+        <div className="absolute -right-4 -top-10 select-none font-display text-[9rem] sm:text-[16rem] lg:text-[20rem] leading-none text-[#d51e1e]/10 pointer-events-none">
           祭
         </div>
         <div className="absolute inset-y-0 right-[18%] w-px bg-gradient-to-b from-transparent via-[#d51e1e]/45 to-transparent" />

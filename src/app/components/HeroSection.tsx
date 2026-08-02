@@ -43,14 +43,14 @@ function DateAndVenue() {
       <div className="flex items-center gap-[15px] text-[#eeeeee]">
         <Calendar className="size-[15px] text-[#d51e1e]" strokeWidth={2.2} />
         <span className="font-accent text-[10px] font-bold uppercase tracking-[0.2em]">
-          5th - 6th September 2025
+          5th - 6th September 2026
         </span>
       </div>
       <div className="flex items-start gap-[15px] text-[#eeeeee]">
         <MapPin className="mt-[2px] size-[15px] text-[#d51e1e]" strokeWidth={2.2} />
         <span className="max-w-[235px] font-accent text-[10px] font-bold uppercase leading-[1.55] tracking-[0.18em]">
-          University of Engineering
-          <br />&amp; Management, Kolkata
+          National Institute of Technology
+          <br />&amp; Kurukshetra, Haryana
         </span>
       </div>
     </div>
@@ -85,16 +85,14 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="sticky top-0 z-0 isolate h-screen min-h-[626px] w-full overflow-hidden bg-black text-[#f5f5f5]"
+      className="relative z-10 isolate min-h-[100dvh] w-full overflow-hidden bg-black text-[#f5f5f5] flex flex-col justify-between px-4 sm:px-8 pt-16 sm:pt-24 pb-8 sm:pb-16"
     >
-      {/* Video background — translateZ(0) forces GPU compositing for crisp rendering */}
+      {/* Video background */}
       <video
         className="absolute inset-0 -z-30 h-full w-full object-cover"
         style={{
           transform: "translateZ(0)",
           backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden" as React.CSSProperties["WebkitBackfaceVisibility"],
-          willChange: "transform",
         }}
         aria-hidden="true"
         autoPlay
@@ -107,51 +105,44 @@ export default function HeroSection() {
         <source src={heroVideoMp4} type="video/mp4" />
       </video>
 
-      <div className="absolute inset-0 -z-20 bg-black/10" />
+      <div className="absolute inset-0 -z-20 bg-black/35" />
 
       <h1 className="sr-only">Tech Kurukshetra Shadow Protocol</h1>
 
-      <div className="relative z-10 mx-auto hidden h-full w-[960px] max-w-full md:block">
-        {/* -> Change 'left-[...]' and 'top-[...]' below to move the main title, and 'w-[...]' to resize it */}
-        <img
-          src={heroTitle}
-          alt="Tech Kurukshetra Shadow Protocol. Ancient wisdom. Modern innovation. Limitless future."
-          className="absolute left-[193px] top-[160px] w-[573px] object-contain"
-        />
-
-        {/* -> Change 'left-[...]' and 'top-[...]' below to move the entire Button/Date/Follow block */}
-        <div className="absolute left-[200px] top-[290px] flex flex-col gap-[24px]">
-          <BeginJourneyButton />
-          <DateAndVenue />
-          <FollowUs />
+      {/* Responsive Content Container */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl flex-1 flex flex-col justify-between pt-6 sm:pt-12 pb-2 sm:pb-6">
+        {/* Top / Main Section Title */}
+        <div className="flex flex-col items-center justify-center text-center">
+          <img src={heroLogo} alt="Tech Kurukshetra Logo" className="mb-4 sm:mb-6 w-28 sm:w-36 md:w-44 object-contain" />
+          <img
+            src={heroTitle}
+            alt="Tech Kurukshetra Shadow Protocol. Ancient wisdom. Modern innovation. Limitless future."
+            className="w-full max-w-[320px] sm:max-w-[480px] md:max-w-[620px] lg:max-w-[700px] object-contain drop-shadow-[0_4px_25px_rgba(0,0,0,0.8)]"
+          />
         </div>
 
-        {/* -> Change 'left-[...]' and 'top-[...]' below to move this text image, and 'w-[...]' to resize it */}
-        <img
-          src={lowerRightDesign}
-          alt="The future is not written. It is coded."
-          className="absolute left-[582px] top-[543px] w-[240px] object-contain"
-        />
+        {/* Action & Info Section */}
+        <div className="mt-8 sm:mt-12 flex flex-col md:flex-row items-center md:items-end justify-between gap-8 sm:gap-12">
+          {/* Button & Date/Venue & Socials */}
+          <div className="flex flex-col items-center md:items-start gap-5 sm:gap-6 text-center md:text-left">
+            <BeginJourneyButton />
+            <DateAndVenue />
+            <FollowUs />
+          </div>
 
-        {/* -> Change 'right-[...]' and 'top-[...]' below to move the scroll icon, and 'w-[...]' to resize it */}
-        <img
-          src={scrollToExplore}
-          alt="Scroll to explore"
-          className="absolute right-[36px] top-[428px] w-[57px] object-contain"
-        />
-      </div>
-
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 pt-24 text-center md:hidden">
-        <img src={heroLogo} alt="Tech Kurukshetra" className="mb-7 w-36 object-contain" />
-        <img
-          src={heroTitle}
-          alt="Tech Kurukshetra Shadow Protocol. Ancient wisdom. Modern innovation. Limitless future."
-          className="w-full max-w-[540px] object-contain"
-        />
-        <div className="mt-8 flex flex-col items-center gap-[28px]">
-          <BeginJourneyButton />
-          <DateAndVenue />
-          <FollowUs />
+          {/* Sub-graphics & Scroll indicators */}
+          <div className="flex flex-col sm:flex-row md:flex-col items-center md:items-end gap-6">
+            <img
+              src={lowerRightDesign}
+              alt="The future is not written. It is coded."
+              className="w-[180px] sm:w-[220px] md:w-[240px] object-contain opacity-90"
+            />
+            <img
+              src={scrollToExplore}
+              alt="Scroll to explore"
+              className="w-[45px] sm:w-[54px] object-contain opacity-80 animate-bounce"
+            />
+          </div>
         </div>
       </div>
     </section>

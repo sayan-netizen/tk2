@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { usePointer } from '../../../team-assets/hooks/usePointer';
 import { lerp, clamp } from '../../../team-assets/utils/math';
 
 export default function NinjaCursor() {
   const { pointerRef, isClicking } = usePointer();
-  const [style, setStyle] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2, rot: 0 });
+  const cursorRef = useRef(null);
+  const trailRef = useRef(null);
 
   useEffect(() => {
     let animationFrameId;
@@ -20,23 +21,30 @@ export default function NinjaCursor() {
       cy = lerp(cy, p.y, 0.35);
       crot += clamp(vel * 0.8 + 2, 2, 25);
 
-      setStyle({ x: cx, y: cy, rot: crot });
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(calc(-50% + ${cx}px), calc(-50% + ${cy}px)) rotate(${crot}deg) scale(${isClicking ? 0.75 : 1.0})`;
+        cursorRef.current.style.transition = isClicking ? 'transform 0.05s ease' : 'transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      }
+      if (trailRef.current) {
+        trailRef.current.style.transform = `translate(calc(-50% + ${cx}px), calc(-50% + ${cy}px))`;
+      }
+
       animationFrameId = requestAnimationFrame(tick);
     };
 
     animationFrameId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [pointerRef]);
+  }, [pointerRef, isClicking]);
 
   return (
     <>
       <div 
         id="cursor" 
+        ref={cursorRef}
         className="fixed top-0 left-0 w-[32px] h-[32px] pointer-events-none hidden md:block"
         style={{
           zIndex: 9999999,
-          transform: `translate(calc(-50% + ${style.x}px), calc(-50% + ${style.y}px)) rotate(${style.rot}deg) scale(${isClicking ? 0.75 : 1.0})`,
-          transition: isClicking ? 'transform 0.05s ease' : 'transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+          transform: `translate(-50%, -50%)`,
         }}
       >
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-[0_0_8px_rgba(197,57,75,0.7)]">
@@ -46,13 +54,15 @@ export default function NinjaCursor() {
       </div>
       <div 
         id="cursor-trail"
+        ref={trailRef}
         className="fixed top-0 left-0 w-[8px] h-[8px] rounded-full bg-fire-orange pointer-events-none blur-[2px] opacity-0 hidden md:block transition-transform duration-100 ease-out"
         style={{
           zIndex: 9999998,
-          transform: `translate(calc(-50% + ${style.x}px), calc(-50% + ${style.y}px))`,
+          transform: `translate(-50%, -50%)`,
           opacity: 0.65
         }}
       ></div>
     </>
   );
 }
+
