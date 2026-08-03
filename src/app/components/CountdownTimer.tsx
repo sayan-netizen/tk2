@@ -8,8 +8,8 @@ interface TimeLeft {
 }
 
 export default function CountdownTimer() {
-  const targetDate = new Date("2026-09-05T09:00:00+05:30").getTime();
-  const eventEndDate = new Date("2026-09-06T21:00:00+05:30").getTime();
+  const targetDate = new Date("2026-09-26T09:00:00+05:30").getTime();
+  const eventEndDate = new Date("2026-09-27T21:00:00+05:30").getTime();
 
   const calcTimeLeft = useCallback((): TimeLeft | null => {
     const diff = targetDate - Date.now();

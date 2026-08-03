@@ -115,10 +115,10 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-[#666]">
               <li>
                 <a
-                  href="mailto:info@techkurukshetra.org"
+                  href="mailto:tech.kurukshetra.uem@gmail.com"
                   className="hover:text-[#d51e1e] transition-colors"
                 >
-                  📧 info@techkurukshetra.org
+                  📧 tech.kurukshetra.uem@gmail.com
                 </a>
               </li>
               <li>
@@ -129,7 +129,7 @@ export default function Footer() {
                   📞 +91 1744-233208
                 </a>
               </li>
-              <li>📍 NIT Kurukshetra, Haryana</li>
+              <li>📍 UEM, Kolkata, West Bengal</li>
             </ul>
           </div>
         </div>

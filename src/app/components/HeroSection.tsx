@@ -43,14 +43,14 @@ function DateAndVenue() {
       <div className="flex items-center gap-[15px] text-[#eeeeee]">
         <Calendar className="size-[15px] text-[#d51e1e]" strokeWidth={2.2} />
         <span className="font-accent text-[10px] font-bold uppercase tracking-[0.2em]">
-          5th - 6th September 2026
+          26th - 27th September 2026
         </span>
       </div>
       <div className="flex items-start gap-[15px] text-[#eeeeee]">
         <MapPin className="mt-[2px] size-[15px] text-[#d51e1e]" strokeWidth={2.2} />
         <span className="max-w-[235px] font-accent text-[10px] font-bold uppercase leading-[1.55] tracking-[0.18em]">
-          National Institute of Technology
-          <br />&amp; Kurukshetra, Haryana
+          University of Engineering
+          <br />&amp; Management, Kolkata
         </span>
       </div>
     </div>

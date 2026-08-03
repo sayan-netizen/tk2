@@ -63,8 +63,8 @@ function Separator({ index }: { index: number }) {
 }
 
 export default function CountdownSection() {
-  const targetDate = new Date("2026-09-05T09:00:00+05:30").getTime();
-  const eventEndDate = new Date("2026-09-06T21:00:00+05:30").getTime();
+  const targetDate = new Date("2026-09-26T09:00:00+05:30").getTime();
+  const eventEndDate = new Date("2026-09-27T21:00:00+05:30").getTime();
 
   const calcTimeLeft = (): TimeLeft | null => {
     const diff = targetDate - Date.now();
@@ -171,9 +171,9 @@ export default function CountdownSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.8 }}
         >
-          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">5th</span>
+          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">26th</span>
           <span className="px-2 text-[#f5f1e8] sm:px-3">-</span>
-          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">6th</span>
+          <span className="text-[#ff2626] drop-shadow-[0_0_12px_rgba(213,30,30,0.75)]">27th</span>
           <span className="block pt-1 text-sm tracking-[0.28em] text-[#f5f1e8] sm:inline sm:pl-3 sm:pt-0 sm:text-xl lg:text-2xl">
             September 2026
           </span>

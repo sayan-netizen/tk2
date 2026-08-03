@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { SlideTitle, ScrollReveal, TiltCard, StaggerContainer, StaggerItem, ScrollDepth } from "./ScrollAnimations";
+import SponsorModal from "./SponsorModal";
 
 interface Sponsor {
   name: string;
@@ -75,6 +76,7 @@ const sizeClasses: Record<string, string> = {
 
 export default function SponsorsSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isSponsorModalOpen, setIsSponsorModalOpen] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -151,15 +153,20 @@ export default function SponsorsSection() {
           <p className="text-[#666] text-sm mb-3 font-accent">
             Interested in sponsoring Tech Kurukshetra?
           </p>
-          <motion.a
-            href="mailto:sponsors@techkurukshetra.org"
-            className="inline-flex items-center gap-2 border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-4 py-2 transition-all"
+          <motion.button
+            onClick={() => setIsSponsorModalOpen(true)}
+            className="inline-flex items-center gap-2 border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-4 py-2 transition-all cursor-pointer"
             whileHover={{ x: 5 }}
           >
             Become a Sponsor →
-          </motion.a>
+          </motion.button>
         </ScrollReveal>
       </div>
+
+      <SponsorModal
+        isOpen={isSponsorModalOpen}
+        onClose={() => setIsSponsorModalOpen(false)}
+      />
     </section>
   );
 }

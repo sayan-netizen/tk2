@@ -43,8 +43,8 @@ export default function VenueSection() {
               }}
             >
               <iframe
-                title="NIT Kurukshetra Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.789!2d76.8188!3d29.9468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e3f42f0a0a0a1%3A0x1234567890abcdef!2sNIT%20Kurukshetra!5e0!3m2!1sen!2sin!4v1234567890"
+                title="University of Engineering and Management Kolkata Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.7176166946654!2d88.4868!3d22.5694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275326d0c5b31%3A0x62a5e4a838562d98!2sUniversity%20of%20Engineering%20%26%20Management%20(UEM)%2C%20Kolkata!5e0!3m2!1sen!2sin!4v1700000000000"
                 className="w-full h-full min-h-[300px] lg:min-h-[400px] border-0 grayscale hover:grayscale-0 transition-all duration-700"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -60,60 +60,60 @@ export default function VenueSection() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">
                   <h3 className="font-heading text-2xl font-semibold text-[#F5F5F5] mb-2" style={{ transform: "translateZ(20px)" }}>
-                  National Institute of Technology, Kurukshetra
-                </h3>
-                <p className="text-[#999] text-sm mb-8" style={{ transform: "translateZ(10px)" }}>
-                  One of India's premier technical institutions, established in 1963.
-                </p>
+                    University of Engineering and Management, Kolkata
+                  </h3>
+                  <p className="text-[#999] text-sm mb-8" style={{ transform: "translateZ(10px)" }}>
+                    A premier institution for engineering, technology, and management education in Kolkata.
+                  </p>
 
-                <div className="space-y-5" style={{ transform: "translateZ(15px)" }}>
-                  {[
-                    { icon: MapPin, title: "Address", text: "NIT Kurukshetra, Thanesar, Kurukshetra,\nHaryana — 136119, India" },
-                    { icon: Train, title: "Nearest Railway Station", text: "Kurukshetra Junction (KKDE) — 5 km" },
-                    { icon: Plane, title: "Nearest Airport", text: "Chandigarh International Airport — 90 km" },
-                    { icon: Phone, title: "Contact", text: "+91 1744-233208", href: "tel:+911744233208" },
-                    { icon: Mail, title: "Email", text: "info@techkurukshetra.org", href: "mailto:info@techkurukshetra.org" },
-                  ].map((item, i) => {
-                    const Icon = item.icon;
-                    return (
-                      <motion.div
-                        key={item.title}
-                        className="flex items-start gap-3"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + i * 0.08 }}
-                      >
-                        <div className="w-9 h-9 rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(185,25,25,0.2)]">
-                          <Icon className="w-4 h-4 text-[#d51e1e]" />
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-[#F5F5F5]">{item.title}</p>
-                          {item.href ? (
-                            <p className="text-sm text-[#999]">
-                              <a href={item.href} className="hover:text-[#d51e1e] transition-colors">
-                                {item.text}
-                              </a>
-                            </p>
-                          ) : (
-                            <p className="text-sm text-[#999] whitespace-pre-line">{item.text}</p>
-                          )}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-                </div>
+                  <div className="space-y-5" style={{ transform: "translateZ(15px)" }}>
+                    {[
+                      { icon: MapPin, title: "Address", text: "University of Engineering & Management (UEM),\nUniversity Area, Plot No. III - B/5, Action Area III,\nNew Town, Kolkata, West Bengal — 700160" },
+                      { icon: Train, title: "Nearest Railway Station", text: "Bidhannagar Road / Sealdah Railway Station — 15 km" },
+                      { icon: Plane, title: "Nearest Airport", text: "Netaji Subhash Chandra Bose International Airport (CCU) — 14 km" },
+                      { icon: Phone, title: "Contact", text: "+91 33 2357 2059", href: "tel:+913323572059" },
+                      { icon: Mail, title: "Email", text: "tech.kurukshetra.uem@gmail.com", href: "mailto:tech.kurukshetra.uem@gmail.com" },
+                    ].map((item, i) => {
+                      const Icon = item.icon;
+                      return (
+                        <motion.div
+                          key={item.title}
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, x: 20 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.3 + i * 0.08 }}
+                        >
+                          <div className="w-9 h-9 rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center flex-shrink-0 shadow-[0_0_10px_rgba(185,25,25,0.2)]">
+                            <Icon className="w-4 h-4 text-[#d51e1e]" />
+                          </div>
+                          <div>
+                            <p className="text-sm font-medium text-[#F5F5F5]">{item.title}</p>
+                            {item.href ? (
+                              <p className="text-sm text-[#999]">
+                                <a href={item.href} className="hover:text-[#d51e1e] transition-colors">
+                                  {item.text}
+                                </a>
+                              </p>
+                            ) : (
+                              <p className="text-sm text-[#999] whitespace-pre-line">{item.text}</p>
+                            )}
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
 
-                <motion.div className="mt-8" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={{ transform: "translateZ(25px)" }}>
-                  <Button
-                    className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-6 py-4 rounded-none transition-all flex items-center gap-2"
-                    onClick={() =>
-                      window.open(
-                        "https://maps.google.com/?q=NIT+Kurukshetra",
-                        "_blank"
-                      )
-                    }
-                  >
+                  <motion.div className="mt-8" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} style={{ transform: "translateZ(25px)" }}>
+                    <Button
+                      className="border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-6 py-4 rounded-none transition-all flex items-center gap-2"
+                      onClick={() =>
+                        window.open(
+                          "https://maps.google.com/?q=University+of+Engineering+and+Management+Kolkata",
+                          "_blank"
+                        )
+                      }
+                    >
                     <ExternalLink className="w-4 h-4" />
                     Get Directions
                   </Button>
