@@ -40,6 +40,12 @@ body {
   opacity: 0.65;
 }
 
+@media (max-width: 768px) {
+  .gooey-bg-container {
+    display: none;
+  }
+}
+
 .g-blob {
   position: absolute;
   border-radius: 50%;
@@ -49,17 +55,17 @@ body {
 }
 
 .blob-1 {
-  width: 280px; height: 280px;
+  width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(213, 30, 30, 0.45), transparent 70%);
   top: 0; left: 0;
 }
 .blob-2 {
-  width: 320px; height: 320px;
+  width: 460px; height: 460px;
   background: radial-gradient(circle, rgba(255, 122, 0, 0.35), transparent 70%);
   top: 0; left: 0;
 }
 .blob-3 {
-  width: 260px; height: 260px;
+  width: 380px; height: 380px;
   background: radial-gradient(circle, rgba(213, 69, 54, 0.32), transparent 70%);
   top: 0; left: 0;
 }
@@ -72,6 +78,11 @@ body {
 .main-site main > section:not(#hero) {
   border-top: 1px solid rgba(213, 30, 30, 0.15); /* #d51e1e with 15% opacity */
   background: #000000;
+}
+
+/* Countdown section has clouds covering the top — no border needed */
+#countdown {
+  border-top: none !important;
 }
 
 .main-site main > section:not(#hero):nth-of-type(odd) {

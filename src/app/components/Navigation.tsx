@@ -18,6 +18,10 @@ const registerNow = new URL(
   "../../../images/herosection/registerNow.svg",
   import.meta.url
 ).href;
+const iemUemLogo = new URL(
+  "../../../images/IEM_UEM.webp",
+  import.meta.url
+).href;
 
 const navLinks = [
   { label: "HOME", href: "#hero" },
@@ -90,7 +94,8 @@ export default function Navigation() {
       className="fixed top-2 sm:top-3 inset-x-3 sm:inset-x-6 sm:mx-auto sm:w-[calc(100%-48px)] max-w-[1480px] h-[48px] min-[380px]:h-[52px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/75 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(213,30,30,0.15)] transition-all duration-300 px-3 sm:px-6 flex items-center justify-between"
     >
       {/* SEPARATED LOGO */}
-      <div className="z-50 flex items-center shrink-0">
+      <div className="z-50 flex items-center gap-2 sm:gap-3 shrink-0">
+        {/* TK logo */}
         <button
           onClick={() => handleNavClick("#hero")}
           className="group flex cursor-pointer items-center"
@@ -102,6 +107,14 @@ export default function Navigation() {
             className="h-[26px] min-[380px]:h-[30px] sm:h-[40px] w-auto max-w-[170px] min-[380px]:max-w-[220px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
           />
         </button>
+        {/* Divider */}
+        <div className="h-[22px] sm:h-[30px] w-px bg-white/20 shrink-0" />
+        {/* Institute logos */}
+        <img
+          src={iemUemLogo}
+          alt="IEM & UEM"
+          className="h-[56px] min-[380px]:h-[64px] sm:h-[72px] w-auto object-contain translate-y-1"
+        />
       </div>
 
       {/* CENTERED NAV LINKS (DESKTOP) */}
@@ -112,11 +125,10 @@ export default function Navigation() {
             <button
               key={link.href}
               onClick={() => handleNavClick(link.href)}
-              className={`relative cursor-pointer px-1 py-1 font-accent text-[13px] xl:text-[14px] tracking-[0.08em] transition-colors ${
-                isActive
+              className={`relative cursor-pointer px-1 py-1 font-accent text-[13px] xl:text-[14px] tracking-[0.08em] transition-colors ${isActive
                   ? "text-[#d51e1e] font-semibold"
                   : "text-[#f1eeee]/90 hover:text-[#d51e1e]"
-              }`}
+                }`}
             >
               {link.label}
               {isActive && (
@@ -171,11 +183,10 @@ export default function Navigation() {
                     <button
                       key={link.href}
                       onClick={() => handleNavClick(link.href)}
-                      className={`text-left px-4 py-3 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${
-                        isActive
+                      className={`text-left px-4 py-3 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${isActive
                           ? "bg-[#d51e1e]/20 text-white border-[#d51e1e]/50 font-bold shadow-[0_0_15px_rgba(213,30,30,0.25)]"
                           : "border-transparent text-[#aaa] hover:text-white hover:bg-white/5 hover:border-white/10"
-                      }`}
+                        }`}
                     >
                       <span>{link.label}</span>
                       {isActive && (

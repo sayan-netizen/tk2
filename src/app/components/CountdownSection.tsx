@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
+
+const cloudsImg = new URL(
+  "../../../images/cloud2.webp",
+  import.meta.url
+).href;
 
 interface TimeLeft {
   days: number;
@@ -97,29 +102,83 @@ export default function CountdownSection() {
 
   const isOngoing = Date.now() >= targetDate && Date.now() <= eventEndDate;
 
+  // Track only while section is pinned at viewport top (boundary line = viewport top)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  // Three layers at different parallax speeds for depth
+  const cloudsY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+  const cloudsY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const cloudsY3 = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+
   return (
     <section
       id="countdown"
-      className="sticky top-0 z-10 py-16 sm:py-20 overflow-hidden bg-[#1c140d] shadow-[0_-24px_48px_rgba(0,0,0,0.85),inset_0_24px_32px_-8px_rgba(0,0,0,0.7)]"
+      className="sticky top-0 z-10 py-16 sm:py-20 bg-[#1c140d]"
       ref={sectionRef}
+      style={{ overflow: "visible" }}
     >
-      <img
-        src="/images/countdown-scroll-bg.png"
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover object-center scale-105"
-      />
+      {/* Background assets — clipped to section bounds */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <img
+          src="/images/countdown-scroll-bg.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center scale-105"
+        />
+        {/* Decorative bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/25 to-transparent" />
+        {/* Subtle ambient red glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(213,30,30,0.06)_0%,transparent_75%)]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/8 blur-[100px]" />
+      </div>
 
-      {/* Decorative top/bottom accent lines */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/40 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b91919]/25 to-transparent" />
+      {/* ── Cloud layers on the countdown section boundary ──
+          offset:"start start" means y=0 exactly when the section is sticky.
+          translateY(-50%) centers the cloud on that line; base covers the seam. */}
 
-      {/* Top shadow gradient overlay */}
-      <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/65 via-black/25 to-transparent pointer-events-none" />
+      {/* Layer 1 — back, slowest, most transparent */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-45%)", zIndex: 13 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block"
+          style={{ y: cloudsY1, width: "110vw", marginLeft: "-5vw", height: "200px", objectFit: "fill", opacity: 0.45 }}
+        />
+      </div>
 
-      {/* Subtle ambient red glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(213,30,30,0.06)_0%,transparent_75%)] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/8 blur-[100px] pointer-events-none" />
+      {/* Layer 2 — mid, normal speed */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-50%)", zIndex: 14 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block"
+          style={{ y: cloudsY2, width: "105vw", marginLeft: "-2.5vw", height: "240px", objectFit: "fill", opacity: 0.7 }}
+        />
+      </div>
+
+      {/* Layer 3 — front, fastest, fully opaque */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-55%)", zIndex: 15 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block"
+          style={{ y: cloudsY3, width: "100vw", height: "270px", objectFit: "fill", opacity: 1 }}
+        />
+      </div>
 
       <div className="relative z-10 max-w-[960px] mx-auto px-4 sm:px-6">
         {/* Label */}
