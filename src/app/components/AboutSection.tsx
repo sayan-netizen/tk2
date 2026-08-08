@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
-import { ScrollReveal, TiltCard, Parallax, SlideTitle, StaggerContainer, StaggerItem, ScrollDepth } from "./ScrollAnimations";
+import { ScrollReveal, Parallax, SlideTitle, StaggerContainer, StaggerItem, ScrollDepth } from "./ScrollAnimations";
 
 function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -26,7 +26,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
   }, [inView, target]);
 
   return (
-    <span ref={ref} className="font-display text-4xl sm:text-5xl text-[#d51e1e]">
+    <span ref={ref} className="font-display text-4xl sm:text-5xl text-[#B8322C] font-black drop-shadow-[0_1px_8px_rgba(184,50,44,0.3)]">
       {count.toLocaleString()}
       {suffix}
     </span>
@@ -34,11 +34,14 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 }
 
 const stats = [
-  { value: 5000, suffix: "+", label: "Students" },
-  { value: 50, suffix: "+", label: "Events" },
-  { value: 30, suffix: "+", label: "Colleges" },
-  { value: 10, suffix: "L+", label: "In Prizes" },
+  { value: 5000, suffix: "+", label: "Students", seal: "衆" },
+  { value: 50, suffix: "+", label: "Events", seal: "陣" },
+  { value: 30, suffix: "+", label: "Colleges", seal: "学" },
+  { value: 10, suffix: "L+", label: "In Prizes", seal: "賞" },
 ];
+
+const aboutMobileBg = new URL("../../../images/about_mobile.webp", import.meta.url).href;
+const aboutDesktopBg = new URL("../../../images/about_desktop.webp", import.meta.url).href;
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,103 +54,213 @@ export default function AboutSection() {
   const glowY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section id="about" className="relative z-20 py-24 sm:py-32 overflow-hidden bg-black shadow-[0_-25px_50px_rgba(0,0,0,0.95)]" ref={sectionRef}>
+    <section
+      id="about"
+      className="relative z-20 py-24 sm:py-28 -mt-24 sm:-mt-24 pt-28 sm:pt-28 overflow-hidden bg-transparent"
+      ref={sectionRef}
+    >
+      {/* Rich Japanese Background Artwork — 100% clean warm parchment */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent">
+        {/* Desktop Background: about_desktop.webp with transparent top cutout */}
+        <img
+          src={aboutDesktopBg}
+          alt=""
+          aria-hidden="true"
+          className="hidden sm:block absolute inset-0 h-full w-full object-cover object-top opacity-100"
+        />
+        {/* Mobile Background: about_mobile.webp shifted further to the left */}
+        <img
+          src={aboutMobileBg}
+          alt=""
+          aria-hidden="true"
+          className="block sm:hidden absolute inset-0 h-full w-full object-cover max-sm:object-[18%_top] opacity-100"
+        />
+      </div>
+
       {/* Parallax decorative elements */}
       <motion.div className="absolute top-0 left-0" style={{ y: glowY }}>
-        <div className="w-72 h-72 bg-[#d51e1e]/3 rounded-full blur-[120px]" />
+        <div className="w-72 h-72 bg-[#B8322C]/10 rounded-full blur-[120px]" />
       </motion.div>
       <Parallax speed={-0.4} className="absolute bottom-0 right-0">
-        <div className="w-96 h-96 bg-[#d51e1e]/2 rounded-full blur-[150px]" />
+        <div className="w-96 h-96 bg-[#B88A3D]/10 rounded-full blur-[150px]" />
       </Parallax>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section header — slides in from left */}
-        <SlideTitle className="mb-16">
-          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
-            About the Event
-          </span>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#F5F5F5] tracking-wide">
-            ABOUT
-          </h2>
-          <div className="w-20 h-0.5 bg-[#d51e1e] mt-4" />
-        </SlideTitle>
+        {/* Section header — animated clean title with glowing katana line */}
+        <div className="mb-14 sm:mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="relative"
+          >
+            {/* Animated Sumi-e Ink Strike Mark — Blends naturally with parchment background */}
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: "130px", opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+              className="h-[3px] bg-gradient-to-r from-[#7A1814] via-[#B8322C] to-transparent rounded-full mb-3 shadow-[0_1px_3px_rgba(122,24,20,0.3)]"
+            />
 
-        {/* Content grid with 3D tilt cards */}
-        <ScrollDepth className="mb-20" rotate={7} y={80}>
+            {/* Animated Main Title */}
+            <h2 className="font-display text-4xl sm:text-6xl lg:text-7xl text-[#1D1B18] tracking-wide font-black drop-shadow-sm">
+              ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#B8322C] via-[#d54536] to-[#B88A3D]">TK &apos;26</span>
+            </h2>
+          </motion.div>
+        </div>
+
+        {/* Content grid — Styled with authentic Team Page Washi Paper & Parchment Aesthetics */}
+        <div className="mb-14 sm:mb-20">
           <div className="grid lg:grid-cols-2 gap-8">
-            {/* Overview — slides from left with 3D tilt */}
+            {/* Overview Card with Katana Light Sweep Animation */}
             <ScrollReveal direction="left" delay={0.1}>
-              <TiltCard intensity={8}>
-                <div className="bg-black/40 rounded-none p-8 border border-[#b91919]/30 hover:border-[#b91919] hover:shadow-[0_0_15px_rgba(185,25,25,0.15)] transition-all h-full" style={{ transformStyle: "preserve-3d" }}>
-                  <h3 className="font-heading text-2xl font-semibold text-[#F5F5F5] mb-4" style={{ transform: "translateZ(20px)" }}>
+              <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_20px_60px_rgba(75,50,37,0.18),inset_0_0_50px_rgba(184,138,61,0.1)] hover:shadow-[0_25px_75px_rgba(184,50,44,0.22),inset_0_0_65px_rgba(184,138,61,0.15)] transition-all duration-500 overflow-hidden group h-full flex flex-col justify-between">
+                {/* Traditional Washi Paper (和紙) Noise Texture */}
+                <div
+                  className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-0"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  }}
+                />
+
+                {/* Aged Tea Stain & Radial Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(184,138,61,0.15)_0%,transparent_65%)] pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(184,50,44,0.12)_0%,transparent_60%)] pointer-events-none z-0" />
+
+                {/* Katana Light Sweep on Hover */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/25 to-transparent group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+                {/* Traditional Red Hanko Stamp (朱印) */}
+                <div className="absolute top-5 right-6 flex flex-col items-center justify-center size-8 sm:size-9 rounded border-2 border-[#B8322C] bg-[#B8322C]/10 text-[#B8322C] font-serif font-bold text-[11px] tracking-tighter select-none rotate-6 shadow-[0_0_12px_rgba(184,50,44,0.25)] pointer-events-none z-10">
+                  <span className="leading-none">極</span>
+                  <span className="text-[5px] font-mono tracking-widest text-[#B8322C]/80 uppercase">SEAL</span>
+                </div>
+
+                {/* 4 Cardinal Corner Crest Accents (Kamon Marks) */}
+                <div className="absolute top-2.5 left-2.5 size-1.5 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,50,44,0.7)]" />
+                <div className="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.7)]" />
+                <div className="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,50,44,0.7)]" />
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B8322C]/10 border border-[#B8322C]/30 mb-5">
+                    <span className="font-accent text-[11px] tracking-[0.2em] uppercase text-[#B8322C] font-bold">
+                      Grand Tech Arena
+                    </span>
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-[#1D1B18] mb-4">
                     Tech Kurukshetra
                   </h3>
-                  <p className="text-[#999] leading-relaxed mb-4" style={{ transform: "translateZ(10px)" }}>
+                  <p className="text-[#38332C] text-sm sm:text-base leading-relaxed mb-4 font-sans font-medium">
                     Tech Kurukshetra is the flagship national-level technology festival of NIT Kurukshetra,
-                    one of India's premier technical institutions. For over a decade, it has been the
+                    one of India&apos;s premier technical institutions. For over a decade, it has been the
                     battleground where the brightest minds from across the nation converge to compete,
                     collaborate, and create.
                   </p>
-                  <p className="text-[#999] leading-relaxed" style={{ transform: "translateZ(10px)" }}>
+                  <p className="text-[#5A5043] text-sm sm:text-base leading-relaxed font-sans font-medium">
                     From high-stakes hackathons and intense coding marathons to cutting-edge robotics
                     challenges and immersive workshops — Tech Kurukshetra is where innovation meets
-                    competition. With participants from 30+ top engineering colleges and over ₹10 Lakh in
-                    prizes, every edition pushes the boundaries of what's possible.
+                    competition with participants from 30+ top engineering colleges.
                   </p>
                 </div>
-              </TiltCard>
+              </div>
             </ScrollReveal>
 
-            {/* Theme narrative — slides from right with 3D tilt + glow */}
+            {/* Theme narrative Card */}
             <ScrollReveal direction="right" delay={0.2}>
-              <TiltCard intensity={8}>
-                <div className="relative bg-black/40 rounded-none p-8 border border-[#b91919]/30 hover:border-[#b91919] hover:shadow-[0_0_15px_rgba(185,25,25,0.15)] overflow-hidden group transition-all h-full" style={{ transformStyle: "preserve-3d" }}>
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_20px_60px_rgba(75,50,37,0.18),inset_0_0_50px_rgba(184,138,61,0.1)] hover:shadow-[0_25px_75px_rgba(184,50,44,0.22),inset_0_0_65px_rgba(184,138,61,0.15)] transition-all duration-500 overflow-hidden group h-full flex flex-col justify-between">
+                {/* Traditional Washi Paper (和紙) Noise Texture */}
+                <div
+                  className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-0"
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                  }}
+                />
 
-                  <div className="relative z-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-none bg-[#b91919]/20 border border-[#b91919] shadow-[0_0_10px_rgba(185,25,25,0.3)] mb-4" style={{ transform: "translateZ(25px)" }}>
-                      <span className="font-accent text-xs tracking-[0.2em] uppercase text-[#d51e1e]">
-                        2026 Theme
-                      </span>
-                    </div>
-                    <h3 className="font-heading text-2xl font-semibold text-[#F5F5F5] mb-4" style={{ transform: "translateZ(20px)" }}>
-                      Shadow Protocol
-                    </h3>
-                    <p className="text-[#999] leading-relaxed mb-4 italic" style={{ transform: "translateZ(10px)" }}>
-                      "In a world of noise, the shadow prevails. Where others broadcast their moves, the
-                      shinobi strikes in silence — with precision, purpose, and mastery of the unknown."
-                    </p>
-                    <p className="text-[#999] leading-relaxed" style={{ transform: "translateZ(10px)" }}>
-                      This year's theme draws from the ancient art of the ninja — combining stealth,
-                      strategy, and cutting-edge technology. Every challenge is a mission. Every
-                      participant, an operative. Enter the Shadow Protocol and prove your worth in the
-                      arena of innovation.
-                    </p>
-                  </div>
+                {/* Aged Tea Stain & Radial Glow */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(184,138,61,0.15)_0%,transparent_65%)] pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(184,50,44,0.12)_0%,transparent_60%)] pointer-events-none z-0" />
+
+                {/* Katana Light Sweep on Hover */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/25 to-transparent group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+                {/* Traditional Red Hanko Stamp (朱印) */}
+                <div className="absolute top-5 right-6 flex flex-col items-center justify-center size-8 sm:size-9 rounded border-2 border-[#B8322C] bg-[#B8322C]/10 text-[#B8322C] font-serif font-bold text-[11px] tracking-tighter select-none rotate-6 shadow-[0_0_12px_rgba(184,50,44,0.25)] pointer-events-none z-10">
+                  <span className="leading-none">秘</span>
+                  <span className="text-[5px] font-mono tracking-widest text-[#B8322C]/80 uppercase">THEME</span>
                 </div>
-              </TiltCard>
+
+                {/* 4 Cardinal Corner Crest Accents */}
+                <div className="absolute top-2.5 left-2.5 size-1.5 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,50,44,0.7)]" />
+                <div className="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.7)]" />
+                <div className="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,50,44,0.7)]" />
+
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#B8322C]/10 border border-[#B8322C]/30 mb-5">
+                    <span className="font-accent text-[11px] tracking-[0.2em] uppercase text-[#B8322C] font-bold">
+                      2026 Theme Edition
+                    </span>
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-[#1D1B18] mb-4">
+                    Shadow Protocol
+                  </h3>
+                  <p className="text-[#38332C] text-sm sm:text-base leading-relaxed mb-4 italic font-sans font-medium border-l-2 border-[#B8322C] pl-3 py-0.5">
+                    &ldquo;In a world of noise, the shadow prevails. Where others broadcast their moves, the
+                    shinobi strikes in silence — with precision, purpose, and mastery.&rdquo;
+                  </p>
+                  <p className="text-[#5A5043] text-sm sm:text-base leading-relaxed font-sans font-medium">
+                    This year&apos;s theme draws from the ancient art of the ninja — combining stealth,
+                    strategy, and cutting-edge technology. Enter the Shadow Protocol and prove your worth.
+                  </p>
+                </div>
+              </div>
             </ScrollReveal>
           </div>
-        </ScrollDepth>
+        </div>
 
-        {/* Stats grid with stagger animation */}
-        <ScrollDepth rotate={5} y={45}>
+        {/* Stats grid with stagger animation & Team Page Washi Styling */}
+        <div>
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.12}>
             {stats.map((stat) => (
               <StaggerItem key={stat.label}>
-                <TiltCard intensity={12}>
-                  <div className="bg-black/40 rounded-none p-6 border border-[#b91919]/30 text-center hover:border-[#b91919] hover:shadow-[0_0_15px_rgba(185,25,25,0.15)] transition-all group">
+                <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-6 sm:p-8 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_15px_40px_rgba(75,50,37,0.15),inset_0_0_35px_rgba(184,138,61,0.08)] hover:shadow-[0_20px_55px_rgba(184,50,44,0.2),inset_0_0_45px_rgba(184,138,61,0.12)] transition-all duration-300 group overflow-hidden text-center">
+                  {/* Washi Texture */}
+                  <div
+                    className="absolute inset-0 opacity-[0.25] mix-blend-multiply pointer-events-none z-0"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+                    }}
+                  />
+
+                  {/* Aged Tea Stain & Radial Glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(184,138,61,0.15)_0%,transparent_65%)] pointer-events-none z-0" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(184,50,44,0.12)_0%,transparent_60%)] pointer-events-none z-0" />
+
+                  {/* Katana Light Sweep on Hover */}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-[#B88A3D]/25 to-transparent group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out pointer-events-none" />
+
+                  {/* Traditional Red Hanko Stamp (朱印) */}
+                  <div className="absolute top-3 right-3 flex flex-col items-center justify-center size-6 rounded border border-[#B8322C] bg-[#B8322C]/10 text-[#B8322C] font-serif font-bold text-[9px] tracking-tighter select-none rotate-6 shadow-[0_0_8px_rgba(184,50,44,0.2)] pointer-events-none z-10">
+                    <span className="leading-none">{stat.seal}</span>
+                  </div>
+
+                  {/* 4 Cardinal Corner Crest Accents */}
+                  <div className="absolute top-2 left-2 size-1 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_4px_rgba(184,50,44,0.7)]" />
+                  <div className="absolute bottom-2 left-2 size-1 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_4px_rgba(184,138,61,0.7)]" />
+                  <div className="absolute bottom-2 right-2 size-1 rounded-full bg-[#B8322C] border border-[#F7F1E5] shadow-[0_0_4px_rgba(184,50,44,0.7)]" />
+
+                  <div className="relative z-10">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                    <p className="font-accent text-sm text-[#999] mt-2 tracking-wider uppercase group-hover:text-[#F5F5F5] transition-colors">
+                    <p className="font-accent text-xs sm:text-sm text-[#5A5043] mt-2.5 tracking-widest uppercase font-bold group-hover:text-[#1D1B18] transition-colors">
                       {stat.label}
                     </p>
                   </div>
-                </TiltCard>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </ScrollDepth>
+        </div>
       </div>
     </section>
   );

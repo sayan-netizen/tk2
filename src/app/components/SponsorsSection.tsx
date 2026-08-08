@@ -84,7 +84,7 @@ export default function SponsorsSection() {
   const bgRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
 
   return (
-    <section id="sponsors" className="relative py-16 sm:py-32 overflow-hidden" ref={sectionRef}>
+    <section id="sponsors" className="relative pt-4 pb-16 sm:pt-8 sm:pb-24 overflow-hidden" ref={sectionRef}>
       {/* Decorative rotating glow */}
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] aspect-square pointer-events-none"
@@ -95,7 +95,7 @@ export default function SponsorsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
-        <SlideTitle className="mb-16 text-center">
+        <SlideTitle className="mb-8 sm:mb-10 text-center">
           <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
             Backed By The Best
           </span>

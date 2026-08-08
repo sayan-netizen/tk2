@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 
 const cloudsImg = new URL(
-  "../../../images/cloud2.webp",
+  "../../../images/cloud.webp",
   import.meta.url
 ).href;
 
@@ -107,10 +107,25 @@ export default function CountdownSection() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  // Three layers at different parallax speeds for depth
-  const cloudsY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
-  const cloudsY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
-  const cloudsY3 = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+
+  // Staggered parallax and horizontal drift for 10 expansive horizontal cloud strata
+  const cloudsY1 = useTransform(scrollYProgress, [0, 1], ["0%", "-35%"]);
+  const cloudsY2 = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
+  const cloudsY3 = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  const cloudsY4 = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+  const cloudsY5 = useTransform(scrollYProgress, [0, 1], ["0%", "-95%"]);
+  const cloudsY6 = useTransform(scrollYProgress, [0, 1], ["0%", "-110%"]);
+  const cloudsY7 = useTransform(scrollYProgress, [0, 1], ["0%", "-125%"]);
+  const cloudsY8 = useTransform(scrollYProgress, [0, 1], ["0%", "-140%"]);
+  const cloudsY9 = useTransform(scrollYProgress, [0, 1], ["0%", "-155%"]);
+  const cloudsY10 = useTransform(scrollYProgress, [0, 1], ["0%", "-170%"]);
+
+  const cloudsX1 = useTransform(scrollYProgress, [0, 1], ["-60px", "80px"]);
+  const cloudsX2 = useTransform(scrollYProgress, [0, 1], ["80px", "-90px"]);
+  const cloudsX3 = useTransform(scrollYProgress, [0, 1], ["-40px", "60px"]);
+  const cloudsX4 = useTransform(scrollYProgress, [0, 1], ["70px", "-60px"]);
+  const cloudsX5 = useTransform(scrollYProgress, [0, 1], ["-80px", "50px"]);
+  const cloudsX6 = useTransform(scrollYProgress, [0, 1], ["50px", "-70px"]);
 
   return (
     <section
@@ -134,11 +149,116 @@ export default function CountdownSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[200px] bg-[#b91919]/8 blur-[100px]" />
       </div>
 
-      {/* ── Cloud layers on the countdown section boundary ──
-          offset:"start start" means y=0 exactly when the section is sticky.
-          translateY(-50%) centers the cloud on that line; base covers the seam. */}
+      {/* ── SVG NATURAL CLOUDY BUMPY DISPLACEMENT FILTERS ── */}
+      <svg width="0" height="0" className="absolute pointer-events-none" aria-hidden="true">
+        <defs>
+          <filter id="natural-cloud-bumps-1" x="-10%" y="-20%" width="120%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.035" numOctaves="4" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="natural-cloud-bumps-2" x="-10%" y="-20%" width="120%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.028 0.04" numOctaves="4" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="34" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+          <filter id="natural-cloud-bumps-3" x="-10%" y="-20%" width="120%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.016 0.03" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
 
-      {/* Layer 1 — back, slowest, most transparent */}
+      {/* ── DISTRIBUTED MULTI-DEPTH CLOUD LAYERS (Sleek compact vertical profile, bumpy natural edges) ── */}
+
+      {/* Mobile-Only Left-Fluffed Cloud Cap (Seals the left seam on mobile screens) */}
+      <div
+        className="absolute inset-x-0 pointer-events-none md:hidden"
+        style={{ top: 0, transform: "translateY(-54%)", zIndex: 11 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY1,
+            width: "220vw",
+            marginLeft: "-75vw",
+            height: "115px",
+            objectFit: "fill",
+            opacity: 0.95,
+            borderRadius: "60% 40% 45% 45% / 70% 60% 25% 25%",
+            filter: "url(#natural-cloud-bumps-1) drop-shadow(0 10px 22px rgba(0,0,0,0.6))",
+          }}
+        />
+      </div>
+
+      {/* Mobile-Only Left Mid-Shelf Cloud Layer */}
+      <div
+        className="absolute inset-x-0 pointer-events-none md:hidden"
+        style={{ top: 0, transform: "translateY(-44%)", zIndex: 13 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY3,
+            width: "210vw",
+            marginLeft: "-65vw",
+            height: "110px",
+            objectFit: "fill",
+            opacity: 0.92,
+            borderRadius: "55% 45% 40% 40% / 65% 65% 25% 25%",
+            filter: "url(#natural-cloud-bumps-2) drop-shadow(0 8px 18px rgba(0,0,0,0.5))",
+          }}
+        />
+      </div>
+
+      {/* Organic Rounded Cloud Puff Backing (Right-shifted Billow) */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-50%)", zIndex: 11 }}
+      >
+        <motion.div
+          className="mx-auto rounded-[40%_60%_30%_70%/60%_40%_60%_40%] bg-gradient-to-b from-[#f2e7d3]/30 via-[#dfceb3]/15 to-transparent blur-[12px]"
+          style={{
+            y: cloudsY2,
+            x: cloudsX2,
+            width: "130vw",
+            marginLeft: "-15vw",
+            height: "95px",
+            filter: "url(#natural-cloud-bumps-2)",
+          }}
+        />
+      </div>
+
+      {/* Layer 2 — High Right Mist Bank (Flipped with organic bumpy billowing contour) */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-48%)", zIndex: 12 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY2,
+            x: cloudsX2,
+            scaleX: -1,
+            width: "185vw",
+            marginLeft: "-40vw",
+            height: "95px",
+            objectFit: "fill",
+            opacity: 0.75,
+            borderRadius: "45% 55% 40% 40% / 55% 65% 30% 30%",
+            filter: "url(#natural-cloud-bumps-2) drop-shadow(0 6px 14px rgba(0,0,0,0.4))",
+          }}
+        />
+      </div>
+
+      {/* Layer 3 — Upper-Left Drifting Cloud Strata */}
       <div
         className="absolute inset-x-0 pointer-events-none"
         style={{ top: 0, transform: "translateY(-45%)", zIndex: 13 }}
@@ -147,36 +267,138 @@ export default function CountdownSection() {
           src={cloudsImg}
           alt=""
           aria-hidden="true"
-          className="block"
-          style={{ y: cloudsY1, width: "110vw", marginLeft: "-5vw", height: "200px", objectFit: "fill", opacity: 0.45 }}
+          className="block max-w-none"
+          style={{
+            y: cloudsY3,
+            width: "200vw",
+            marginLeft: "-55vw",
+            height: "105px",
+            objectFit: "fill",
+            opacity: 0.9,
+            borderRadius: "50% 50% 30% 30% / 65% 65% 20% 20%",
+            filter: "url(#natural-cloud-bumps-1) drop-shadow(0 8px 18px rgba(0,0,0,0.45))",
+          }}
         />
       </div>
 
-      {/* Layer 2 — mid, normal speed */}
+      {/* Layer 4 — Upper-Right Rolling Billow (Flipped with natural bumpy curves) */}
       <div
         className="absolute inset-x-0 pointer-events-none"
-        style={{ top: 0, transform: "translateY(-50%)", zIndex: 14 }}
+        style={{ top: 0, transform: "translateY(-42%)", zIndex: 14 }}
       >
         <motion.img
           src={cloudsImg}
           alt=""
           aria-hidden="true"
-          className="block"
-          style={{ y: cloudsY2, width: "105vw", marginLeft: "-2.5vw", height: "240px", objectFit: "fill", opacity: 0.7 }}
+          className="block max-w-none"
+          style={{
+            y: cloudsY4,
+            x: cloudsX3,
+            scaleX: -1,
+            width: "180vw",
+            marginLeft: "-38vw",
+            height: "105px",
+            objectFit: "fill",
+            opacity: 0.88,
+            borderRadius: "55% 45% 45% 35% / 60% 70% 25% 25%",
+            filter: "url(#natural-cloud-bumps-2) drop-shadow(0 8px 20px rgba(0,0,0,0.5))",
+          }}
         />
       </div>
 
-      {/* Layer 3 — front, fastest, fully opaque */}
+      {/* Layer 5 — Mid-Top Center Cloud Shelf */}
       <div
         className="absolute inset-x-0 pointer-events-none"
-        style={{ top: 0, transform: "translateY(-55%)", zIndex: 15 }}
+        style={{ top: 0, transform: "translateY(-39%)", zIndex: 15 }}
       >
         <motion.img
           src={cloudsImg}
           alt=""
           aria-hidden="true"
-          className="block"
-          style={{ y: cloudsY3, width: "100vw", height: "270px", objectFit: "fill", opacity: 1 }}
+          className="block max-w-none"
+          style={{
+            y: cloudsY5,
+            x: cloudsX4,
+            width: "175vw",
+            marginLeft: "-36vw",
+            height: "110px",
+            objectFit: "fill",
+            opacity: 0.95,
+            borderRadius: "48% 52% 35% 35% / 60% 60% 25% 25%",
+            filter: "url(#natural-cloud-bumps-3) drop-shadow(0 10px 22px rgba(0,0,0,0.55))",
+          }}
+        />
+      </div>
+
+      {/* Layer 6 — Core Main Countdown Line Cloud Wall */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-36%)", zIndex: 16 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY6,
+            width: "170vw",
+            marginLeft: "-35vw",
+            height: "115px",
+            objectFit: "fill",
+            opacity: 1,
+            borderRadius: "50% 50% 30% 30% / 65% 65% 20% 20%",
+            filter: "url(#natural-cloud-bumps-1) drop-shadow(0 10px 24px rgba(0,0,0,0.6))",
+          }}
+        />
+      </div>
+
+      {/* Layer 7 — Forward Rolling Lower Shelf */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-32%)", zIndex: 17 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY7,
+            x: cloudsX5,
+            width: "180vw",
+            marginLeft: "-40vw",
+            height: "100px",
+            objectFit: "fill",
+            opacity: 0.88,
+            borderRadius: "55% 45% 40% 40% / 60% 60% 25% 25%",
+            filter: "url(#natural-cloud-bumps-2) drop-shadow(0 8px 18px rgba(0,0,0,0.5))",
+          }}
+        />
+      </div>
+
+      {/* Layer 8 — Lower Left Drifting Mist Fringe (Flipped with bumpy mist peaks) */}
+      <div
+        className="absolute inset-x-0 pointer-events-none"
+        style={{ top: 0, transform: "translateY(-28%)", zIndex: 18 }}
+      >
+        <motion.img
+          src={cloudsImg}
+          alt=""
+          aria-hidden="true"
+          className="block max-w-none"
+          style={{
+            y: cloudsY8,
+            x: cloudsX6,
+            scaleX: -1,
+            width: "175vw",
+            marginLeft: "-35vw",
+            height: "90px",
+            objectFit: "fill",
+            opacity: 0.78,
+            borderRadius: "45% 55% 35% 35% / 55% 65% 25% 25%",
+            filter: "url(#natural-cloud-bumps-3) drop-shadow(0 6px 14px rgba(0,0,0,0.4))",
+          }}
         />
       </div>
 

@@ -9,7 +9,7 @@ export default function TeamBanner() {
   };
 
   return (
-    <section id="team-banner" className="relative overflow-hidden px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+    <section id="team-banner" className="relative overflow-hidden px-4 pt-4 pb-2 sm:px-6 sm:pt-6 sm:pb-4 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -38,14 +38,14 @@ export default function TeamBanner() {
               MEET THE <span className="text-[#d51e1e]">TEAM</span>
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#999] sm:text-base">
-              Meet the core leads, department architects, and student volunteers turning vision into reality across 5 specialized chambers and 4 operational wings at Tech Kurukshetra.
+              Meet the core leads, department architects, and student volunteers turning vision into reality across 5 specialized domains and 4 operational wings at Tech Kurukshetra.
             </p>
             <div className="mt-5 flex flex-wrap gap-3 text-xs font-accent uppercase tracking-[0.18em] text-[#999]">
               <span className="inline-flex items-center gap-2 border border-[#b91919]/30 bg-black/30 px-3 py-2">
                 <Sparkles className="size-3.5 text-[#d51e1e]" />
                 Innovators & execution squad
               </span>
-              <span className="border border-[#b91919]/30 bg-black/30 px-3 py-2">5 chambers</span>
+              <span className="border border-[#b91919]/30 bg-black/30 px-3 py-2">5 domain leads</span>
             </div>
           </div>
 
@@ -56,7 +56,7 @@ export default function TeamBanner() {
             whileTap={{ scale: 0.98 }}
             className="group inline-flex w-fit items-center gap-4 border border-[#b91919] bg-black/5 px-5 py-4 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] transition-all hover:bg-[#b91919]/10 sm:px-6 cursor-pointer"
           >
-            Enter the chambers
+            Explore Team Leads
             <span className="flex size-8 items-center justify-center border border-white/25 bg-black/10 transition-transform group-hover:rotate-45">
               <ArrowUpRight className="size-4" />
             </span>

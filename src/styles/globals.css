@@ -13,6 +13,20 @@ html {
   scrollbar-gutter: stable;
 }
 
+@media (max-width: 768px) {
+  html, body, #root, * {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE and Edge */
+    scrollbar-gutter: auto !important;
+  }
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0px !important;
+    height: 0px !important;
+    background: transparent !important;
+  }
+}
+
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
@@ -28,6 +42,27 @@ body {
 
 #main-nav, #main-nav * {
   cursor: pointer !important;
+}
+
+#mobile-menu-trigger {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: auto 0 !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 1024px) {
+  #mobile-menu-trigger {
+    display: none !important;
+  }
+}
+
+#mobile-menu-trigger svg {
+  display: block !important;
+  margin: auto !important;
+  flex-shrink: 0 !important;
 }
 
 /* Gooey Gradient Background Blobs for Cursor Effect */

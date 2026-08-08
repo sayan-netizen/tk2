@@ -9,7 +9,6 @@ import Navigation from "./components/Navigation";
 import HeroSection from "./components/HeroSection";
 import CountdownSection from "./components/CountdownSection";
 import AboutSection from "./components/AboutSection";
-import ScheduleSection from "./components/ScheduleSection";
 import EventsSection from "./components/EventsSection";
 import SponsorsSection from "./components/SponsorsSection";
 import TeamBanner from "./components/TeamBanner";
@@ -89,12 +88,14 @@ export default function App() {
         <div className="main-site min-h-screen text-[#f1eeee]">
           <IntroOverlay />
           <main>
-            <HeroSection />
+            {/* Hero & Countdown curtain stacking: Hero sticks while Countdown scrolls over it, then Hero scrolls upward once fully covered */}
             <div className="relative">
-              <CountdownSection />
-              <AboutSection />
+              <HeroSection />
+              <div className="relative z-10 bg-[#1c140d]">
+                <CountdownSection />
+                <AboutSection />
+              </div>
             </div>
-            <ScheduleSection />
             <EventsSection />
             <TeamBanner />
             <SponsorsSection />

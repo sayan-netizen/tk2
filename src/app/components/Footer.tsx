@@ -5,7 +5,6 @@ import { useComingSoon } from "../context/ComingSoonContext";
 const quickLinks = [
   { label: "Home", href: "#hero" },
   { label: "About", href: "#about" },
-  { label: "Schedule", href: "#schedule" },
   { label: "Events", href: "#events" },
   { label: "Sponsors", href: "#sponsors" },
   { label: "Venue", href: "#venue" },

@@ -117,83 +117,119 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
     <div className="chambers-modal-overlay">
       <div className="chambers-modal-backdrop" onClick={onClose} />
       
-      <div className="chambers-modal-container">
-        {/* Top Header Controls */}
-        <div className="chambers-modal-header">
+      <div className="chambers-modal-container relative overflow-hidden flex flex-col h-screen">
+        {/* Top Header Controls - Solid backdrop, clean without dots */}
+        <div className="chambers-modal-header sticky top-0 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10 z-50">
           <div className="chambers-badge">
-            <span className="chambers-badge-title">DEPARTMENT CHAMBERS</span>
-            <span className="chambers-badge-sub">Chamber {currentTeam + 1} of {DEPTS.length}</span>
+            <div className="flex items-center gap-2">
+              <span className="inline-block size-2 rounded-full bg-[#B8322C] shadow-[0_0_8px_#B8322C]" />
+              <span className="chambers-badge-title font-accent tracking-[0.22em] text-[#B8322C] font-bold">DOMAIN LEADS & ARCHITECTS</span>
+            </div>
+            <span className="chambers-badge-sub font-mono text-[11px] text-[#F8F3E6]/70 tracking-wider">
+              Pillar {currentTeam + 1} of {DEPTS.length} • {DEPTS[currentTeam]?.name}
+            </span>
           </div>
 
           <button 
             type="button" 
             className="chambers-modal-close-btn" 
             onClick={onClose}
-            aria-label="Close"
+            aria-label="Close Leads Modal"
           >
-            <X className="size-6" />
+            <X className="size-5" />
             <span>Close</span>
           </button>
         </div>
 
-        {/* DESKTOP VIEW (Carousel) */}
-        <div className="hidden lg:block h-full w-full relative">
-          {/* Slide Indicators & Dept Nav */}
-          <TeamNavLayer currentPage={1} currentTeam={currentTeam} onGoToTeam={setCurrentTeam} />
-          
-          <SlideIndicators
-            currentPage={1}
-            currentTeam={currentTeam}
-            totalDepts={DEPTS.length}
-            onGoToPage={() => {}}
-            onGoToTeam={setCurrentTeam}
-          />
+        {/* LEADS PAGE BODY CONTAINER (With Dot Matrix Background) */}
+        <div className="relative flex-1 w-full overflow-hidden">
+          {/* STATIC DOT MATRIX PATTERN (Leads Page Background, Not In Header) */}
+          <div className="mobile-modal-dot-matrix-bg pointer-events-none absolute inset-0 z-0">
+            <div className="mobile-dot-matrix-grid" />
+            <svg className="mobile-dot-matrix-svg" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="leads-dot-matrix-pat" width="16" height="16" patternUnits="userSpaceOnUse">
+                  <circle cx="8" cy="8" r="1.5" fill="#B8322C" opacity="0.32" />
+                  <circle cx="8" cy="8" r="0.75" fill="#B88A3D" opacity="0.45" />
+                </pattern>
+                <linearGradient id="leads-dot-matrix-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#B8322C" stopOpacity="0.1" />
+                  <stop offset="50%" stopColor="#B88A3D" stopOpacity="0.06" />
+                  <stop offset="100%" stopColor="#1D1B18" stopOpacity="0.12" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#leads-dot-matrix-glow)" />
+              <rect width="100%" height="100%" fill="url(#leads-dot-matrix-pat)" />
+            </svg>
+          </div>
 
-          {/* Main Carousel Area */}
-          <div className="chambers-carousel-viewport">
-            <button 
-              type="button" 
-              className="chamber-nav-arrow arrow-left" 
-              onClick={handlePrev}
-              aria-label="Previous Chamber"
-            >
-              <ChevronLeft className="size-6" />
-            </button>
-
-            <DepartmentCarousel
-              isActive={true}
+          {/* DESKTOP VIEW (Carousel) */}
+          <div className="hidden lg:block h-full w-full relative z-10">
+            {/* Slide Indicators & Dept Nav */}
+            <TeamNavLayer currentPage={1} currentTeam={currentTeam} onGoToTeam={setCurrentTeam} />
+            
+            <SlideIndicators
+              currentPage={1}
               currentTeam={currentTeam}
+              totalDepts={DEPTS.length}
+              onGoToPage={() => {}}
               onGoToTeam={setCurrentTeam}
-              onBurst={onBurst}
-              setHoveredTorii={setHoveredTorii}
             />
 
-            <button 
-              type="button" 
-              className="chamber-nav-arrow arrow-right" 
-              onClick={handleNext}
-              aria-label="Next Chamber"
-            >
-              <ChevronRight className="size-6" />
-            </button>
-          </div>
-        </div>
+            {/* Main Carousel Area */}
+            <div className="chambers-carousel-viewport">
+              <button 
+                type="button" 
+                className="chamber-nav-arrow arrow-left" 
+                onClick={handlePrev}
+                aria-label="Previous Lead"
+              >
+                <ChevronLeft className="size-6" />
+              </button>
 
-        {/* MOBILE VIEW (Vertical List) */}
-        <div className="block lg:hidden h-full w-full overflow-y-auto overflow-x-hidden pt-24 pb-24 px-4 bg-[#F7F1E5]/95 backdrop-blur-2xl">
-          <div className="mobile-departments-wrapper max-w-lg mx-auto">
-            <div id="team-stage-label" className="mobile-stage-label text-center mb-8">
-              <h2 className="ts-title font-display text-4xl text-[#1D1B18] mt-2 drop-shadow-sm">THE CHAMBERS</h2>
-            </div>
-            {DEPTS.map((dept, index) => (
-              <MobileDepartment
-                key={dept.name}
-                dept={dept}
-                index={index}
+              <DepartmentCarousel
+                isActive={true}
+                currentTeam={currentTeam}
+                onGoToTeam={setCurrentTeam}
                 onBurst={onBurst}
                 setHoveredTorii={setHoveredTorii}
               />
-            ))}
+
+              <button 
+                type="button" 
+                className="chamber-nav-arrow arrow-right" 
+                onClick={handleNext}
+                aria-label="Next Lead"
+              >
+                <ChevronRight className="size-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* MOBILE VIEW (Vertical List) */}
+          <div className="block lg:hidden h-full w-full overflow-y-auto overflow-x-hidden pt-8 pb-28 px-4 mobile-leads-scroll-container relative z-10">
+            <div className="mobile-departments-wrapper max-w-lg mx-auto relative z-10">
+              <div id="team-stage-label" className="mobile-stage-label text-center mb-8">
+                <div className="inline-flex items-center gap-1.5 font-accent text-[11px] uppercase tracking-[0.28em] text-[#B8322C] font-bold bg-[#B8322C]/10 border border-[#B8322C]/30 px-3.5 py-1 rounded-full shadow-sm mb-3">
+                  <span>主導 • Strategic Pillars</span>
+                </div>
+                <h2 className="ts-title font-display text-4xl sm:text-5xl text-[#1D1B18] drop-shadow-sm uppercase tracking-wider">
+                  DOMAIN <span className="text-[#B8322C]">LEADS</span>
+                </h2>
+                <p className="text-xs sm:text-sm text-[#1D1B18]/75 font-sans mt-2 max-w-sm mx-auto leading-relaxed">
+                  The visionary commanders and lead architects driving execution, technology, and design at Tech Kurukshetra 2026.
+                </p>
+              </div>
+              {DEPTS.map((dept, index) => (
+                <MobileDepartment
+                  key={dept.name}
+                  dept={dept}
+                  index={index}
+                  onBurst={onBurst}
+                  setHoveredTorii={setHoveredTorii}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

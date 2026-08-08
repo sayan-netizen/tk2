@@ -24,13 +24,12 @@ const iemUemLogo = new URL(
 ).href;
 
 const navLinks = [
-  { label: "HOME", href: "#hero" },
-  { label: "ABOUT", href: "#about" },
-  { label: "SCHEDULE", href: "#schedule" },
-  { label: "EVENTS", href: "#events-page" },
-  { label: "TEAM", href: "#team" },
-  { label: "SPONSORS", href: "#sponsors" },
-  { label: "VENUE", href: "#venue" },
+  { label: "HOME", href: "#hero", key: "hero" },
+  { label: "ABOUT", href: "#about", key: "about" },
+  { label: "EVENTS", href: "#events-page", key: "events" },
+  { label: "TEAM", href: "#team", key: "team" },
+  { label: "SPONSORS", href: "#sponsors", key: "sponsors" },
+  { label: "VENUE", href: "#venue", key: "venue" },
 ];
 
 export default function Navigation() {
@@ -40,101 +39,166 @@ export default function Navigation() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    // Sections in top-to-bottom page order with their nav key
+    const sections = [
+      { id: "hero",        key: "hero" },
+      { id: "about",       key: "about" },
+      { id: "events",      key: "events" },
+      { id: "team-banner", key: "team" },
+      { id: "sponsors",    key: "sponsors" },
+      { id: "venue",       key: "venue" },
+    ];
+
+    const update = () => {
       setScrolled(window.scrollY > 50);
 
-      // Section IDs on main page in top-to-bottom order
-      const sectionIds = ["venue", "sponsors", "team-banner", "events", "schedule", "about", "hero"];
-      const scrollPosition = window.scrollY + 250;
+      // Dedicated page override
+      const hash = window.location.hash;
+      if (hash === "#team") { setActiveSection("team"); return; }
+      if (hash === "#events-page") { setActiveSection("events"); return; }
 
-      for (const id of sectionIds) {
+      // Threshold: 40% from the top of the viewport (roughly the navbar zone)
+      const threshold = window.innerHeight * 0.4;
+
+      // Walk top-to-bottom; last section whose absolute-top has been scrolled past threshold wins
+      let current = "hero";
+      for (const { id, key } of sections) {
         const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(id);
-            break;
-          }
+        if (!el) continue;
+        // Absolute top from document origin
+        const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY + threshold >= absoluteTop) {
+          current = key;
         }
       }
+
+      setActiveSection(current);
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#team") setActiveSection("team");
+      else if (hash === "#events-page") setActiveSection("events");
+      else update();
+    };
+
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("hashchange", onHashChange);
+    update();
+
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("hashchange", onHashChange);
+    };
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (link: { href: string; key: string }) => {
     setOpen(false);
-    if (href === "#team" || href === "#events-page") {
-      window.location.hash = href.replace("#", "");
+    if (link.key === "team" || link.key === "events") {
+      window.location.hash = link.href.replace("#", "");
       window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveSection(link.key);
       return;
     }
     if (window.location.hash === "#team" || window.location.hash === "#events-page") {
-      window.location.hash = href;
+      window.location.hash = link.href;
       setTimeout(() => {
-        const targetId = href.startsWith('#') ? href : `#${href}`;
-        const el = document.querySelector(targetId);
+        const el = document.querySelector(link.href);
         if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 200);
+      }, 150);
+      setActiveSection(link.key);
       return;
     }
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    const el = document.querySelector(link.href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    setActiveSection(link.key);
   };
 
-  const isDedicatedPage = typeof window !== "undefined" && (window.location.hash === "#team" || window.location.hash === "#events-page");
-  const mappedActive = activeSection === "events" ? "events-page" : activeSection === "team-banner" ? "team" : activeSection;
-  const currentActiveSection = isDedicatedPage ? window.location.hash.slice(1) : mappedActive;
+  const navStyle: React.CSSProperties = {
+    position: "fixed",
+    top: "10px",
+    left: "12px",
+    right: "12px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "1480px",
+    height: "60px",
+    zIndex: 10000,
+    borderRadius: "9999px",
+    border: "1px solid rgba(255,255,255,0.15)",
+    background: "rgba(0,0,0,0.8)",
+    backdropFilter: "blur(24px)",
+    WebkitBackdropFilter: "blur(24px)",
+    boxShadow: "0 10px 35px rgba(0,0,0,0.6), 0 0 20px rgba(213,30,30,0.15)",
+    padding: "0 18px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    boxSizing: "border-box",
+  };
 
   return (
-    <nav
-      id="main-nav"
-      className="fixed top-2 sm:top-3 inset-x-3 sm:inset-x-6 sm:mx-auto sm:w-[calc(100%-48px)] max-w-[1480px] h-[48px] min-[380px]:h-[52px] sm:h-[64px] z-[10000] rounded-full border border-white/15 bg-black/75 backdrop-blur-2xl shadow-[0_10px_35px_rgba(0,0,0,0.6),0_0_20px_rgba(213,30,30,0.15)] transition-all duration-300 px-3 sm:px-6 flex items-center justify-between"
-    >
-      {/* SEPARATED LOGO */}
-      <div className="z-50 flex items-center gap-2 sm:gap-3 shrink-0">
-        {/* TK logo */}
+    <nav id="main-nav" style={navStyle}>
+      {/* LOGO */}
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
         <button
-          onClick={() => handleNavClick("#hero")}
-          className="group flex cursor-pointer items-center"
+          onClick={() => handleNavClick({ href: "#hero", key: "hero" })}
           aria-label="Go to home"
+          style={{ background: "none", border: "none", padding: 0, cursor: "pointer", display: "flex", alignItems: "center" }}
         >
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            className="h-[26px] min-[380px]:h-[30px] sm:h-[40px] w-auto max-w-[170px] min-[380px]:max-w-[220px] object-contain transition-[filter] duration-300 group-hover:drop-shadow-[0_0_14px_rgba(213,30,30,0.45)]"
+            style={{ height: "32px", width: "auto", maxWidth: "210px", objectFit: "contain", display: "block" }}
           />
         </button>
-        {/* Divider */}
-        <div className="h-[22px] sm:h-[30px] w-px bg-white/20 shrink-0" />
-        {/* Institute logos */}
+        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
         <img
           src={iemUemLogo}
           alt="IEM & UEM"
-          className="h-[56px] min-[380px]:h-[64px] sm:h-[72px] w-auto object-contain translate-y-1"
+          style={{ height: "54px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
         />
       </div>
 
-      {/* CENTERED NAV LINKS (DESKTOP) */}
-      <div className="hidden lg:flex items-center gap-[24px] xl:gap-[32px]">
+      {/* CENTERED NAV LINKS — desktop only, hidden on mobile via className */}
+      <div className="hidden lg:flex" style={{ alignItems: "center", gap: "28px" }}>
         {navLinks.map((link) => {
-          const isActive = currentActiveSection === link.href.slice(1);
+          const isActive = activeSection === link.key;
           return (
             <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className={`relative cursor-pointer px-1 py-1 font-accent text-[13px] xl:text-[14px] tracking-[0.08em] transition-colors ${isActive
-                  ? "text-[#d51e1e] font-semibold"
-                  : "text-[#f1eeee]/90 hover:text-[#d51e1e]"
-                }`}
+              key={link.key}
+              onClick={() => handleNavClick(link)}
+              style={{
+                position: "relative",
+                background: "none",
+                border: "none",
+                padding: "4px 4px",
+                cursor: "pointer",
+                fontFamily: "'Rajdhani', 'Inter', sans-serif",
+                fontSize: "13px",
+                letterSpacing: "0.08em",
+                fontWeight: isActive ? "600" : "400",
+                color: isActive ? "#d51e1e" : "rgba(241,238,238,0.9)",
+                transition: "color 0.2s",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
             >
               {link.label}
               {isActive && (
                 <motion.div
                   layoutId="nav-indicator"
-                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#d51e1e]"
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: "2px",
+                    background: "#d51e1e",
+                    borderRadius: "1px",
+                  }}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -143,54 +207,140 @@ export default function Navigation() {
         })}
       </div>
 
-      {/* RIGHT ACTION ITEMS: REGISTER & MOBILE HAMBURGER */}
-      <div className="z-50 flex items-center gap-2 sm:gap-3">
+      {/* RIGHT: REGISTER + HAMBURGER */}
+      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
         <button
           id="register-nav-cta"
-          className="hidden sm:inline-flex h-[32px] w-[120px] items-center justify-center bg-transparent transition-[filter] hover:drop-shadow-[0_0_12px_rgba(213,30,30,0.45)] cursor-pointer"
-          onClick={() => openComingSoon("Tech Kurukshetra 2026")}
+          onClick={() => {
+            window.location.hash = "#events-page";
+            window.scrollTo(0, 0);
+          }}
           aria-label="Register now"
+          className="hidden sm:inline-flex"
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            cursor: "pointer",
+            height: "38px",
+            width: "142px",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "transform 0.2s ease, filter 0.2s ease",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.04)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
         >
-          <img src={registerNow} alt="" className="h-full w-full object-contain" />
+          <img src={registerNow} alt="" style={{ height: "100%", width: "100%", objectFit: "contain" }} />
         </button>
 
-        {/* Mobile hamburger button */}
+        {/* Mobile hamburger */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button
               id="mobile-menu-trigger"
-              className="flex h-8 w-8 min-[380px]:h-9 min-[380px]:w-9 items-center justify-center rounded-full border border-[#d51e1e]/40 bg-[#d51e1e]/15 text-[#F5F5F5] shadow-[0_0_12px_rgba(213,30,30,0.25)] transition-all hover:bg-[#d51e1e] hover:text-white hover:shadow-[0_0_18px_rgba(213,30,30,0.5)] active:scale-95 lg:hidden cursor-pointer shrink-0"
               aria-label="Open menu"
+              className="lg:hidden"
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                height: "34px",
+                width: "34px",
+                borderRadius: "50%",
+                border: "1px solid rgba(213,30,30,0.4)",
+                background: "rgba(213,30,30,0.15)",
+                color: "#F5F5F5",
+                boxShadow: "0 0 12px rgba(213,30,30,0.25)",
+                cursor: "pointer",
+                flexShrink: 0,
+                padding: 0,
+                boxSizing: "border-box",
+              }}
             >
-              <Menu className="size-4 min-[380px]:size-4.5" />
+              <Menu style={{ width: "16px", height: "16px", display: "block", flexShrink: 0 }} strokeWidth={2.2} />
             </button>
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-[#0a0a0a]/95 backdrop-blur-2xl border-l border-[#d51e1e]/30 w-[85vw] max-w-[320px] p-6 flex flex-col justify-between"
+            className="!bg-[#0a0a0a] backdrop-blur-2xl !border-l !border-[#d51e1e]/30 !w-[85vw] !max-w-[320px] !p-0 !flex !flex-col !justify-between overflow-hidden"
+            style={{
+              background: "#0a0a0a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              padding: 0,
+              width: "min(85vw, 320px)",
+              height: "100%",
+              boxSizing: "border-box",
+            }}
           >
-            <div className="flex flex-col gap-6 pt-6">
+            {/* Top: logo + links */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "24px",
+                padding: "24px 24px 0 24px",
+                flex: "1 1 auto",
+                overflowY: "auto",
+              }}
+            >
               {/* Drawer Header Logo */}
-              <div className="flex items-center gap-2 border-b border-white/10 pb-4">
-                <img src={navLogo} alt="Tech Kurukshetra" className="h-8 w-auto object-contain" />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  borderBottom: "1px solid rgba(255,255,255,0.1)",
+                  paddingBottom: "16px",
+                }}
+              >
+                <img src={navLogo} alt="Tech Kurukshetra" style={{ height: "32px", width: "auto", objectFit: "contain", display: "block" }} />
+                <div style={{ height: "22px", width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
+                <img src={iemUemLogo} alt="IEM & UEM" style={{ height: "42px", width: "auto", objectFit: "contain", display: "block" }} />
               </div>
 
               {/* Navigation Links */}
-              <div className="flex flex-col gap-1.5">
+              <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
                 {navLinks.map((link) => {
-                  const isActive = currentActiveSection === link.href.slice(1);
+                  const isActive = activeSection === link.key;
                   return (
                     <button
-                      key={link.href}
-                      onClick={() => handleNavClick(link.href)}
-                      className={`text-left px-4 py-3 rounded-xl text-sm font-accent tracking-[0.14em] uppercase transition-all cursor-pointer flex items-center justify-between border ${isActive
-                          ? "bg-[#d51e1e]/20 text-white border-[#d51e1e]/50 font-bold shadow-[0_0_15px_rgba(213,30,30,0.25)]"
-                          : "border-transparent text-[#aaa] hover:text-white hover:bg-white/5 hover:border-white/10"
-                        }`}
+                      key={link.key}
+                      onClick={() => handleNavClick(link)}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        textAlign: "left",
+                        padding: "12px 16px",
+                        borderRadius: "12px",
+                        fontSize: "13px",
+                        fontFamily: "inherit",
+                        fontWeight: isActive ? "700" : "500",
+                        letterSpacing: "0.14em",
+                        textTransform: "uppercase",
+                        cursor: "pointer",
+                        transition: "all 0.2s",
+                        border: isActive ? "1px solid rgba(213,30,30,0.5)" : "1px solid transparent",
+                        background: isActive ? "rgba(213,30,30,0.2)" : "transparent",
+                        color: isActive ? "#ffffff" : "#aaaaaa",
+                        boxShadow: isActive ? "0 0 15px rgba(213,30,30,0.25)" : "none",
+                      }}
                     >
                       <span>{link.label}</span>
                       {isActive && (
-                        <span className="size-2 rounded-full bg-[#d51e1e] shadow-[0_0_8px_#d51e1e]" />
+                        <span
+                          style={{
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            background: "#d51e1e",
+                            boxShadow: "0 0 8px #d51e1e",
+                            flexShrink: 0,
+                          }}
+                        />
                       )}
                     </button>
                   );
@@ -198,19 +348,44 @@ export default function Navigation() {
               </div>
             </div>
 
-            <div className="pb-4 pt-4 border-t border-white/10">
+            {/* Bottom: Register CTA */}
+            <div
+              style={{
+                padding: "16px 24px 24px 24px",
+                borderTop: "1px solid rgba(255,255,255,0.1)",
+                flexShrink: 0,
+              }}
+            >
               <button
                 onClick={() => {
                   setOpen(false);
-                  openComingSoon("Tech Kurukshetra 2026");
+                  window.location.hash = "#events-page";
+                  window.scrollTo(0, 0);
                 }}
-                className="w-full py-3.5 rounded-xl border border-[#d51e1e] bg-gradient-to-r from-[#d51e1e]/30 to-[#b91919]/50 font-accent text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_18px_rgba(213,30,30,0.35)] hover:bg-[#d51e1e] active:scale-98 transition-all cursor-pointer"
+                style={{
+                  display: "block",
+                  width: "100%",
+                  padding: "14px",
+                  borderRadius: "12px",
+                  border: "1px solid #d51e1e",
+                  background: "linear-gradient(to right, rgba(213,30,30,0.3), rgba(185,25,25,0.5))",
+                  color: "#ffffff",
+                  fontFamily: "inherit",
+                  fontSize: "12px",
+                  fontWeight: "700",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  boxShadow: "0 0 18px rgba(213,30,30,0.35)",
+                  cursor: "pointer",
+                  transition: "all 0.2s",
+                }}
               >
                 REGISTER NOW →
               </button>
             </div>
           </SheetContent>
         </Sheet>
+
       </div>
     </nav>
   );
