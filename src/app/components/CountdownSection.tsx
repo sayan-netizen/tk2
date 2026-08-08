@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView, useScroll, useTransform } from "motion/react";
 
 const cloudsImg = new URL(
-  "../../../images/cloud.webp",
+  "../../../images/new_cloud.webp",
   import.meta.url
 ).href;
 
