@@ -45,18 +45,11 @@ const aboutDesktopBg = new URL("../../../images/about_desktop.webp", import.meta
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Parallax for decorative glows
-  const glowY = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
     <section
       id="about"
-      className="relative z-20 py-24 sm:py-28 -mt-24 sm:-mt-24 pt-28 sm:pt-28 overflow-hidden bg-transparent"
+      className="relative z-20 py-24 sm:py-28 -mt-24 sm:-mt-24 pt-28 sm:pt-28 overflow-hidden bg-transparent transform-gpu"
       ref={sectionRef}
     >
       {/* Rich Japanese Background Artwork — 100% clean warm parchment */}
@@ -66,24 +59,20 @@ export default function AboutSection() {
           src={aboutDesktopBg}
           alt=""
           aria-hidden="true"
-          className="hidden sm:block absolute inset-0 h-full w-full object-cover object-top opacity-100"
+          className="hidden sm:block absolute inset-0 h-full w-full object-cover object-top opacity-100 will-change-transform"
         />
         {/* Mobile Background: about_mobile.webp shifted further to the left */}
         <img
           src={aboutMobileBg}
           alt=""
           aria-hidden="true"
-          className="block sm:hidden absolute inset-0 h-full w-full object-cover max-sm:object-[18%_top] opacity-100"
+          className="block sm:hidden absolute inset-0 h-full w-full object-cover max-sm:object-[18%_top] opacity-100 will-change-transform"
         />
       </div>
 
-      {/* Parallax decorative elements */}
-      <motion.div className="absolute top-0 left-0" style={{ y: glowY }}>
-        <div className="w-72 h-72 bg-[#B8322C]/10 rounded-full blur-[120px]" />
-      </motion.div>
-      <Parallax speed={-0.4} className="absolute bottom-0 right-0">
-        <div className="w-96 h-96 bg-[#B88A3D]/10 rounded-full blur-[150px]" />
-      </Parallax>
+      {/* Lightweight static ambient glows (zero scroll paint overhead) */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-[#B8322C]/5 rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#B88A3D]/5 rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header — animated clean title with glowing katana line */}
@@ -116,7 +105,7 @@ export default function AboutSection() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Overview Card with Katana Light Sweep Animation */}
             <ScrollReveal direction="left" delay={0.1}>
-              <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_20px_60px_rgba(75,50,37,0.18),inset_0_0_50px_rgba(184,138,61,0.1)] hover:shadow-[0_25px_75px_rgba(184,50,44,0.22),inset_0_0_65px_rgba(184,138,61,0.15)] transition-all duration-500 overflow-hidden group h-full flex flex-col justify-between">
+              <div className="relative rounded-2xl bg-[#F2ECE1]/95 p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_15px_45px_rgba(75,50,37,0.14),inset_0_0_40px_rgba(184,138,61,0.08)] hover:shadow-[0_20px_60px_rgba(184,50,44,0.18)] transition-all duration-300 overflow-hidden group h-full flex flex-col justify-between transform-gpu will-change-transform">
                 {/* Traditional Washi Paper (和紙) Noise Texture */}
                 <div
                   className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-0"
@@ -169,7 +158,7 @@ export default function AboutSection() {
 
             {/* Theme narrative Card */}
             <ScrollReveal direction="right" delay={0.2}>
-              <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_20px_60px_rgba(75,50,37,0.18),inset_0_0_50px_rgba(184,138,61,0.1)] hover:shadow-[0_25px_75px_rgba(184,50,44,0.22),inset_0_0_65px_rgba(184,138,61,0.15)] transition-all duration-500 overflow-hidden group h-full flex flex-col justify-between">
+              <div className="relative rounded-2xl bg-[#F2ECE1]/95 p-8 sm:p-10 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_15px_45px_rgba(75,50,37,0.14),inset_0_0_40px_rgba(184,138,61,0.08)] hover:shadow-[0_20px_60px_rgba(184,50,44,0.18)] transition-all duration-300 overflow-hidden group h-full flex flex-col justify-between transform-gpu will-change-transform">
                 {/* Traditional Washi Paper (和紙) Noise Texture */}
                 <div
                   className="absolute inset-0 opacity-[0.35] mix-blend-multiply pointer-events-none z-0"
@@ -224,7 +213,7 @@ export default function AboutSection() {
           <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" staggerDelay={0.12}>
             {stats.map((stat) => (
               <StaggerItem key={stat.label}>
-                <div className="relative rounded-2xl bg-[#F2ECE1]/90 backdrop-blur-xl p-6 sm:p-8 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_15px_40px_rgba(75,50,37,0.15),inset_0_0_35px_rgba(184,138,61,0.08)] hover:shadow-[0_20px_55px_rgba(184,50,44,0.2),inset_0_0_45px_rgba(184,138,61,0.12)] transition-all duration-300 group overflow-hidden text-center">
+                <div className="relative rounded-2xl bg-[#F2ECE1]/95 p-6 sm:p-8 border border-[#B88A3D]/40 hover:border-[#B8322C] shadow-[0_10px_30px_rgba(75,50,37,0.12),inset_0_0_30px_rgba(184,138,61,0.06)] hover:shadow-[0_15px_40px_rgba(184,50,44,0.16)] transition-all duration-300 group overflow-hidden text-center transform-gpu will-change-transform">
                   {/* Washi Texture */}
                   <div
                     className="absolute inset-0 opacity-[0.25] mix-blend-multiply pointer-events-none z-0"
