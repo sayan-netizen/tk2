@@ -139,7 +139,7 @@ export default function SponsorsSection() {
                       <StaggerItem key={sponsor.name}>
                         <TiltCard intensity={15}>
                           <motion.div
-                            className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-xl bg-[#F2ECE1]/80 backdrop-blur-md border border-[#B88A3D]/50 flex items-center justify-center font-heading font-bold text-[#38332C] hover:text-[#B8322C] hover:border-[#B8322C] hover:bg-[#F2ECE1] shadow-[0_10px_30px_rgba(75,50,37,0.12)] hover:shadow-[0_15px_40px_rgba(184,50,44,0.2)] transition-all duration-300 cursor-pointer group`}
+                            className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-xl bg-[#EFE2C7]/70 backdrop-blur-md border border-[#B88A3D]/45 flex items-center justify-center font-heading font-bold text-[#1D1B18] hover:text-[#B8322C] hover:border-[#B8322C] hover:bg-[#EFE2C7]/95 shadow-[0_10px_30px_rgba(75,50,37,0.12)] hover:shadow-[0_15px_40px_rgba(184,50,44,0.2)] transition-all duration-300 cursor-pointer group`}
                             title="TBD"
                             whileHover={{
                               scale: 1.05,
