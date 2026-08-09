@@ -77,7 +77,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-[#5A5043] text-sm leading-relaxed max-w-xs mb-6 font-medium">
-              Enter the mission. Master the unknown. The flagship national-level tech fest of NIT Kurukshetra.
+              Enter the mission. Master the unknown. The flagship national-level tech fest of UEM Kolkata.
             </p>
             <Button
               className="border border-[#B8322C] bg-[#B8322C] font-accent text-[11px] font-bold uppercase tracking-[0.2em] text-[#F7F1E5] shadow-[0_5px_15px_rgba(184,50,44,0.25)] hover:bg-[#962520] rounded-lg px-6 py-2.5 transition-all cursor-pointer"
@@ -176,7 +176,7 @@ export default function Footer() {
 
             {/* Copyright */}
             <p className="text-[#5A5043] text-xs font-accent font-semibold flex items-center gap-1">
-              © 2026 Tech Kurukshetra, NIT Kurukshetra. Made with{" "}
+              © 2026 Tech Kurukshetra, UEM Kolkata. Made with{" "}
               <Heart className="size-3.5 text-[#B8322C] fill-[#B8322C]" /> by students.
             </p>
           </div>
