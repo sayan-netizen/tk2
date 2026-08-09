@@ -16,11 +16,10 @@ export function Parallax({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [speed * 100, speed * -100]);
-  const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
+  const y = useTransform(scrollYProgress, [0, 1], [speed * 80, speed * -80]);
 
   return (
-    <motion.div ref={ref} style={{ y: smoothY }} className={className}>
+    <motion.div ref={ref} style={{ y }} className={`transform-gpu will-change-transform ${className}`}>
       {children}
     </motion.div>
   );
@@ -218,8 +217,6 @@ export function ScrollProgress({
 export function ScrollDepth({
   children,
   className = "",
-  rotate = 8,
-  y = 70,
 }: {
   children: ReactNode;
   className?: string;
@@ -227,36 +224,15 @@ export function ScrollDepth({
   y?: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const rotateX = useTransform(scrollYProgress, [0, 0.35, 0.75, 1], [rotate, 0, 0, -rotate * 0.45]);
-  const translateY = useTransform(scrollYProgress, [0, 0.5, 1], [y, 0, -y * 0.35]);
-  const scale = useTransform(scrollYProgress, [0, 0.32, 0.82, 1], [0.96, 1, 1, 0.985]);
-  const opacity = useTransform(scrollYProgress, [0, 0.18, 0.88, 1], [0.65, 1, 1, 0.72]);
-
-  if (reduceMotion) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  const isInView = useInView(ref, { once: true, margin: "0px 0px -60px 0px" });
 
   return (
     <motion.div
       ref={ref}
-      style={{
-        opacity,
-        rotateX,
-        y: translateY,
-        scale,
-        transformPerspective: 1200,
-        transformStyle: "preserve-3d",
-      }}
-      className={className}
+      initial={{ opacity: 0, y: 35 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={`transform-gpu will-change-transform ${className}`}
     >
       {children}
     </motion.div>

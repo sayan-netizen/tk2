@@ -149,38 +149,48 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="relative z-10 w-full max-w-xl overflow-hidden border border-[#b91919]/60 bg-[#0c0a0a] p-6 sm:p-8 text-[#f1eeee] shadow-[0_0_50px_rgba(185,25,25,0.4)] my-auto"
+            className="relative z-10 w-full max-w-xl overflow-hidden rounded-2xl border border-[#B88A3D]/45 bg-[#0e0a09]/95 p-6 sm:p-8 text-[#f1eeee] shadow-[0_20px_60px_rgba(0,0,0,0.8),inset_0_0_35px_rgba(184,138,61,0.08)] backdrop-blur-xl my-auto"
           >
-            {/* Background Radial Glow */}
-            <div className="absolute -top-24 -left-24 size-48 rounded-full bg-[#d51e1e]/20 blur-[60px] pointer-events-none" />
-            <div className="absolute -bottom-24 -right-24 size-48 rounded-full bg-[#63272d]/30 blur-[60px] pointer-events-none" />
+            {/* Traditional Asanoha Sacred Pattern */}
+            <svg className="absolute inset-0 size-full pointer-events-none opacity-15 z-0" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="asanoha-sponsor" width="60" height="103.92" patternUnits="userSpaceOnUse">
+                  <path d="M30 0 L60 17.32 L60 51.96 L30 69.28 L0 51.96 L0 17.32 Z M30 0 L30 69.28 M0 17.32 L60 51.96 M60 17.32 L0 51.96 M30 103.92 L60 86.6 L60 51.96 L30 34.64 L0 51.96 L0 86.6 Z M30 103.92 L30 34.64 M0 86.6 L60 51.96 M60 86.6 L0 51.96" fill="none" stroke="#d51e1e" strokeWidth="0.75" opacity="0.6"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#asanoha-sponsor)" />
+            </svg>
 
-            {/* Corner Bracket Accents */}
-            <div className="absolute top-3 left-3 size-3 border-t-2 border-l-2 border-[#d51e1e]/70 pointer-events-none" />
-            <div className="absolute top-3 right-3 size-3 border-t-2 border-r-2 border-[#d51e1e]/70 pointer-events-none" />
-            <div className="absolute bottom-3 left-3 size-3 border-b-2 border-l-2 border-[#d51e1e]/70 pointer-events-none" />
-            <div className="absolute bottom-3 right-3 size-3 border-b-2 border-r-2 border-[#d51e1e]/70 pointer-events-none" />
+            {/* Background Radial Glow */}
+            <div className="absolute -top-24 -left-24 size-48 rounded-full bg-[#d51e1e]/20 blur-[60px] pointer-events-none z-0" />
+            <div className="absolute -bottom-24 -right-24 size-48 rounded-full bg-[#B88A3D]/15 blur-[60px] pointer-events-none z-0" />
+
+            {/* 4 Cardinal Corner Crest Accents (Kamon Marks) */}
+            <div className="absolute top-2.5 left-2.5 size-1.5 rounded-full bg-[#ff3b30] border border-[#F7F1E5] shadow-[0_0_6px_rgba(255,59,48,0.8)] z-20" />
+            <div className="absolute top-2.5 right-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.8)] z-20" />
+            <div className="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.8)] z-20" />
+            <div className="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-[#ff3b30] border border-[#F7F1E5] shadow-[0_0_6px_rgba(255,59,48,0.8)] z-20" />
 
             {/* Close Button */}
             <button
               onClick={handleResetAndClose}
-              className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full border border-white/10 bg-black/40 text-neutral-400 transition-colors hover:border-[#d51e1e]/50 hover:bg-[#d51e1e]/20 hover:text-white cursor-pointer"
+              className="absolute top-4 right-4 flex size-9 items-center justify-center rounded-full border border-white/15 bg-black/50 text-neutral-300 transition-colors hover:border-[#B8322C] hover:bg-[#B8322C]/20 hover:text-white cursor-pointer z-20"
               aria-label="Close dialog"
             >
               <X className="size-4" />
             </button>
 
             {/* Header Badge */}
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#d51e1e]/40 bg-[#d51e1e]/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#ff7d91]">
-              <Sparkles className="size-3 text-[#d51e1e]" />
-              <span>PARTNERSHIP PROTOCOL</span>
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-[#B8322C]/40 bg-[#B8322C]/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[#ff7d91] relative z-10">
+              <Sparkles className="size-3 text-[#ff4d4d]" />
+              <span>協 // PARTNERSHIP PROTOCOL</span>
             </div>
 
             {/* Main Title */}
-            <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-[#F5F5F5] [text-shadow:0_0_20px_rgba(213,30,30,0.5)]">
-              BECOME A <span className="text-[#d51e1e]">SPONSOR</span>
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-[#F5F5F5] drop-shadow-md relative z-10">
+              BECOME A <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d4d] via-[#ff7a70] to-[#B88A3D]">SPONSOR</span>
             </h2>
-            <p className="text-xs sm:text-sm text-neutral-400 mt-1 mb-6 font-sans">
+            <p className="text-xs sm:text-sm text-neutral-300 mt-1 mb-6 font-sans relative z-10 font-medium">
               Partner with Tech Kurukshetra 2026 at UEM Kolkata and showcase your brand to thousands of tech innovators.
             </p>
 
@@ -188,9 +198,9 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-4 text-center flex flex-col items-center justify-center"
+                className="py-4 text-center flex flex-col items-center justify-center relative z-10"
               >
-                <div className="flex size-14 items-center justify-center rounded-full bg-[#d51e1e]/20 border border-[#d51e1e] mb-3 text-[#ff2626] shadow-[0_0_20px_rgba(213,30,30,0.4)]">
+                <div className="flex size-14 items-center justify-center rounded-2xl bg-[#B8322C]/20 border border-[#B8322C] mb-3 text-[#ff4d4d] shadow-[0_0_20px_rgba(184,50,44,0.4)]">
                   <CheckCircle2 className="size-7" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-[#F5F5F5] mb-1">
@@ -198,7 +208,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                 </h3>
 
                 {apiNotice && (
-                  <p className="text-xs text-[#ff7d91] font-mono mb-4 bg-black/40 px-3 py-1.5 border border-[#b91919]/30 rounded">
+                  <p className="text-xs text-[#ff7d91] font-mono mb-4 bg-black/50 px-3 py-1.5 border border-[#B88A3D]/30 rounded-lg">
                     {apiNotice}
                   </p>
                 )}
@@ -208,14 +218,14 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                 </p>
 
                 {/* Email Address Quick Copy Card */}
-                <div className="w-full bg-black/60 border border-[#b91919]/40 rounded-lg p-3 mb-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <div className="w-full bg-black/60 border border-[#B88A3D]/40 rounded-xl p-3.5 mb-5 flex flex-col sm:flex-row items-center justify-between gap-2.5">
                   <div className="flex items-center gap-2 font-mono text-xs text-[#ff7d91]">
-                    <Mail className="size-4 text-[#d51e1e] shrink-0" />
+                    <Mail className="size-4 text-[#ff4d4d] shrink-0" />
                     <span>{TARGET_SPONSOR_EMAIL}</span>
                   </div>
                   <button
                     onClick={handleCopyEmail}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#d51e1e]/20 border border-[#d51e1e]/50 hover:bg-[#d51e1e]/40 rounded text-xs font-mono text-white transition-all cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#B8322C]/20 border border-[#B8322C]/50 hover:bg-[#B8322C]/40 rounded-lg text-xs font-mono text-white transition-all cursor-pointer"
                   >
                     {copiedEmail ? <Check className="size-3.5 text-green-400" /> : <Copy className="size-3.5" />}
                     <span>{copiedEmail ? "Copied Email!" : "Copy Email"}</span>
@@ -226,10 +236,10 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                 <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-6 text-left">
                   <a
                     href={getMailtoUrl(formData)}
-                    className="flex items-center justify-between p-3 rounded bg-black/50 border border-white/10 hover:border-[#d51e1e] hover:bg-[#d51e1e]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-[#140e0b]/80 border border-[#B88A3D]/35 hover:border-[#ff3b30] hover:bg-[#B8322C]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <Mail className="size-4 text-[#d51e1e]" />
+                      <Mail className="size-4 text-[#ff4d4d]" />
                       Default Mail App
                     </span>
                     <ExternalLink className="size-3.5 text-neutral-400 group-hover:text-white transition-colors" />
@@ -239,10 +249,10 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                     href={getGmailWebUrl(formData)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded bg-black/50 border border-white/10 hover:border-[#d51e1e] hover:bg-[#d51e1e]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-[#140e0b]/80 border border-[#B88A3D]/35 hover:border-[#ff3b30] hover:bg-[#B8322C]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <Globe className="size-4 text-[#d51e1e]" />
+                      <Globe className="size-4 text-[#ff4d4d]" />
                       Open Gmail Web
                     </span>
                     <ExternalLink className="size-3.5 text-neutral-400 group-hover:text-white transition-colors" />
@@ -252,10 +262,10 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                     href={getOutlookWebUrl(formData)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 rounded bg-black/50 border border-white/10 hover:border-[#d51e1e] hover:bg-[#d51e1e]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-[#140e0b]/80 border border-[#B88A3D]/35 hover:border-[#ff3b30] hover:bg-[#B8322C]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      <Building2 className="size-4 text-[#d51e1e]" />
+                      <Building2 className="size-4 text-[#ff4d4d]" />
                       Open Outlook Web
                     </span>
                     <ExternalLink className="size-3.5 text-neutral-400 group-hover:text-white transition-colors" />
@@ -263,30 +273,32 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
 
                   <button
                     onClick={handleCopyDetails}
-                    className="flex items-center justify-between p-3 rounded bg-black/50 border border-white/10 hover:border-[#d51e1e] hover:bg-[#d51e1e]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
+                    className="flex items-center justify-between p-3.5 rounded-xl bg-[#140e0b]/80 border border-[#B88A3D]/35 hover:border-[#ff3b30] hover:bg-[#B8322C]/15 transition-all text-xs font-accent tracking-wider uppercase text-white group cursor-pointer"
                   >
                     <span className="flex items-center gap-2">
-                      {copiedDetails ? <Check className="size-4 text-green-400" /> : <Copy className="size-4 text-[#d51e1e]" />}
+                      {copiedDetails ? <Check className="size-4 text-green-400" /> : <Copy className="size-4 text-[#ff4d4d]" />}
                       {copiedDetails ? "Details Copied!" : "Copy Full Details"}
                     </span>
                     <Copy className="size-3.5 text-neutral-400 group-hover:text-white transition-colors" />
                   </button>
                 </div>
 
-                <button
+                <motion.button
                   onClick={handleResetAndClose}
-                  className="px-6 py-2.5 bg-[#d51e1e] text-white font-accent text-xs uppercase tracking-[0.2em] font-bold rounded shadow-[0_0_15px_rgba(213,30,30,0.5)] hover:bg-[#b91919] transition-all cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-8 py-3 bg-[#B8322C] text-[#F7F1E5] font-accent text-xs uppercase tracking-[0.25em] font-bold rounded-xl shadow-[0_5px_20px_rgba(184,50,44,0.4)] hover:bg-[#962520] transition-all cursor-pointer"
                 >
                   Done &amp; Close Window
-                </button>
+                </motion.button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-4 relative z-10" noValidate>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Company Name */}
                   <div>
                     <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 flex items-center gap-1.5">
-                      <Building2 className="size-3 text-[#d51e1e]" />
+                      <Building2 className="size-3 text-[#ff4d4d]" />
                       Company / Organization *
                     </label>
                     <input
@@ -295,9 +307,9 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                       value={formData.companyName}
                       onChange={handleChange}
                       placeholder="e.g. Acme Corp"
-                      className={`w-full bg-black/60 border ${
-                        errors.companyName ? "border-red-500 ring-1 ring-red-500" : "border-[#b91919]/40"
-                      } rounded px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all font-sans`}
+                      className={`w-full bg-[#140e0b]/90 border ${
+                        errors.companyName ? "border-red-500 ring-1 ring-red-500" : "border-[#B88A3D]/40"
+                      } rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all font-sans`}
                     />
                     {errors.companyName && (
                       <p className="text-[10px] text-red-400 mt-1 flex items-center gap-1 font-sans">
@@ -310,7 +322,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                   {/* Contact Person */}
                   <div>
                     <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 flex items-center gap-1.5">
-                      <User className="size-3 text-[#d51e1e]" />
+                      <User className="size-3 text-[#ff4d4d]" />
                       Contact Person *
                     </label>
                     <input
@@ -319,9 +331,9 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                       value={formData.contactName}
                       onChange={handleChange}
                       placeholder="e.g. Alex Morgan"
-                      className={`w-full bg-black/60 border ${
-                        errors.contactName ? "border-red-500 ring-1 ring-red-500" : "border-[#b91919]/40"
-                      } rounded px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all font-sans`}
+                      className={`w-full bg-[#140e0b]/90 border ${
+                        errors.contactName ? "border-red-500 ring-1 ring-red-500" : "border-[#B88A3D]/40"
+                      } rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all font-sans`}
                     />
                     {errors.contactName && (
                       <p className="text-[10px] text-red-400 mt-1 flex items-center gap-1 font-sans">
@@ -336,7 +348,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                   {/* Email */}
                   <div>
                     <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 flex items-center gap-1.5">
-                      <Mail className="size-3 text-[#d51e1e]" />
+                      <Mail className="size-3 text-[#ff4d4d]" />
                       Official Email *
                     </label>
                     <input
@@ -345,9 +357,9 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="alex@acme.com"
-                      className={`w-full bg-black/60 border ${
-                        errors.email ? "border-red-500 ring-1 ring-red-500" : "border-[#b91919]/40"
-                      } rounded px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all font-sans`}
+                      className={`w-full bg-[#140e0b]/90 border ${
+                        errors.email ? "border-red-500 ring-1 ring-red-500" : "border-[#B88A3D]/40"
+                      } rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all font-sans`}
                     />
                     {errors.email && (
                       <p className="text-[10px] text-red-400 mt-1 flex items-center gap-1 font-sans">
@@ -360,7 +372,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                   {/* Phone */}
                   <div>
                     <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-300 mb-1.5 flex items-center gap-1.5">
-                      <Phone className="size-3 text-[#d51e1e]" />
+                      <Phone className="size-3 text-[#ff4d4d]" />
                       Phone Number
                     </label>
                     <input
@@ -369,7 +381,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 98765 43210"
-                      className="w-full bg-black/60 border border-[#b91919]/40 rounded px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all font-sans"
+                      className="w-full bg-[#140e0b]/90 border border-[#B88A3D]/40 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all font-sans"
                     />
                   </div>
                 </div>
@@ -383,7 +395,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                     name="tier"
                     value={formData.tier}
                     onChange={handleChange}
-                    className="w-full bg-[#120b0b] border border-[#b91919]/40 rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all font-sans cursor-pointer"
+                    className="w-full bg-[#140e0b] border border-[#B88A3D]/40 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all font-sans cursor-pointer"
                   >
                     <option value="Title Sponsor">Title Sponsor</option>
                     <option value="Platinum Sponsor">Platinum Sponsor</option>
@@ -405,28 +417,33 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your organization's sponsorship goals or special queries..."
-                    className="w-full bg-black/60 border border-[#b91919]/40 rounded px-3 py-2 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#d51e1e] focus:ring-1 focus:ring-[#d51e1e] transition-all resize-none font-sans"
+                    className="w-full bg-[#140e0b]/90 border border-[#B88A3D]/40 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff3b30] focus:ring-1 focus:ring-[#ff3b30] transition-all resize-none font-sans"
                   />
                 </div>
 
                 {/* Submit Button */}
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full mt-2 cursor-pointer flex items-center justify-center gap-2 rounded border border-[#b91919] bg-gradient-to-r from-[#d51e1e]/30 via-[#b8322c]/50 to-[#d51e1e]/30 py-3 font-accent text-xs font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_20px_rgba(185,25,25,0.4)] transition-all hover:bg-[#d51e1e] hover:shadow-[0_0_30px_rgba(213,30,30,0.7)] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group/btn relative w-full mt-2 cursor-pointer flex items-center justify-center gap-2 rounded-xl border border-[#B8322C] bg-[#B8322C] py-3.5 font-accent text-xs font-bold uppercase tracking-[0.25em] text-[#F7F1E5] shadow-[0_5px_20px_rgba(184,50,44,0.4)] transition-all hover:bg-[#962520] hover:shadow-[0_8px_25px_rgba(184,50,44,0.6)] disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
                 >
+                  {/* Button Inner Katana Gleam */}
+                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent group-hover/btn:translate-x-[200%] transition-transform duration-700 pointer-events-none" />
+
                   {isSubmitting ? (
                     <>
-                      <Loader2 className="size-4 animate-spin text-[#ff7d91]" />
-                      <span>Processing Request...</span>
+                      <Loader2 className="size-4 animate-spin text-white" />
+                      <span className="relative z-10">Processing Request...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="size-4 text-[#ff7d91]" />
-                      <span>Submit Sponsorship Request</span>
+                      <Send className="size-4 text-white" />
+                      <span className="relative z-10">Submit Sponsorship Request →</span>
                     </>
                   )}
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>

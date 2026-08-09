@@ -16,6 +16,9 @@ import VenueSection from "./components/VenueSection";
 import Footer from "./components/Footer";
 import { ComingSoonProvider } from "./context/ComingSoonContext";
 
+const bannerDesktopFBg = new URL("../../images/banner_desktop_f.webp", import.meta.url).href;
+const bannerMobileFBg = new URL("../../images/banner_mobile_f.webp", import.meta.url).href;
+
 const TeamPage = lazy(() => import("./TeamPage"));
 const EventPage = lazy(() => import("./EventPage"));
 
@@ -96,8 +99,30 @@ export default function App() {
                 <AboutSection />
               </div>
             </div>
-            <EventsSection />
-            <TeamBanner />
+
+            {/* Team & Events Banners Section with responsive background */}
+            <div className="relative overflow-hidden bg-[#EFE2C7] max-sm:-mt-24 sm:mt-0 z-20">
+              <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent">
+                <picture>
+                  <source media="(max-width: 767px)" srcSet={bannerMobileFBg} />
+                  <img
+                    src={bannerDesktopFBg}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 h-full w-full object-cover object-top opacity-100 will-change-transform"
+                  />
+                </picture>
+                {/* Soft top fog blend to blend with AboutSection */}
+                <div className="absolute inset-x-0 top-0 h-52 max-sm:h-52 bg-gradient-to-b from-[#EFE2C7] via-[#EFE2C7]/90 via-[#EFE2C7]/60 via-[#EFE2C7]/30 to-[#EFE2C7]/0 pointer-events-none" />
+                
+                {/* Soft bottom blend to transition smoothly into the Sponsors section */}
+                <div className="absolute inset-x-0 bottom-0 h-52 bg-gradient-to-t from-[#EFE2C7] via-[#EFE2C7]/80 via-[#EFE2C7]/40 to-[#EFE2C7]/0 pointer-events-none" />
+              </div>
+              <div className="relative z-10 py-6 sm:py-12">
+                <EventsSection />
+                <TeamBanner />
+              </div>
+            </div>
             <SponsorsSection />
             <VenueSection />
           </main>

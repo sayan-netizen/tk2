@@ -69,58 +69,114 @@ export default function EventPage() {
         <div className="absolute right-[-10rem] top-[28rem] size-[30rem] rounded-full bg-[#63272d]/20 blur-[150px]" />
 
         <section className="relative mx-auto max-w-7xl">
-          <div className="mb-10 max-w-3xl">
-            <div className="mb-4 inline-flex items-center gap-3 font-accent text-xs uppercase tracking-[0.28em] text-[#FF8599]">
-              <span className="flex size-8 items-center justify-center rounded-full border border-[#d51e1e]/45 bg-[#d51e1e]/10">
-                <Trophy className="size-4" />
-              </span>
-              Event board
+          {/* Header Banner with Japanese Kanji watermark & Hanko Seal */}
+          <div className="relative mb-10 overflow-hidden rounded-2xl border border-[#b8322c]/40 bg-[#0d0908]/95 p-6 sm:p-10 shadow-[0_15px_45px_rgba(0,0,0,0.6),inset_0_0_35px_rgba(184,50,44,0.12)] backdrop-blur-md">
+            {/* Traditional Asanoha (麻の葉) Geometric Sacred Japanese Pattern */}
+            <svg className="absolute inset-0 size-full pointer-events-none opacity-25 z-0" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="asanoha-dark" width="60" height="103.92" patternUnits="userSpaceOnUse">
+                  <path d="M30 0 L60 17.32 L60 51.96 L30 69.28 L0 51.96 L0 17.32 Z M30 0 L30 69.28 M0 17.32 L60 51.96 M60 17.32 L0 51.96 M30 103.92 L60 86.6 L60 51.96 L30 34.64 L0 51.96 L0 86.6 Z M30 103.92 L30 34.64 M0 86.6 L60 51.96 M60 86.6 L0 51.96" fill="none" stroke="#d51e1e" strokeWidth="0.75" opacity="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#asanoha-dark)" />
+            </svg>
+
+            {/* Kumiko Gold Dot Lattice Pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(#B88A3D_1.2px,transparent_1.2px)] [background-size:20px_20px] opacity-20 pointer-events-none z-0" />
+
+            {/* Crimson Rising Sun Glow Behind Title */}
+            <div className="absolute right-10 top-1/2 -translate-y-1/2 size-56 sm:size-72 rounded-full bg-gradient-to-br from-[#d51e1e]/30 via-[#b8322c]/10 to-transparent blur-md pointer-events-none z-0" />
+
+            {/* Traditional Washi Paper Noise Texture */}
+            <div
+              className="absolute inset-0 opacity-[0.20] mix-blend-overlay pointer-events-none z-0"
+              style={{
+                backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              }}
+            />
+
+            {/* Grand Kanji Watermark (任務 - Mission & 祭 - Festival) */}
+            <div className="absolute -right-4 -top-8 select-none font-display text-[8rem] sm:text-[14rem] lg:text-[18rem] leading-none bg-gradient-to-b from-[#B8322C]/25 via-[#B8322C]/10 to-transparent bg-clip-text text-transparent opacity-80 pointer-events-none z-0">
+              任務
             </div>
-            <h1 className="font-display text-5xl tracking-wide text-[#F5F5F5] sm:text-7xl">
-              CHOOSE YOUR <span className="text-[#d51e1e]">MISSION</span>
-            </h1>
-            <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#999] sm:text-base">
-              Compare event tracks, sort the board, and jump into the challenge that fits your team.
-            </p>
+            <div className="absolute right-[28%] bottom-[-15%] select-none font-display text-[6rem] sm:text-[10rem] leading-none text-[#B88A3D]/15 opacity-50 pointer-events-none z-0">
+              祭
+            </div>
+
+            {/* Traditional Red Hanko Stamp (朱印) */}
+            <div className="absolute top-5 right-6 flex flex-col items-center justify-center size-9 sm:size-10 rounded border-2 border-[#ff3b30] bg-[#ff3b30]/15 text-[#ff3b30] font-serif font-bold text-[12px] tracking-tighter select-none rotate-6 shadow-[0_0_15px_rgba(255,59,48,0.4)] pointer-events-none z-20">
+              <span className="leading-none">陣</span>
+              <span className="text-[5px] font-mono tracking-widest text-[#ff3b30]/80 uppercase">MISSION</span>
+            </div>
+
+            {/* 4 Cardinal Corner Crest Accents (Kamon Marks) */}
+            <div className="absolute top-2.5 left-2.5 size-1.5 rounded-full bg-[#ff3b30] border border-[#F7F1E5] shadow-[0_0_6px_rgba(255,59,48,0.8)]" />
+            <div className="absolute top-2.5 right-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.8)]" />
+            <div className="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-[#B88A3D] border border-[#F7F1E5] shadow-[0_0_6px_rgba(184,138,61,0.8)]" />
+            <div className="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-[#ff3b30] border border-[#F7F1E5] shadow-[0_0_6px_rgba(255,59,48,0.8)]" />
+
+            <div className="relative z-10 max-w-3xl">
+              <div className="mb-3 inline-flex items-center gap-2.5 px-3 py-1 rounded-full bg-[#ff3b30]/15 border border-[#ff3b30]/35 shadow-[0_0_12px_rgba(255,59,48,0.2)]">
+                <span className="flex size-6 items-center justify-center rounded-full bg-[#ff3b30]/20 text-[#ff4d4d]">
+                  <Trophy className="size-3" />
+                </span>
+                <span className="font-accent text-[11px] tracking-[0.2em] uppercase text-[#ff5252] font-bold">
+                  催事録 // Grand Mission Board
+                </span>
+              </div>
+
+              {/* Sumi-e Brush Strike Line */}
+              <div className="h-[3px] w-28 bg-gradient-to-r from-[#d51e1e] via-[#ff4d4d] to-[#B88A3D] rounded-full mb-4 shadow-[0_0_10px_rgba(213,30,30,0.5)]" />
+
+              <h1 className="font-display text-4xl tracking-wide text-[#F5F5F5] sm:text-6xl font-black drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                CHOOSE YOUR{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d4d] via-[#ff7a70] to-[#B88A3D]">
+                  MISSION
+                </span>
+              </h1>
+              <p className="mt-3.5 max-w-2xl text-sm sm:text-base leading-relaxed text-[#ccc] font-sans font-medium">
+                Compare event tracks, sort the board, and jump into the challenge that fits your team.
+              </p>
+            </div>
           </div>
 
-          <div className="mb-8 grid gap-3 border border-[#b91919]/30 bg-black/40 p-4 shadow-[0_0_20px_rgba(185,25,25,0.12)] lg:grid-cols-[1fr_auto_auto] lg:items-center">
-            <label className="flex min-h-11 items-center gap-3 border border-[#b91919]/25 bg-black/30 px-3 text-[#999]">
+          <div className="mb-8 grid gap-3 border border-[#b8322c]/35 bg-[#0d0908]/90 p-4 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.6)] backdrop-blur-md lg:grid-cols-[1fr_auto_auto] lg:items-center">
+            <label className="flex min-h-11 items-center gap-3 border border-[#b8322c]/30 bg-black/50 px-3.5 rounded text-[#999] focus-within:border-[#d51e1e] transition-colors">
               <Search className="size-4 text-[#d51e1e]" />
               <input
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Search events"
-                className="min-w-0 flex-1 bg-transparent font-accent text-sm tracking-[0.08em] text-[#f5f5f5] outline-none placeholder:text-[#666]"
+                placeholder="Search events (e.g. Hackathon, Robo, Design...)"
+                className="min-w-0 flex-1 bg-transparent font-accent text-sm tracking-[0.08em] text-[#f5f5f5] outline-none placeholder:text-[#888]"
               />
             </label>
 
-            <label className="flex min-h-11 items-center gap-3 border border-[#b91919]/25 bg-black/30 px-3 text-[#999]">
+            <label className="flex min-h-11 items-center gap-3 border border-[#b8322c]/30 bg-black/50 px-3.5 rounded text-[#999] focus-within:border-[#d51e1e] transition-colors">
               <Filter className="size-4 text-[#d51e1e]" />
               <select
                 value={category}
                 onChange={(event) => setCategory(event.target.value as CategoryFilter)}
-                className="bg-transparent font-accent text-sm uppercase tracking-[0.12em] text-[#f5f5f5] outline-none"
+                className="bg-transparent font-accent text-sm uppercase tracking-[0.12em] text-[#f5f5f5] outline-none cursor-pointer"
               >
                 {categories.map((item) => (
-                  <option key={item.value} value={item.value} className="bg-[#050505]">
+                  <option key={item.value} value={item.value} className="bg-[#0e0a09] text-white">
                     {item.label}
                   </option>
                 ))}
               </select>
             </label>
 
-            <label className="flex min-h-11 items-center gap-3 border border-[#b91919]/25 bg-black/30 px-3 text-[#999]">
-              <span className="font-accent text-xs uppercase tracking-[0.18em] text-[#d51e1e]">Sort</span>
+            <label className="flex min-h-11 items-center gap-3 border border-[#b8322c]/30 bg-black/50 px-3.5 rounded text-[#999] focus-within:border-[#d51e1e] transition-colors">
+              <span className="font-accent text-xs uppercase tracking-[0.18em] text-[#d51e1e] font-bold">Sort</span>
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value as SortMode)}
-                className="bg-transparent font-accent text-sm uppercase tracking-[0.12em] text-[#f5f5f5] outline-none"
+                className="bg-transparent font-accent text-sm uppercase tracking-[0.12em] text-[#f5f5f5] outline-none cursor-pointer"
               >
-                <option value="featured" className="bg-[#050505]">Featured</option>
-                <option value="name" className="bg-[#050505]">Name</option>
-                <option value="category" className="bg-[#050505]">Category</option>
-                <option value="prize" className="bg-[#050505]">Prize</option>
+                <option value="featured" className="bg-[#0e0a09] text-white">Featured</option>
+                <option value="name" className="bg-[#0e0a09] text-white">Name</option>
+                <option value="category" className="bg-[#0e0a09] text-white">Category</option>
+                <option value="prize" className="bg-[#0e0a09] text-white">Prize</option>
               </select>
             </label>
           </div>
@@ -143,50 +199,14 @@ export default function EventPage() {
 
 function EventCard({ event, index, categoryClasses }: { event: Event; index: number; categoryClasses: Record<EventCategory, string> }) {
   const { openComingSoon } = useComingSoon();
-  const cardRef = useRef<HTMLElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["4deg", "-4deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-4deg", "4deg"]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (window.innerWidth < 768 || !cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   const Icon = event.icon;
 
   return (
     <motion.article
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay: Math.min(index * 0.03, 0.3) }}
-      style={{
-        transformStyle: "preserve-3d",
-        rotateX,
-        rotateY,
-      }}
-      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#111111]/80 border border-[#8A1C17]/50 p-6 shadow-[0_0_20px_rgba(184,50,44,0.2),inset_0_0_15px_rgba(184,50,44,0.2)] transition-all duration-300 hover:bg-[#1a1a1a]/90 hover:border-[#b8322c]/90 hover:shadow-[0_0_30px_rgba(184,50,44,0.5),inset_0_0_25px_rgba(184,50,44,0.4)]"
+      className="group relative min-h-[26rem] overflow-hidden rounded-xl bg-[#F2ECE1]/85 backdrop-blur-sm border border-[#B88A3D]/45 p-6 shadow-[0_5px_15px_rgba(75,50,37,0.1)] transition-all duration-300 hover:bg-[#F2ECE1] hover:border-[#B8322C] hover:shadow-[0_15px_40px_rgba(184,50,44,0.15)]"
     >
       {/* Crisp Enso Ink Border */}
       <svg className="absolute inset-0 size-full pointer-events-none z-30 opacity-75 transition-opacity duration-300 group-hover:opacity-100" preserveAspectRatio="none">

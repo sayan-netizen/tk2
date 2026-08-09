@@ -111,17 +111,11 @@ body {
 }
 
 .main-site main > section:not(#hero) {
-  border-top: 1px solid rgba(213, 30, 30, 0.15); /* #d51e1e with 15% opacity */
-  background: #000000;
-}
-
-/* Countdown section has clouds covering the top — no border needed */
-#countdown {
   border-top: none !important;
 }
 
-.main-site main > section:not(#hero):nth-of-type(odd) {
-  background: #050505;
+#countdown, #about, #sponsors, #venue {
+  border-top: none !important;
 }
 
 /* Navigation responsive utilities */

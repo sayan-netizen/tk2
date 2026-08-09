@@ -74,50 +74,63 @@ const sizeClasses: Record<string, string> = {
   tiny: "w-12 h-12 sm:w-20 sm:h-20 text-xs sm:text-sm",
 };
 
+const sponsorDesktopBg = new URL("../../../images/Sponsor_desktop_f.webp", import.meta.url).href;
+const sponsorMobileBg = new URL("../../../images/Sponsor_mobile_f.webp", import.meta.url).href;
+
 export default function SponsorsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [isSponsorModalOpen, setIsSponsorModalOpen] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-  const bgRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
 
   return (
-    <section id="sponsors" className="relative pt-4 pb-16 sm:pt-8 sm:pb-24 overflow-hidden" ref={sectionRef}>
-      {/* Decorative rotating glow */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] aspect-square pointer-events-none"
-        style={{ rotate: bgRotate }}
-      >
-        <div className="w-full h-full bg-[#d51e1e]/3 rounded-full blur-[150px]" />
-      </motion.div>
+    <section id="sponsors" className="relative pt-4 pb-16 sm:pt-8 sm:pb-24 overflow-hidden bg-[#EFE2C7]" ref={sectionRef}>
+      {/* Rich Japanese Background Artwork — Responsive Desktop / Mobile */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent z-0">
+        <picture>
+          <source media="(max-width: 767px)" srcSet={sponsorMobileBg} />
+          <img
+            src={sponsorDesktopBg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-top opacity-100 will-change-transform"
+          />
+        </picture>
+        {/* Soft top fog blend to blend seamlessly with BannersSection */}
+        <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-[#EFE2C7] via-[#EFE2C7]/80 via-[#EFE2C7]/40 to-[#EFE2C7]/0 pointer-events-none" />
+        
+        {/* Soft bottom blend to transition smoothly into the Venue section */}
+        <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#EFE2C7] via-[#EFE2C7]/80 via-[#EFE2C7]/40 to-[#EFE2C7]/0 pointer-events-none" />
+      </div>
+
+      {/* Lightweight static ambient glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] aspect-square pointer-events-none z-0">
+        <div className="w-full h-full bg-[#B8322C]/5 rounded-full blur-[80px]" />
+      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
-        <SlideTitle className="mb-8 sm:mb-10 text-center">
-          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#d51e1e] block mb-3">
+        <SlideTitle className="mb-8 sm:mb-12 text-center">
+          <span className="font-accent text-xs tracking-[0.3em] uppercase text-[#B8322C] block mb-3 font-bold">
             Backed By The Best
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#F5F5F5] tracking-wide">
+          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#1D1B18] tracking-wide font-black drop-shadow-sm">
             OUR SPONSORS
           </h2>
-          <div className="w-20 h-0.5 bg-[#d51e1e] mt-4 mx-auto" />
+          <div className="w-24 h-[3px] bg-gradient-to-r from-transparent via-[#B8322C] to-transparent mt-4 mx-auto rounded-full" />
         </SlideTitle>
 
         {/* Sponsor tiers with stagger animations */}
         <ScrollDepth rotate={5} y={65}>
-          <div className="space-y-14">
+          <div className="space-y-16">
             {sponsorTiers.map((tierGroup, ti) => (
               <ScrollReveal key={tierGroup.tier} direction="up" delay={ti * 0.08}>
                 <div className="text-center">
                   {/* Tier label */}
-                  <div className="flex items-center gap-4 justify-center mb-6">
-                    <div className="h-px w-12 bg-[#b91919]/30" />
-                    <span className="font-accent text-xs tracking-[0.25em] uppercase text-[#999]">
+                  <div className="flex items-center gap-4 justify-center mb-8">
+                    <div className="h-[2px] w-12 bg-gradient-to-r from-transparent to-[#B8322C]/40" />
+                    <span className="font-accent text-xs tracking-[0.25em] uppercase text-[#38332C] font-bold">
                       {tierGroup.tier}
                     </span>
-                    <div className="h-px w-12 bg-[#b91919]/30" />
+                    <div className="h-[2px] w-12 bg-gradient-to-l from-transparent to-[#B8322C]/40" />
                   </div>
 
                   {/* Logos with 3D tilt */}
@@ -126,14 +139,14 @@ export default function SponsorsSection() {
                       <StaggerItem key={sponsor.name}>
                         <TiltCard intensity={15}>
                           <motion.div
-                            className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-none bg-black/40 border border-[#b91919]/30 flex items-center justify-center font-heading font-bold text-[#666] grayscale hover:grayscale-0 hover:text-[#d51e1e] hover:border-[#b91919] hover:bg-black/60 transition-all duration-300 cursor-pointer group`}
+                            className={`${sizeClasses[tierGroup.size]} relative overflow-hidden rounded-xl bg-[#F2ECE1]/40 backdrop-blur-md border border-[#B88A3D]/45 flex items-center justify-center font-heading font-bold text-[#38332C]/60 grayscale hover:grayscale-0 hover:text-[#B8322C] hover:border-[#B8322C] hover:bg-[#F2ECE1]/60 shadow-[0_10px_30px_rgba(75,50,37,0.1)] hover:shadow-[0_15px_40px_rgba(184,50,44,0.15)] transition-all duration-300 cursor-pointer group`}
                             title="TBD"
                             whileHover={{
-                              boxShadow: "0 10px 30px rgba(196,30,58,0.15)",
+                              boxShadow: "0 15px 40px rgba(184,50,44,0.15)",
                             }}
                             style={{ transformStyle: "preserve-3d" }}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-br from-[#d51e1e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#B8322C]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                             <span className="relative z-10 group-hover:scale-110 transition-transform" style={{ transform: "translateZ(20px)" }}>
                               TBD
                             </span>
@@ -149,16 +162,22 @@ export default function SponsorsSection() {
         </ScrollDepth>
 
         {/* CTA for sponsors */}
-        <ScrollReveal direction="up" delay={0.3} className="text-center mt-16">
-          <p className="text-[#666] text-sm mb-3 font-accent">
+        <ScrollReveal direction="up" delay={0.3} className="text-center mt-20">
+          <p className="text-[#38332C] text-sm mb-4 font-accent font-semibold">
             Interested in sponsoring Tech Kurukshetra?
           </p>
           <motion.button
             onClick={() => setIsSponsorModalOpen(true)}
-            className="inline-flex items-center gap-2 border border-[#b91919] bg-black/5 font-accent text-[10px] uppercase tracking-[0.2em] text-[#f1eeee] shadow-[0_0_14px_rgba(185,25,25,0.24)] hover:bg-[#b91919]/10 px-4 py-2 transition-all cursor-pointer"
-            whileHover={{ x: 5 }}
+            className="group/btn relative inline-flex items-center gap-3.5 border border-[#B8322C] bg-[#1D1B18] font-accent text-xs font-bold uppercase tracking-[0.22em] text-[#F7F1E5] shadow-[0_10px_25px_rgba(29,27,24,0.25)] hover:bg-[#B8322C] hover:border-[#7A1814] px-7 py-3.5 rounded-xl transition-all cursor-pointer overflow-hidden"
+            whileHover={{ scale: 1.03, x: 2 }}
+            whileTap={{ scale: 0.98 }}
           >
-            Become a Sponsor →
+            {/* Button Inner Katana Gleam */}
+            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent group-hover/btn:translate-x-[200%] transition-transform duration-700 pointer-events-none" />
+            <span className="relative z-10 font-bold tracking-[0.25em]">Become a Sponsor</span>
+            <span className="relative z-10 flex size-6 items-center justify-center rounded-lg bg-white/10 text-white transition-all group-hover/btn:bg-white group-hover/btn:text-[#B8322C] group-hover/btn:rotate-45 shadow-sm">
+              →
+            </span>
           </motion.button>
         </ScrollReveal>
       </div>

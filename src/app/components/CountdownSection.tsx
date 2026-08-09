@@ -130,12 +130,12 @@ export default function CountdownSection() {
   return (
     <section
       id="countdown"
-      className="sticky top-0 z-10 py-16 sm:py-20 bg-[#1c140d]"
+      className="sticky top-0 z-10 pt-14 pb-20 sm:pt-16 sm:pb-28 bg-[#1c140d]"
       ref={sectionRef}
       style={{ overflow: "visible" }}
     >
-      {/* Background assets — clipped to section bounds */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Background assets — expanded downwards on mobile & desktop to fill empty spaces behind the dragon */}
+      <div className="absolute inset-x-0 top-0 -bottom-36 sm:-bottom-48 lg:-bottom-64 overflow-hidden pointer-events-none">
         <img
           src="/images/countdown-scroll-bg.png"
           alt=""
@@ -447,7 +447,7 @@ export default function CountdownSection() {
 
         {/* Sub-label */}
         <motion.p
-          className="mx-auto mt-10 w-fit border border-[#d51e1e]/55 bg-[#090706]/80 px-5 py-3 text-center font-accent text-base font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_24px_rgba(185,25,25,0.24),inset_0_0_18px_rgba(0,0,0,0.7)] drop-shadow-[0_0_14px_rgba(213,30,30,0.45)] sm:px-7 sm:text-xl lg:text-2xl"
+          className="relative z-20 mx-auto mt-8 sm:mt-10 w-fit border border-[#d51e1e]/55 bg-[#090706]/90 px-5 py-3 text-center font-accent text-base font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_24px_rgba(185,25,25,0.24),inset_0_0_18px_rgba(0,0,0,0.7)] drop-shadow-[0_0_14px_rgba(213,30,30,0.45)] sm:px-7 sm:text-xl lg:text-2xl"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.7, delay: 0.8 }}

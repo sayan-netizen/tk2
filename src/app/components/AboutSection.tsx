@@ -40,8 +40,8 @@ const stats = [
   { value: 10, suffix: "L+", label: "In Prizes", seal: "賞" },
 ];
 
-const aboutMobileBg = new URL("../../../images/about_mobile.webp", import.meta.url).href;
-const aboutDesktopBg = new URL("../../../images/about_desktop.webp", import.meta.url).href;
+const aboutDesktopBg = new URL("../../../images/About_dektop_f.webp", import.meta.url).href;
+const aboutMobileBg = new URL("../../../images/about_mobile_f.webp", import.meta.url).href;
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,32 +49,29 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative z-20 py-24 sm:py-28 -mt-24 sm:-mt-24 pt-28 sm:pt-28 overflow-hidden bg-transparent transform-gpu"
+      className="relative z-20 max-sm:-mt-20 sm:-mt-38 lg:-mt-48 pb-56 sm:pb-28 overflow-hidden bg-transparent transform-gpu"
       ref={sectionRef}
     >
-      {/* Rich Japanese Background Artwork — 100% clean warm parchment */}
+      {/* Rich Japanese Background Artwork — Responsive Desktop / Mobile */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent">
-        {/* Desktop Background: about_desktop.webp with transparent top cutout */}
-        <img
-          src={aboutDesktopBg}
-          alt=""
-          aria-hidden="true"
-          className="hidden sm:block absolute inset-0 h-full w-full object-cover object-top opacity-100 will-change-transform"
-        />
-        {/* Mobile Background: about_mobile.webp shifted further to the left */}
-        <img
-          src={aboutMobileBg}
-          alt=""
-          aria-hidden="true"
-          className="block sm:hidden absolute inset-0 h-full w-full object-cover max-sm:object-[18%_top] opacity-100 will-change-transform"
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={aboutMobileBg} />
+          <img
+            src={aboutDesktopBg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover max-sm:object-[-25px_top] sm:object-top opacity-100 will-change-transform"
+          />
+        </picture>
+        {/* Soft bottom fog blend to seamlessly transition into the banner section below */}
+        <div className="absolute inset-x-0 bottom-0 h-52 max-sm:h-64 bg-gradient-to-t from-[#EFE2C7] via-[#EFE2C7]/90 via-[#EFE2C7]/60 via-[#EFE2C7]/30 to-[#EFE2C7]/0 pointer-events-none" />
       </div>
 
       {/* Lightweight static ambient glows (zero scroll paint overhead) */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-[#B8322C]/5 rounded-full pointer-events-none" />
       <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#B88A3D]/5 rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-80 sm:pt-40 lg:pt-52">
         {/* Section header — animated clean title with glowing katana line */}
         <div className="mb-14 sm:mb-20">
           <motion.div
