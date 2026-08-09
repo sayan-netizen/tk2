@@ -52,22 +52,27 @@ export default function Navigation() {
     const update = () => {
       setScrolled(window.scrollY > 50);
 
-      // Dedicated page override
       const hash = window.location.hash;
-      if (hash === "#team") { setActiveSection("team"); return; }
-      if (hash === "#events-page") { setActiveSection("events"); return; }
 
-      // Threshold: 40% from the top of the viewport (roughly the navbar zone)
-      const threshold = window.innerHeight * 0.4;
+      // Only lock active section if on a standalone dedicated sub-page (e.g. Team or Event sub-pages where landing sections aren't in DOM)
+      if (hash === "#team" && !document.getElementById("about")) {
+        setActiveSection("team");
+        return;
+      }
+      if (hash === "#events-page" && !document.getElementById("about")) {
+        setActiveSection("events");
+        return;
+      }
 
-      // Walk top-to-bottom; last section whose absolute-top has been scrolled past threshold wins
+      // On main landing page — calculate active section based on current viewport scroll position
+      const viewportTrigger = window.innerHeight * 0.35;
       let current = "hero";
+
       for (const { id, key } of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
-        // Absolute top from document origin
-        const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
-        if (window.scrollY + threshold >= absoluteTop) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= viewportTrigger + 60 && rect.bottom >= viewportTrigger) {
           current = key;
         }
       }
@@ -76,10 +81,7 @@ export default function Navigation() {
     };
 
     const onHashChange = () => {
-      const hash = window.location.hash;
-      if (hash === "#team") setActiveSection("team");
-      else if (hash === "#events-page") setActiveSection("events");
-      else update();
+      update();
     };
 
     window.addEventListener("scroll", update, { passive: true });
