@@ -217,7 +217,7 @@ function EventCard({ event, index, categoryClasses }: { event: Event; index: num
       <div
         className="absolute inset-0 z-0 opacity-100 transition-opacity duration-500 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/images/event-card-${index % 9}.png')`,
+          backgroundImage: `url('/images/Event_page_background.webp')`,
           transform: `translateZ(0) scale(${index < 6 ? 1.25 : 1}) ${index < 3 ? 'translateY(-8%)' : (index < 6 ? 'translateY(8%)' : '')}`
         }}
       />
