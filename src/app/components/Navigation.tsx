@@ -40,7 +40,7 @@ export default function Navigation() {
 
   useEffect(() => {
     // Sections in top-to-bottom page order with their nav key
-    const sections = [
+    const sectionIds = [
       { id: "hero",        key: "hero" },
       { id: "about",       key: "about" },
       { id: "events",      key: "events" },
@@ -54,7 +54,7 @@ export default function Navigation() {
 
       const hash = window.location.hash;
 
-      // Only lock active section if on a standalone dedicated sub-page (e.g. Team or Event sub-pages where landing sections aren't in DOM)
+      // Lock active section only on standalone sub-pages (Team/Events pages) where landing sections are not in DOM
       if (hash === "#team" && !document.getElementById("about")) {
         setActiveSection("team");
         return;
@@ -64,15 +64,19 @@ export default function Navigation() {
         return;
       }
 
-      // On main landing page — calculate active section based on current viewport scroll position
-      const viewportTrigger = window.innerHeight * 0.35;
+      // Use absolute document position (offsetTop) to avoid being fooled by sticky positioning.
+      // Walk top-to-bottom; the LAST section whose document-top has been scrolled past
+      // 40% of the viewport wins as "active".
+      const threshold = window.innerHeight * 0.4;
       let current = "hero";
 
-      for (const { id, key } of sections) {
+      for (const { id, key } of sectionIds) {
         const el = document.getElementById(id);
         if (!el) continue;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= viewportTrigger + 60 && rect.bottom >= viewportTrigger) {
+        // offsetTop gives the element's natural position in the document flow,
+        // unaffected by CSS `position: sticky`.
+        const docTop = el.offsetTop;
+        if (window.scrollY + threshold >= docTop) {
           current = key;
         }
       }
@@ -80,17 +84,13 @@ export default function Navigation() {
       setActiveSection(current);
     };
 
-    const onHashChange = () => {
-      update();
-    };
-
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("hashchange", onHashChange);
+    window.addEventListener("hashchange", update);
     update();
 
     return () => {
       window.removeEventListener("scroll", update);
-      window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("hashchange", update);
     };
   }, []);
 
