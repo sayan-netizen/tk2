@@ -82,90 +82,12 @@ export default function IntroOverlay() {
               }
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <svg
-                width="120"
-                height="160"
-                viewBox="0 0 120 160"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="drop-shadow-[0_0_30px_rgba(196,30,58,0.5)]"
-              >
-                {/* Head */}
-                <circle cx="60" cy="25" r="18" fill="#d51e1e" opacity="0.9" />
-                {/* Eye band */}
-                <rect x="42" y="20" width="36" height="6" rx="3" fill="#0A0A0A" />
-                {/* Eyes */}
-                <circle cx="52" cy="23" r="2" fill="#FF0000" />
-                <circle cx="68" cy="23" r="2" fill="#FF0000" />
-                {/* Body */}
-                <path
-                  d="M40 45 L60 40 L80 45 L85 90 L70 95 L60 130 L50 95 L35 90 Z"
-                  fill="#d51e1e"
-                  opacity="0.8"
-                />
-                {/* Scarf tails */}
-                <path
-                  d="M78 28 Q95 35 100 55 Q98 50 90 45"
-                  fill="#d51e1e"
-                  opacity="0.6"
-                />
-                {/* Arms */}
-                <path
-                  d="M40 50 L15 70 L20 72 L42 55"
-                  fill="#d51e1e"
-                  opacity="0.7"
-                />
-                <path
-                  d="M80 50 L105 45 L108 48 L82 55"
-                  fill="#d51e1e"
-                  opacity="0.7"
-                />
-                {/* Katana in right hand */}
-                <line
-                  x1="105"
-                  y1="45"
-                  x2="115"
-                  y2="10"
-                  stroke="#999"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <line
-                  x1="103"
-                  y1="43"
-                  x2="107"
-                  y2="47"
-                  stroke="#666"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                />
-                {/* Legs */}
-                <path
-                  d="M50 95 L40 145 L45 148 L55 105"
-                  fill="#d51e1e"
-                  opacity="0.7"
-                />
-                <path
-                  d="M70 95 L80 145 L75 148 L65 105"
-                  fill="#d51e1e"
-                  opacity="0.7"
-                />
-              </svg>
+              <img
+                src="/images/tk_initial.webp"
+                alt="Tech Kurukshetra"
+                className="w-64 h-auto drop-shadow-[0_0_30px_rgba(196,30,58,0.5)]"
+              />
             </motion.div>
-
-            {/* Text */}
-            <motion.p
-              className="font-display text-2xl tracking-[0.3em] text-[#d51e1e] mt-6 uppercase"
-              initial={{ opacity: 0, y: 10 }}
-              animate={
-                phase !== "split"
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: -20 }
-              }
-              transition={{ delay: 0.3, duration: 0.5 }}
-            >
-              Shadow Protocol
-            </motion.p>
           </div>
 
           {/* Slash line */}
