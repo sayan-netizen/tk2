@@ -74,7 +74,7 @@ export default function VenueSection() {
 
                 <div className="relative z-10">
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#1D1B18] mb-2" style={{ transform: "translateZ(20px)" }}>
-                    University of Engineering and Management, Kolkata
+                    Dept. of CSE(IOT,CS,BT), University of Engineering and Management, Kolkata
                   </h3>
                   <p className="text-[#5A5043] text-sm mb-6 font-medium" style={{ transform: "translateZ(10px)" }}>
                     A premier institution for engineering, technology, and management education in Kolkata.
@@ -82,7 +82,7 @@ export default function VenueSection() {
 
                   <div className="space-y-4" style={{ transform: "translateZ(15px)" }}>
                     {[
-                      { icon: MapPin, title: "Address", text: "University of Engineering & Management (UEM),\nUniversity Area, Plot No. III - B/5, Action Area III,\nNew Town, Kolkata, West Bengal — 700160" },
+                      { icon: MapPin, title: "Address", text: "Dept. of CSE(IOT,CS,BT), University of Engineering & Management (UEM),\nUniversity Area, Plot No. III - B/5, Action Area III,\nNew Town, Kolkata, West Bengal — 700160" },
                       { icon: Train, title: "Nearest Railway Station", text: "Bidhannagar Road / Sealdah Railway Station — 15 km" },
                       { icon: Plane, title: "Nearest Airport", text: "Netaji Subhash Chandra Bose International Airport (CCU) — 14 km" },
                       { icon: Phone, title: "Contact", text: "+91 33 2357 2059", href: "tel:+913323572059" },

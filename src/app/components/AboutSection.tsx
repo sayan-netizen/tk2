@@ -139,7 +139,7 @@ export default function AboutSection() {
                     Tech Kurukshetra
                   </h3>
                   <p className="text-[#38332C] text-sm sm:text-base leading-relaxed mb-4 font-sans font-medium">
-                    Tech Kurukshetra is the flagship national-level technology festival of UEM Kolkata,
+                    Tech Kurukshetra is the flagship national-level technology festival of Dept. of CSE(IOT,CS,BT), UEM Kolkata,
                     one of India&apos;s premier technical institutions. For over a decade, it has been the
                     battleground where the brightest minds from across the nation converge to compete,
                     collaborate, and create.

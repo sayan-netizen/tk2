@@ -191,7 +191,7 @@ export default function SponsorModal({ isOpen, onClose }: SponsorModalProps) {
               BECOME A <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff4d4d] via-[#ff7a70] to-[#B88A3D]">SPONSOR</span>
             </h2>
             <p className="text-xs sm:text-sm text-neutral-300 mt-1 mb-6 font-sans relative z-10 font-medium">
-              Partner with Tech Kurukshetra 2026 at UEM Kolkata and showcase your brand to thousands of tech innovators.
+              Partner with Tech Kurukshetra 2026 at Dept. of CSE(IOT,CS,BT), UEM Kolkata and showcase your brand to thousands of tech innovators.
             </p>
 
             {isSubmitted ? (
