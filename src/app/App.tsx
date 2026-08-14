@@ -28,6 +28,11 @@ export default function App() {
   const { pointerRef } = usePointer();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [route, setRoute] = useState(() => window.location.hash);
+  const [introFinished, setIntroFinished] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const skipIntro = new URLSearchParams(window.location.search).get("skipIntro") === "1";
+    return skipIntro || sessionStorage.getItem("introSeen") === "true";
+  });
 
   useEffect(() => {
     const syncRoute = () => {
@@ -87,9 +92,9 @@ export default function App() {
         />
         <NinjaCursor />
         <Background />
-        <Navigation />
+        {introFinished && <Navigation />}
         <div className="main-site min-h-screen text-[#f1eeee]">
-          <IntroOverlay />
+          <IntroOverlay onComplete={() => setIntroFinished(true)} />
           <main>
             {/* Invisible scroll anchor for HOME navigation — placed before the sticky hero */}
             <div id="page-top" style={{ height: 0, overflow: 'hidden' }} />

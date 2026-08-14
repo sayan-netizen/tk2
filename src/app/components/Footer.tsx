@@ -1,4 +1,4 @@
-import { Instagram, Twitter, Linkedin, Youtube, Heart } from "lucide-react";
+import { Instagram, Linkedin, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { useComingSoon } from "../context/ComingSoonContext";
 
@@ -19,16 +19,33 @@ const eventLinks = [
 ];
 
 const socials = [
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter/X" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  { icon: Instagram, href: "https://www.instagram.com/tech_kurukshetra", label: "Instagram" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/tech-kurukshetra", label: "LinkedIn" },
 ];
+
+const tkLogo = new URL(
+  "../../../images/tk-logo.webp",
+  import.meta.url
+).href;
 
 export default function Footer() {
   const { openComingSoon } = useComingSoon();
 
-  const scrollTo = (href: string) => {
+  const handleNav = (href: string) => {
+    if (href === "#events-page" || href === "#team") {
+      window.location.hash = href;
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
+      return;
+    }
+    if (href === "#hero") {
+      const top = document.getElementById("page-top");
+      if (top) {
+        top.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
@@ -63,25 +80,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-[#F2ECE1]/90 border border-[#B88A3D]/50 flex items-center justify-center font-display text-[#B8322C] text-xl font-black tracking-wider shadow-sm">
-                TK
-              </div>
-              <div>
-                <span className="font-heading text-base font-bold text-[#1D1B18] tracking-wider block leading-tight">
-                  TECH KURUKSHETRA
-                </span>
-                <span className="font-accent text-[11px] tracking-[0.25em] uppercase text-[#B8322C] font-bold">
-                  2026
-                </span>
-              </div>
+            <div className="mb-4">
+              <img
+                src={tkLogo}
+                alt="Tech Kurukshetra 2026"
+                className="h-11 sm:h-12 w-auto max-w-[240px] object-contain"
+              />
             </div>
             <p className="text-[#5A5043] text-sm leading-relaxed max-w-xs mb-6 font-medium">
               Enter the mission. Master the unknown. The flagship national-level tech fest of Dept. of CSE(IOT,CS,BT), UEM Kolkata.
             </p>
             <Button
               className="border border-[#B8322C] bg-[#B8322C] font-accent text-[11px] font-bold uppercase tracking-[0.2em] text-[#F7F1E5] shadow-[0_5px_15px_rgba(184,50,44,0.25)] hover:bg-[#962520] rounded-lg px-6 py-2.5 transition-all cursor-pointer"
-              onClick={() => openComingSoon("Tech Kurukshetra 2026")}
+              onClick={() => handleNav("#events-page")}
             >
               Register Now →
             </Button>
@@ -96,7 +107,7 @@ export default function Footer() {
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <button
-                    onClick={() => scrollTo(link.href)}
+                    onClick={() => handleNav(link.href)}
                     className="text-[#5A5043] hover:text-[#B8322C] text-sm font-medium transition-colors cursor-pointer"
                   >
                     {link.label}
@@ -115,7 +126,7 @@ export default function Footer() {
               {eventLinks.map((link) => (
                 <li key={link.label}>
                   <button
-                    onClick={() => scrollTo(link.href)}
+                    onClick={() => handleNav(link.href)}
                     className="text-[#5A5043] hover:text-[#B8322C] text-sm font-medium transition-colors cursor-pointer"
                   >
                     {link.label}

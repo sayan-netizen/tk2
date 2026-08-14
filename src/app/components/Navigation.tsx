@@ -59,14 +59,18 @@ export default function Navigation() {
 
       const hash = window.location.hash;
 
-      // Only lock active section if on a standalone dedicated sub-page
-      // (Team or Event sub-pages where landing sections aren't in DOM)
-      if (hash === "#team" && !document.getElementById("hero")) {
+      // Dedicated sub-pages (Team / Events): lock active indicator immediately
+      if (hash === "#team" || hash === "team") {
         setActiveSection("team");
         return;
       }
-      if (hash === "#events-page" && !document.getElementById("hero")) {
+      if (hash === "#events-page" || hash === "events-page") {
         setActiveSection("events");
+        return;
+      }
+
+      // If we are on a sub-page (no #hero in DOM), do not spy landing sections
+      if (!document.getElementById("hero")) {
         return;
       }
 
@@ -87,8 +91,7 @@ export default function Navigation() {
         }
       }
 
-      // If at the bottom of the page, force the last section to be active
-      // Guard: only apply when user has actually scrolled down (avoid false positive on load)
+      // If at the bottom of the landing page, force the last section to be active
       if (window.scrollY > 200 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
         current = sections[sections.length - 1].key;
       }
@@ -178,9 +181,15 @@ export default function Navigation() {
   };
 
   return (
-    <nav id="main-nav" style={navStyle}>
+    <motion.nav
+      id="main-nav"
+      style={navStyle}
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       {/* LOGO */}
-      <div style={{ display: "flex", alignItems: "center", gap: "14px", flexShrink: 0 }}>
+      <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
         <button
           onClick={() => handleNavClick({ href: "#hero", key: "hero" })}
           aria-label="Go to home"
@@ -189,20 +198,20 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            style={{ height: "36px", width: "auto", maxWidth: "210px", objectFit: "contain", display: "block" }}
+            className="h-7 sm:h-9 w-auto max-w-[130px] sm:max-w-[210px] object-contain block"
           />
         </button>
-        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
+        <div className="h-4 sm:h-6 w-[1px] bg-white/25 shrink-0" />
         <img
           src={iedcLogo}
           alt="IEDC"
-          style={{ height: "36px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
+          className="h-7 sm:h-9 w-auto object-contain block shrink-0"
         />
-        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
+        <div className="h-4 sm:h-6 w-[1px] bg-white/25 shrink-0" />
         <img
           src={iemUemLogo}
           alt="IEM & UEM"
-          style={{ height: "28px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
+          className="h-5 sm:h-7 w-auto object-contain block shrink-0"
         />
       </div>
 
@@ -256,6 +265,7 @@ export default function Navigation() {
         <button
           id="register-nav-cta"
           onClick={() => {
+            setActiveSection("events");
             window.location.hash = "#events-page";
             window.scrollTo(0, 0);
           }}
@@ -266,8 +276,8 @@ export default function Navigation() {
             border: "none",
             padding: 0,
             cursor: "pointer",
-            height: "38px",
-            width: "142px",
+            height: "44px",
+            width: "162px",
             alignItems: "center",
             justifyContent: "center",
             transition: "transform 0.2s ease, filter 0.2s ease",
@@ -346,7 +356,7 @@ export default function Navigation() {
                 <img
                   src={navLogo}
                   alt="Tech Kurukshetra"
-                  style={{ height: "38px", width: "auto", objectFit: "contain", display: "block", flexShrink: 0 }}
+                  style={{ height: "28px", width: "auto", objectFit: "contain", display: "block", flexShrink: 0 }}
                 />
                 <span
                   style={{
@@ -430,6 +440,7 @@ export default function Navigation() {
               <button
                 onClick={() => {
                   setOpen(false);
+                  setActiveSection("events");
                   window.location.hash = "#events-page";
                   window.scrollTo(0, 0);
                 }}
@@ -458,6 +469,6 @@ export default function Navigation() {
         </Sheet>
 
       </div>
-    </nav>
+    </motion.nav>
   );
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { ArrowLeft, Calendar, Filter, Home, Search, Trophy, Users } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { events, type EventCategory, type Event } from "./data/events";
@@ -31,6 +31,12 @@ export default function EventPage() {
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [sort, setSort] = useState<SortMode>("featured");
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
 
   const visibleEvents = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
