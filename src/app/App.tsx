@@ -91,6 +91,8 @@ export default function App() {
         <div className="main-site min-h-screen text-[#f1eeee]">
           <IntroOverlay />
           <main>
+            {/* Invisible scroll anchor for HOME navigation — placed before the sticky hero */}
+            <div id="page-top" style={{ height: 0, overflow: 'hidden' }} />
             {/* Hero & Countdown curtain stacking: Hero sticks while Countdown scrolls over it, then Hero scrolls upward once fully covered */}
             <div className="relative">
               <HeroSection />

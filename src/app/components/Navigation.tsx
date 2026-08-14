@@ -11,7 +11,11 @@ import {
 import { useComingSoon } from "../context/ComingSoonContext";
 
 const navLogo = new URL(
-  "../../../images/herosection/tech kurukshetra web design.svg",
+  "../../../images/tk-logo.webp",
+  import.meta.url
+).href;
+const iedcLogo = new URL(
+  "../../../images/IEDC (2).webp",
   import.meta.url
 ).href;
 const registerNow = new URL(
@@ -23,11 +27,12 @@ const iemUemLogo = new URL(
   import.meta.url
 ).href;
 
+// Maps nav labels to actual DOM section IDs on the landing page
 const navLinks = [
   { label: "HOME", href: "#hero", key: "hero" },
   { label: "ABOUT", href: "#about", key: "about" },
-  { label: "EVENTS", href: "#events-page", key: "events" },
-  { label: "TEAM", href: "#team", key: "team" },
+  { label: "EVENTS", href: "#events", key: "events" },
+  { label: "TEAM", href: "#team-banner", key: "team" },
   { label: "SPONSORS", href: "#sponsors", key: "sponsors" },
   { label: "VENUE", href: "#venue", key: "venue" },
 ];
@@ -54,27 +59,38 @@ export default function Navigation() {
 
       const hash = window.location.hash;
 
-      // Only lock active section if on a standalone dedicated sub-page (e.g. Team or Event sub-pages where landing sections aren't in DOM)
-      if (hash === "#team" && !document.getElementById("about")) {
+      // Only lock active section if on a standalone dedicated sub-page
+      // (Team or Event sub-pages where landing sections aren't in DOM)
+      if (hash === "#team" && !document.getElementById("hero")) {
         setActiveSection("team");
         return;
       }
-      if (hash === "#events-page" && !document.getElementById("about")) {
+      if (hash === "#events-page" && !document.getElementById("hero")) {
         setActiveSection("events");
         return;
       }
 
       // On main landing page — calculate active section based on current viewport scroll position
+      // Note: hero is position:sticky so its getBoundingClientRect is unreliable for scroll spying.
+      // We keep "hero" as the default and only override it when a non-sticky section is in view.
       const viewportTrigger = window.innerHeight * 0.35;
       let current = "hero";
 
       for (const { id, key } of sections) {
+        // Skip the sticky hero — it always reports top:0 while sticking
+        if (id === "hero") continue;
         const el = document.getElementById(id);
         if (!el) continue;
         const rect = el.getBoundingClientRect();
         if (rect.top <= viewportTrigger + 60 && rect.bottom >= viewportTrigger) {
           current = key;
         }
+      }
+
+      // If at the bottom of the page, force the last section to be active
+      // Guard: only apply when user has actually scrolled down (avoid false positive on load)
+      if (window.scrollY > 200 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        current = sections[sections.length - 1].key;
       }
 
       setActiveSection(current);
@@ -96,26 +112,46 @@ export default function Navigation() {
 
   const handleNavClick = (link: { href: string; key: string }) => {
     setOpen(false);
-    if (link.key === "team" || link.key === "events") {
-      window.location.hash = link.href.replace("#", "");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const isOnLandingPage = !!document.getElementById("hero");
+
+    if (isOnLandingPage) {
+      // We're on the landing page — just scroll to the target section
+      if (link.key === "hero") {
+        // Scroll to the #page-top anchor (a non-sticky element above the hero)
+        if (window.location.hash) {
+          history.replaceState(null, "", window.location.pathname);
+        }
+        const top = document.getElementById("page-top");
+        if (top) {
+          top.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        const el = document.querySelector(link.href);
+        if (el) {
+          // Clear any sub-page hash so the router stays on the landing page
+          if (window.location.hash === "#team" || window.location.hash === "#events-page") {
+            history.replaceState(null, "", window.location.pathname);
+          }
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
       setActiveSection(link.key);
-      return;
-    }
-    if (window.location.hash === "#team" || window.location.hash === "#events-page") {
-      window.location.hash = link.href;
+    } else {
+      // We're on a sub-page (Team / Events) — navigate back to landing page,
+      // then scroll to the target section after the DOM has re-rendered
+      history.replaceState(null, "", window.location.pathname);
+      // Force hashchange so App.tsx re-renders the landing page
+      window.location.hash = "";
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
       setTimeout(() => {
         const el = document.querySelector(link.href);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 150);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 200);
       setActiveSection(link.key);
-      return;
     }
-    const el = document.querySelector(link.href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-    setActiveSection(link.key);
   };
 
   const navStyle: React.CSSProperties = {
@@ -126,7 +162,7 @@ export default function Navigation() {
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "1480px",
-    height: "60px",
+    height: "64px",
     zIndex: 10000,
     borderRadius: "9999px",
     border: "1px solid rgba(255,255,255,0.15)",
@@ -134,7 +170,7 @@ export default function Navigation() {
     backdropFilter: "blur(24px)",
     WebkitBackdropFilter: "blur(24px)",
     boxShadow: "0 10px 35px rgba(0,0,0,0.6), 0 0 20px rgba(213,30,30,0.15)",
-    padding: "0 18px",
+    padding: "0 20px",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
@@ -144,7 +180,7 @@ export default function Navigation() {
   return (
     <nav id="main-nav" style={navStyle}>
       {/* LOGO */}
-      <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "14px", flexShrink: 0 }}>
         <button
           onClick={() => handleNavClick({ href: "#hero", key: "hero" })}
           aria-label="Go to home"
@@ -153,14 +189,20 @@ export default function Navigation() {
           <img
             src={navLogo}
             alt="Tech Kurukshetra"
-            style={{ height: "32px", width: "auto", maxWidth: "210px", objectFit: "contain", display: "block" }}
+            style={{ height: "36px", width: "auto", maxWidth: "210px", objectFit: "contain", display: "block" }}
           />
         </button>
-        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
+        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
+        <img
+          src={iedcLogo}
+          alt="IEDC"
+          style={{ height: "36px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
+        />
+        <div style={{ height: "24px", width: "1px", background: "rgba(255,255,255,0.25)", flexShrink: 0 }} />
         <img
           src={iemUemLogo}
           alt="IEM & UEM"
-          style={{ height: "54px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
+          style={{ height: "28px", width: "auto", objectFit: "contain", flexShrink: 0, display: "block" }}
         />
       </div>
 
@@ -276,7 +318,7 @@ export default function Navigation() {
               boxSizing: "border-box",
             }}
           >
-            {/* Top: logo + links */}
+            {/* Top: heading + links */}
             <div
               style={{
                 display: "flex",
@@ -287,28 +329,49 @@ export default function Navigation() {
                 overflowY: "auto",
               }}
             >
-              {/* Drawer Header Logo */}
-              <div
+
+              {/* Drawer Heading with Logo */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.35, delay: 0.1, ease: "easeOut" }}
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "12px",
+                  gap: "14px",
                   borderBottom: "1px solid rgba(255,255,255,0.1)",
-                  paddingBottom: "16px",
+                  paddingBottom: "18px",
                 }}
               >
-                <img src={navLogo} alt="Tech Kurukshetra" style={{ height: "32px", width: "auto", objectFit: "contain", display: "block" }} />
-                <div style={{ height: "22px", width: "1px", background: "rgba(255,255,255,0.2)", flexShrink: 0 }} />
-                <img src={iemUemLogo} alt="IEM & UEM" style={{ height: "42px", width: "auto", objectFit: "contain", display: "block" }} />
-              </div>
+                <img
+                  src={navLogo}
+                  alt="Tech Kurukshetra"
+                  style={{ height: "38px", width: "auto", objectFit: "contain", display: "block", flexShrink: 0 }}
+                />
+                <span
+                  style={{
+                    fontFamily: "'Rajdhani', 'Inter', sans-serif",
+                    fontSize: "11px",
+                    fontWeight: "600",
+                    letterSpacing: "0.25em",
+                    textTransform: "uppercase",
+                    color: "#d51e1e",
+                  }}
+                >
+                  Shadow Protocol 2026
+                </span>
+              </motion.div>
 
-              {/* Navigation Links */}
+              {/* Navigation Links — staggered animation */}
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {navLinks.map((link) => {
+                {navLinks.map((link, i) => {
                   const isActive = activeSection === link.key;
                   return (
-                    <button
+                    <motion.button
                       key={link.key}
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: 0.15 + i * 0.06, ease: "easeOut" }}
                       onClick={() => handleNavClick(link)}
                       style={{
                         display: "flex",
@@ -333,7 +396,10 @@ export default function Navigation() {
                     >
                       <span>{link.label}</span>
                       {isActive && (
-                        <span
+                        <motion.span
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 15 }}
                           style={{
                             width: "8px",
                             height: "8px",
@@ -344,14 +410,17 @@ export default function Navigation() {
                           }}
                         />
                       )}
-                    </button>
+                    </motion.button>
                   );
                 })}
               </div>
             </div>
 
             {/* Bottom: Register CTA */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: 0.5, ease: "easeOut" }}
               style={{
                 padding: "16px 24px 24px 24px",
                 borderTop: "1px solid rgba(255,255,255,0.1)",
@@ -384,7 +453,7 @@ export default function Navigation() {
               >
                 REGISTER NOW →
               </button>
-            </div>
+            </motion.div>
           </SheetContent>
         </Sheet>
 

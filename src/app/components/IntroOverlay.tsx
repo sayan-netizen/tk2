@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
+const tkLogo = new URL(
+  "../../../images/tk-logo.webp",
+  import.meta.url
+).href;
+
 export default function IntroOverlay() {
   const skipIntro =
     typeof window !== "undefined" &&
@@ -70,7 +75,7 @@ export default function IntroOverlay() {
 
           {/* Center content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            {/* Shinobi silhouette */}
+            {/* Shinobi silhouette / Tech Kurukshetra logo */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={
@@ -83,9 +88,9 @@ export default function IntroOverlay() {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <img
-                src="/images/tk_initial.webp"
+                src={tkLogo}
                 alt="Tech Kurukshetra"
-                className="w-64 h-auto drop-shadow-[0_0_30px_rgba(196,30,58,0.5)]"
+                className="w-72 sm:w-96 md:w-[440px] h-auto max-w-[90vw] object-contain drop-shadow-[0_0_40px_rgba(196,30,58,0.7)]"
               />
             </motion.div>
           </div>
