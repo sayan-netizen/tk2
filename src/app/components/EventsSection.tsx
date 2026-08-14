@@ -3,6 +3,14 @@ import { motion } from "motion/react";
 import { events } from "../data/events";
 
 export default function EventsSection() {
+  const handleRedirect = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.location.hash = "events-page";
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  };
+
   return (
     <section id="events" className="relative overflow-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
       <motion.div
@@ -89,6 +97,7 @@ export default function EventsSection() {
 
           <motion.a
             href="#events-page"
+            onClick={handleRedirect}
             whileHover={{ scale: 1.03, x: 4 }}
             whileTap={{ scale: 0.98 }}
             className="group/btn relative inline-flex w-fit items-center gap-4 overflow-hidden rounded-xl border border-[#B8322C] bg-[#1D1B18] px-6 py-4 font-accent text-[11px] uppercase tracking-[0.22em] text-[#F7F1E5] shadow-[0_10px_25px_rgba(29,27,24,0.3)] transition-all hover:bg-[#B8322C] hover:border-[#7A1814] sm:px-7 cursor-pointer"

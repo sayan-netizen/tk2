@@ -1,9 +1,7 @@
-import { useRef, useState } from 'react';
-import { Instagram, Linkedin, RotateCcw } from 'lucide-react';
+import { useRef } from 'react';
 
 export default function MemberCard({ member, delay, isCenter, onBurst, setHoveredTorii }) {
   const frameRef = useRef(null);
-  const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -22,19 +20,13 @@ export default function MemberCard({ member, delay, isCenter, onBurst, setHovere
         portrait.classList.add('torii-portrait-awaken');
       }
     }
-    setIsFlipped((prev) => !prev);
-  };
-
-  const handleSocialClick = (e, url) => {
-    e.stopPropagation();
-    if (url) window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div 
-      className={`member-card mp-card-entry ${isFlipped ? 'flipped' : ''}`}
+      className="member-card mp-card-entry"
       data-float-seed={member.seed} 
-      style={{ animationDelay: `${delay}s` }}
+      style={{ animationDelay: `${delay}s`, cursor: 'default' }}
       onClick={handleClick}
     >
       <div className="member-card-3d-inner">
@@ -51,49 +43,6 @@ export default function MemberCard({ member, delay, isCenter, onBurst, setHovere
           <div className="clean-member-info">
             <h4>{member.name}</h4>
             <p>{member.role}</p>
-          </div>
-        </div>
-
-        {/* BACK SIDE (Ninja Scroll / Details Box) */}
-        <div className="member-card-back">
-          <div className="scroll-box-container">
-            <img src="/images/team/box.webp" alt="Scroll Details Box" className="scroll-box-bg" />
-            
-            <div className="scroll-box-content">
-              <span className="scroll-kanji-stamp">{member.symbol || '忍'}</span>
-              <h3 className="scroll-member-name">{member.name}</h3>
-              <p className="scroll-member-role">{member.role}</p>
-
-              <div className="scroll-social-links">
-                {member.instagram && (
-                  <button 
-                    type="button" 
-                    className="social-btn instagram-btn"
-                    onClick={(e) => handleSocialClick(e, member.instagram)}
-                    aria-label={`${member.name} Instagram`}
-                  >
-                    <Instagram className="size-4" />
-                    <span>Instagram</span>
-                  </button>
-                )}
-                {member.linkedin && (
-                  <button 
-                    type="button" 
-                    className="social-btn linkedin-btn"
-                    onClick={(e) => handleSocialClick(e, member.linkedin)}
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <Linkedin className="size-4" />
-                    <span>LinkedIn</span>
-                  </button>
-                )}
-              </div>
-
-              <div className="flip-back-hint">
-                <RotateCcw className="size-3" />
-                <span>Click to flip back</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
