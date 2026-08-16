@@ -80,12 +80,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <div className="mb-4">
-              <img
-                src={tkLogo}
-                alt="Tech Kurukshetra 2026"
-                className="h-11 sm:h-12 w-auto max-w-[240px] object-contain"
-              />
+            <div className="mb-5">
+              <div className="inline-flex items-center justify-center px-3.5 py-2.5 bg-[#12100E] border border-[#B8322C]/40 rounded-xl shadow-[0_6px_20px_rgba(0,0,0,0.25)]">
+                <img
+                  src={tkLogo}
+                  alt="Tech Kurukshetra 2026"
+                  className="h-9 sm:h-10 w-auto max-w-[210px] object-contain block"
+                />
+              </div>
             </div>
             <p className="text-[#5A5043] text-sm leading-relaxed max-w-xs mb-6 font-medium">
               Enter the mission. Master the unknown. The flagship national-level tech fest of Dept. of CSE(IOT,CS,BT), UEM Kolkata.
