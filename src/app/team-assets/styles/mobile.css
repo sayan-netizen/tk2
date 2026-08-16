@@ -70,10 +70,10 @@
 
   /* MOBILE LEADS PAGE SCROLL CONTAINER WITH REPEATING DOT MATRIX */
   .mobile-leads-scroll-container {
-    background-color: #F7F1E5 !important;
+    background-color: #0a0a0a !important;
     background-image: 
-      radial-gradient(circle at center, rgba(184, 50, 44, 0.32) 1.5px, transparent 1.5px),
-      radial-gradient(circle at center, rgba(184, 138, 61, 0.22) 1px, transparent 1px) !important;
+      radial-gradient(circle at center, rgba(184, 50, 44, 0.28) 1.5px, transparent 1.5px),
+      radial-gradient(circle at center, rgba(184, 138, 61, 0.15) 1px, transparent 1px) !important;
     background-size: 16px 16px, 32px 32px !important;
     background-position: 0 0, 8px 8px !important;
     background-repeat: repeat !important;
@@ -339,6 +339,45 @@
     font-family: 'Oswald', sans-serif;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+  }
+
+  /* MOBILE MODAL SCROLL FIX */
+  .chambers-modal-overlay {
+    align-items: stretch !important;
+  }
+
+  .chambers-modal-container {
+    height: 100vh !important;
+    height: 100dvh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chambers-modal-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  /* DARK THEME OVERRIDES FOR LEADS DEPT HEADERS INSIDE MODAL */
+  .chambers-modal-container .mobile-dept-header {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(184, 50, 44, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .chambers-modal-container .mobile-ts-title {
+    color: #F2ECE1;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .chambers-modal-container .mobile-ts-desc {
+    color: rgba(242, 236, 225, 0.7);
+  }
+
+  .chambers-modal-container .mobile-dept-image {
+    border-color: rgba(184, 50, 44, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
   }
 }
 

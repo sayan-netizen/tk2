@@ -6,9 +6,11 @@ import { X, Crown } from 'lucide-react';
 export default function ConvenerModal({ isOpen, onClose, onBurst, setHoveredTorii }) {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.setProperty('overflow', 'hidden', 'important');
+      document.documentElement.style.setProperty('overflow', 'hidden', 'important');
     } else {
-      document.body.style.overflow = '';
+      document.body.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('overflow');
     }
 
     const handleKeyDown = (e) => {
@@ -18,7 +20,8 @@ export default function ConvenerModal({ isOpen, onClose, onBurst, setHoveredTori
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
+      document.body.style.removeProperty('overflow');
+      document.documentElement.style.removeProperty('overflow');
     };
   }, [isOpen]);
 

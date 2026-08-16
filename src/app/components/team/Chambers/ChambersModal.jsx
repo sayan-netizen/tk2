@@ -81,13 +81,20 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
       }
     };
 
+    const isMobileView = window.matchMedia('(max-width: 768px)').matches;
+
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
+      if (!isMobileView) {
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
       window.addEventListener('keydown', handleKeyDown);
-      window.addEventListener('wheel', handleWheel, { passive: false });
-      window.addEventListener('touchstart', handleTouchStart, { passive: true });
-      window.addEventListener('touchend', handleTouchEnd, { passive: true });
+      // Only attach wheel/touch carousel handlers on desktop
+      if (!isMobileView) {
+        window.addEventListener('wheel', handleWheel, { passive: false });
+        window.addEventListener('touchstart', handleTouchStart, { passive: true });
+        window.addEventListener('touchend', handleTouchEnd, { passive: true });
+      }
     } else {
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
@@ -117,7 +124,7 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
     <div className="chambers-modal-overlay">
       <div className="chambers-modal-backdrop" onClick={onClose} />
       
-      <div className="chambers-modal-container relative overflow-hidden flex flex-col h-screen">
+      <div className="chambers-modal-container relative overflow-y-auto flex flex-col h-screen">
         {/* Top Header Controls - Solid backdrop, clean without dots */}
         <div className="chambers-modal-header sticky top-0 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/10 z-50">
           <div className="chambers-badge">
@@ -125,9 +132,6 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
               <span className="inline-block size-2 rounded-full bg-[#B8322C] shadow-[0_0_8px_#B8322C]" />
               <span className="chambers-badge-title font-accent tracking-[0.22em] text-[#B8322C] font-bold">DOMAIN LEADS & ARCHITECTS</span>
             </div>
-            <span className="chambers-badge-sub font-mono text-[11px] text-[#F8F3E6]/70 tracking-wider">
-              Pillar {currentTeam + 1} of {DEPTS.length} • {DEPTS[currentTeam]?.name}
-            </span>
           </div>
 
           <button 
@@ -142,7 +146,7 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
         </div>
 
         {/* LEADS PAGE BODY CONTAINER (With Dot Matrix Background) */}
-        <div className="relative flex-1 w-full overflow-hidden">
+        <div className="relative flex-1 w-full lg:overflow-hidden overflow-visible">
           {/* STATIC DOT MATRIX PATTERN (Leads Page Background, Not In Header) */}
           <div className="mobile-modal-dot-matrix-bg pointer-events-none absolute inset-0 z-0">
             <div className="mobile-dot-matrix-grid" />
@@ -213,10 +217,10 @@ export default function ChambersModal({ isOpen, onClose, onBurst, setHoveredTori
                 <div className="inline-flex items-center gap-1.5 font-accent text-[11px] uppercase tracking-[0.28em] text-[#B8322C] font-bold bg-[#B8322C]/10 border border-[#B8322C]/30 px-3.5 py-1 rounded-full shadow-sm mb-3">
                   <span>主導 • Strategic Pillars</span>
                 </div>
-                <h2 className="ts-title font-display text-4xl sm:text-5xl text-[#1D1B18] drop-shadow-sm uppercase tracking-wider">
+                <h2 className="ts-title font-display text-4xl sm:text-5xl text-[#F2ECE1] drop-shadow-sm uppercase tracking-wider">
                   DOMAIN <span className="text-[#B8322C]">LEADS</span>
                 </h2>
-                <p className="text-xs sm:text-sm text-[#1D1B18]/75 font-sans mt-2 max-w-sm mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#F2ECE1]/70 font-sans mt-2 max-w-sm mx-auto leading-relaxed">
                   The visionary commanders and lead architects driving execution, technology, and design at Tech Kurukshetra 2026.
                 </p>
               </div>
