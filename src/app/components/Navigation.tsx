@@ -56,6 +56,17 @@ export default function Navigation() {
       { id: "venue",       key: "venue" },
     ];
 
+    // Get the absolute document-top offset of an element (works regardless of sticky parents)
+    const getOffsetTop = (el: HTMLElement): number => {
+      let top = 0;
+      let current: HTMLElement | null = el;
+      while (current) {
+        top += current.offsetTop;
+        current = current.offsetParent as HTMLElement | null;
+      }
+      return top;
+    };
+
     const update = () => {
       setScrolled(window.scrollY > 50);
 
@@ -76,24 +87,22 @@ export default function Navigation() {
         return;
       }
 
-      // On main landing page — calculate active section based on current viewport scroll position
-      // Note: hero is position:sticky so its getBoundingClientRect is unreliable for scroll spying.
-      // We keep "hero" as the default and only override it when a non-sticky section is in view.
-      const viewportTrigger = window.innerHeight * 0.35;
+      // On main landing page — determine active section based on scroll position.
+      // We use an offset of 150px so the section activates before the user fully reaches it.
+      const scrollPos = window.scrollY + 150;
       let current = "hero";
 
       for (const { id, key } of sections) {
-        // Skip the sticky hero — it always reports top:0 while sticking
-        if (id === "hero") continue;
+        if (id === "hero") continue; // hero is sticky — skip offset calc
         const el = document.getElementById(id);
         if (!el) continue;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= viewportTrigger + 60 && rect.bottom >= viewportTrigger) {
+        const sectionTop = getOffsetTop(el);
+        if (scrollPos >= sectionTop) {
           current = key;
         }
       }
 
-      // If at the bottom of the landing page, force the last section to be active
+      // If at the very bottom of the page, force the last section active
       if (window.scrollY > 200 && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
         current = sections[sections.length - 1].key;
       }
