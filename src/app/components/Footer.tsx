@@ -2,22 +2,6 @@ import { Instagram, Linkedin, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { useComingSoon } from "../context/ComingSoonContext";
 
-const quickLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "About", href: "#about" },
-  { label: "Events", href: "#events" },
-  { label: "Sponsors", href: "#sponsors" },
-  { label: "Venue", href: "#venue" },
-];
-
-const eventLinks = [
-  { label: "Shadow Sprint (Hackathon)", href: "#events" },
-  { label: "Code Wars", href: "#events" },
-  { label: "Robo Arena", href: "#events" },
-  { label: "Shadow Games", href: "#events" },
-  { label: "Design Sprint", href: "#events" },
-];
-
 const socials = [
   { icon: Instagram, href: "https://www.instagram.com/tech_kurukshetra", label: "Instagram" },
   { icon: Linkedin, href: "https://www.linkedin.com/company/tech-kurukshetra", label: "LinkedIn" },
@@ -28,13 +12,15 @@ const tkLogo = new URL(
   import.meta.url
 ).href;
 
+import { scrollToTop } from "../utils/scroll";
+
 export default function Footer() {
   const { openComingSoon } = useComingSoon();
 
   const handleNav = (href: string) => {
     if (href === "#events-page" || href === "#team") {
       window.location.hash = href;
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
+      scrollToTop();
       return;
     }
     if (href === "#hero") {
@@ -77,9 +63,9 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main footer grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12 items-start justify-between">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div>
             <div className="mb-5">
               <div className="inline-flex items-center justify-center px-3.5 py-2.5 bg-[#12100E] border border-[#B8322C]/40 rounded-xl shadow-[0_6px_20px_rgba(0,0,0,0.25)]">
                 <img
@@ -100,50 +86,12 @@ export default function Footer() {
             </Button>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-heading text-sm font-bold text-[#1D1B18] mb-4 tracking-wider uppercase">
-              Quick Links
-            </h4>
-            <ul className="space-y-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.label}>
-                  <button
-                    onClick={() => handleNav(link.href)}
-                    className="text-[#5A5043] hover:text-[#B8322C] text-sm font-medium transition-colors cursor-pointer"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Events */}
-          <div>
-            <h4 className="font-heading text-sm font-bold text-[#1D1B18] mb-4 tracking-wider uppercase">
-              Events
-            </h4>
-            <ul className="space-y-2.5">
-              {eventLinks.map((link) => (
-                <li key={link.label}>
-                  <button
-                    onClick={() => handleNav(link.href)}
-                    className="text-[#5A5043] hover:text-[#B8322C] text-sm font-medium transition-colors cursor-pointer"
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Contact */}
-          <div>
-            <h4 className="font-heading text-sm font-bold text-[#1D1B18] mb-4 tracking-wider uppercase">
+          <div className="md:ml-auto">
+            <h4 className="font-heading text-sm font-bold text-[#1D1B18] mb-4 tracking-wider uppercase md:text-right">
               Contact
             </h4>
-            <ul className="space-y-3 text-sm text-[#5A5043] font-medium">
+            <ul className="space-y-3 text-sm text-[#5A5043] font-medium md:text-right">
               <li>
                 <a
                   href="mailto:tech.kurukshetra.uem@gmail.com"

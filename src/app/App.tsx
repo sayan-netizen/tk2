@@ -22,6 +22,8 @@ const bannerMobileFBg = new URL("../../images/banner_mobile_f.webp", import.meta
 const TeamPage = lazy(() => import("./TeamPage"));
 const EventPage = lazy(() => import("./EventPage"));
 
+import { scrollToTop } from "./utils/scroll";
+
 export default function App() {
   const [burstOrigin, setBurstOrigin] = useState<any>(null);
   const [hoveredTorii, setHoveredTorii] = useState<any>(null);
@@ -35,22 +37,17 @@ export default function App() {
   });
 
   useEffect(() => {
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
     const syncRoute = () => {
       setRoute(window.location.hash);
-      document.documentElement.style.scrollBehavior = "auto";
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      requestAnimationFrame(() => {
-        window.scrollTo(0, 0);
-        document.documentElement.scrollTop = 0;
-        document.body.scrollTop = 0;
-        document.documentElement.style.scrollBehavior = "";
-      });
+      scrollToTop();
     };
     window.addEventListener("hashchange", syncRoute);
+    scrollToTop();
     return () => window.removeEventListener("hashchange", syncRoute);
-  }, []);
+  }, [route]);
 
   const renderContent = () => {
     if (route === "#team") {

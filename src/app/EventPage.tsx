@@ -27,26 +27,15 @@ function prizeValue(prize: string) {
   return digits ? Number(digits) : 0;
 }
 
+import { scrollToTop } from "./utils/scroll";
+
 export default function EventPage() {
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [sort, setSort] = useState<SortMode>("featured");
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "auto";
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
-    const rId = requestAnimationFrame(() => {
-      window.scrollTo(0, 0);
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-      document.documentElement.style.scrollBehavior = "";
-    });
-    return () => {
-      cancelAnimationFrame(rId);
-      document.documentElement.style.scrollBehavior = "";
-    };
+    scrollToTop();
   }, []);
 
   const visibleEvents = useMemo(() => {
@@ -71,7 +60,7 @@ export default function EventPage() {
   }, [category, query, sort]);
 
   return (
-    <div id="events-page" className="relative min-h-screen bg-[#050505] text-[#f1eeee]">
+    <div className="relative min-h-screen bg-[#050505] text-[#f1eeee]">
       {/* Full Page Background Image - Brighter Display */}
       <div 
         className="fixed inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-100 brightness-[1.3] pointer-events-none"

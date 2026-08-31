@@ -37,6 +37,8 @@ const navLinks = [
   { label: "VENUE", href: "#venue", key: "venue" },
 ];
 
+import { scrollToTop } from "../utils/scroll";
+
 export default function Navigation() {
   const { openComingSoon } = useComingSoon();
   const [scrolled, setScrolled] = useState(false);
@@ -267,7 +269,7 @@ export default function Navigation() {
           onClick={() => {
             setActiveSection("events");
             window.location.hash = "#events-page";
-            window.scrollTo(0, 0);
+            scrollToTop();
           }}
           aria-label="Register now"
           className="hidden sm:inline-flex"
@@ -442,7 +444,7 @@ export default function Navigation() {
                   setOpen(false);
                   setActiveSection("events");
                   window.location.hash = "#events-page";
-                  window.scrollTo(0, 0);
+                  scrollToTop();
                 }}
                 style={{
                   display: "block",

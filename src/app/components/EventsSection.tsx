@@ -1,14 +1,13 @@
 import { ArrowUpRight, Swords, Trophy } from "lucide-react";
 import { motion } from "motion/react";
 import { events } from "../data/events";
+import { scrollToTop } from "../utils/scroll";
 
 export default function EventsSection() {
   const handleRedirect = (e: React.MouseEvent) => {
     e.preventDefault();
     window.location.hash = "events-page";
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as any });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    scrollToTop();
   };
 
   return (

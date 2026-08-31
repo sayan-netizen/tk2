@@ -14,6 +14,8 @@ import mobileStyles from "./team-assets/styles/mobile.css?raw";
 
 const teamStyleId = "shadow-dojo-team-styles";
 
+import { scrollToTop } from "./utils/scroll";
+
 export default function TeamPage({
   setBurstOrigin: setGlobalBurst,
   setHoveredTorii: setGlobalHovered,
@@ -29,7 +31,7 @@ export default function TeamPage({
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    scrollToTop();
     const style = document.createElement("style");
     style.id = teamStyleId;
     style.textContent = `${teamStyles.replace("@import './mobile.css';", "")}\n${mobileStyles}`;
