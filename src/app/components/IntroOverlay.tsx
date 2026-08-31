@@ -57,7 +57,7 @@ export default function IntroOverlay({ onComplete }: { onComplete?: () => void }
         >
           {/* Top panel */}
           <motion.div
-            className="absolute inset-0 bg-[#0A0A0A]"
+            className="absolute inset-0 bg-[#0A0A0A] z-10"
             style={{ clipPath: "polygon(0 0, 100% 0, 0 100%)" }}
             animate={
               phase === "split"
@@ -69,7 +69,7 @@ export default function IntroOverlay({ onComplete }: { onComplete?: () => void }
 
           {/* Bottom panel */}
           <motion.div
-            className="absolute inset-0 bg-[#0A0A0A]"
+            className="absolute inset-0 bg-[#0A0A0A] z-10"
             style={{ clipPath: "polygon(100% 0, 100% 100%, 0 100%)" }}
             animate={
               phase === "split"
@@ -79,32 +79,10 @@ export default function IntroOverlay({ onComplete }: { onComplete?: () => void }
             transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           />
 
-          {/* Center content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            {/* Shinobi silhouette / Tech Kurukshetra logo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={
-                phase === "silhouette"
-                  ? { opacity: 1, scale: 1 }
-                  : phase === "slash"
-                  ? { opacity: 0.6, scale: 1.05 }
-                  : { opacity: 0, scale: 1.2 }
-              }
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <img
-                src={tkLogo}
-                alt="Tech Kurukshetra"
-                className="w-72 sm:w-96 md:w-[440px] h-auto max-w-[90vw] object-contain drop-shadow-[0_0_40px_rgba(196,30,58,0.7)]"
-              />
-            </motion.div>
-          </div>
-
-          {/* Slash line */}
+          {/* Slash line (Behind Logo) */}
           {(phase === "slash" || phase === "split") && (
             <motion.svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
+              className="absolute inset-0 w-full h-full pointer-events-none z-20"
               viewBox="0 0 100 100"
               preserveAspectRatio="none"
             >
@@ -114,10 +92,10 @@ export default function IntroOverlay({ onComplete }: { onComplete?: () => void }
                 x2="0"
                 y2="100"
                 stroke="#d51e1e"
-                strokeWidth="0.3"
+                strokeWidth="0.4"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
+                transition={{ duration: 0.45, ease: "easeInOut" }}
                 filter="url(#glow)"
               />
               <defs>
@@ -131,6 +109,28 @@ export default function IntroOverlay({ onComplete }: { onComplete?: () => void }
               </defs>
             </motion.svg>
           )}
+
+          {/* Center content - Logo on Top (z-30) so strike animation does not cut it */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-30">
+            {/* Tech Kurukshetra logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={
+                phase === "silhouette"
+                  ? { opacity: 1, scale: 1 }
+                  : phase === "slash"
+                  ? { opacity: 1, scale: 1.05 }
+                  : { opacity: 0, scale: 1.15 }
+              }
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
+              <img
+                src={tkLogo}
+                alt="Tech Kurukshetra"
+                className="w-72 sm:w-96 md:w-[440px] h-auto max-w-[90vw] object-contain drop-shadow-[0_0_50px_rgba(213,30,30,0.85)]"
+              />
+            </motion.div>
+          </div>
 
           {/* Skip button */}
           <motion.button
