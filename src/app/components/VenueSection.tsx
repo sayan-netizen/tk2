@@ -11,7 +11,7 @@ export default function VenueSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
-    <section id="venue" className="relative py-20 sm:py-28 overflow-hidden bg-[#EFE2C7] scroll-mt-28" ref={sectionRef}>
+    <section id="venue" className="relative py-20 sm:py-28 overflow-hidden bg-[#EFE2C7]" ref={sectionRef}>
       {/* Rich Japanese Background Artwork — Responsive Desktop / Mobile */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent z-0">
         <picture>

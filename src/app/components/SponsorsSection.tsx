@@ -82,7 +82,7 @@ export default function SponsorsSection() {
   const [isSponsorModalOpen, setIsSponsorModalOpen] = useState(false);
 
   return (
-    <section id="sponsors" className="relative pt-4 pb-16 sm:pt-8 sm:pb-24 overflow-hidden bg-[#EFE2C7] scroll-mt-28" ref={sectionRef}>
+    <section id="sponsors" className="relative pt-4 pb-16 sm:pt-8 sm:pb-24 overflow-hidden bg-[#EFE2C7]" ref={sectionRef}>
       {/* Rich Japanese Background Artwork — Responsive Desktop / Mobile */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden bg-transparent z-0">
         <picture>
