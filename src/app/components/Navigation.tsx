@@ -115,15 +115,25 @@ export default function Navigation() {
     };
   }, []);
 
+  const scrollToElementWithOffset = (el: Element, offset = 100) => {
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: Math.max(0, offsetPosition),
+      behavior: "smooth",
+    });
+  };
+
   const handleNavClick = (link: { href: string; key: string }) => {
     setOpen(false);
 
     const isOnLandingPage = !!document.getElementById("hero");
 
     if (isOnLandingPage) {
-      // We're on the landing page — just scroll to the target section
+      // We're on the landing page — scroll to target section with offset
       if (link.key === "hero") {
-        // Scroll to the #page-top anchor (a non-sticky element above the hero)
+        // Scroll to the #page-top anchor
         if (window.location.hash) {
           history.replaceState(null, "", window.location.pathname);
         }
@@ -138,21 +148,19 @@ export default function Navigation() {
           if (window.location.hash === "#team" || window.location.hash === "#events-page") {
             history.replaceState(null, "", window.location.pathname);
           }
-          el.scrollIntoView({ behavior: "smooth" });
+          scrollToElementWithOffset(el, 100);
         }
       }
       setActiveSection(link.key);
     } else {
-      // We're on a sub-page (Team / Events) — navigate back to landing page,
-      // then scroll to the target section after the DOM has re-rendered
+      // We're on a sub-page (Team / Events) — navigate back to landing page
       history.replaceState(null, "", window.location.pathname);
-      // Force hashchange so App.tsx re-renders the landing page
       window.location.hash = "";
       window.dispatchEvent(new HashChangeEvent("hashchange"));
       setTimeout(() => {
         const el = document.querySelector(link.href);
         if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
+          scrollToElementWithOffset(el, 100);
         }
       }, 200);
       setActiveSection(link.key);

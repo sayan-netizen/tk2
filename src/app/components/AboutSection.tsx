@@ -49,7 +49,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative z-20 max-sm:-mt-20 sm:-mt-38 lg:-mt-48 pb-56 sm:pb-28 overflow-hidden bg-transparent transform-gpu"
+      className="relative z-20 max-sm:-mt-20 sm:-mt-38 lg:-mt-48 pb-56 sm:pb-28 overflow-hidden bg-transparent transform-gpu scroll-mt-28"
       ref={sectionRef}
     >
       {/* Rich Japanese Background Artwork — Responsive Desktop / Mobile */}

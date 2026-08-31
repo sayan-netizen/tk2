@@ -11,7 +11,7 @@ export default function EventsSection() {
   };
 
   return (
-    <section id="events" className="relative overflow-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+    <section id="events" className="relative overflow-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-8 scroll-mt-28">
       <motion.div
         initial={{ opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
